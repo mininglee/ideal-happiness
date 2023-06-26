@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <header>
+        <div class="header-contents">
+            <div class="logo-nav-container">
+                <img src="https://bemypet.kr/image/bemypet-logo.svg" class="header-logo">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Healthy</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Travel & Restaurant</a></li>
+                        <li><a href="#">Beauty & Hotel</a></li>
+                        <li><img src="https://bemypet.kr/icons/ICON-24px-Menu.svg" alt=""></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main></main>
+    
+        <div class="banner">
+            <div> <!--광고 이미지-->
+                <img src="./KakaoTalk_20230625_224325805.jpg" class="bannerimg">
+            </div>
+            <div> <!--제품 검색-->
+                <input type="text" class="shopSearch" placeholder="쇼핑 검색">
+            </div>
+            <div class="kategorie"> <!--카테고리-->
+                <div class="kategorie1" onclick="">사료</div>
+                <div class="kategorie2">간식</div>
+                <div class="kategorie3">장난감</div>
+                <div class="kategorie4">샴푸/비누</div>
+            </div>
+        </div>
+
+        <section class="products">
+            <div class="products-container">
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">오리</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.imweb.me/thumbnail/20230330/3382dd772b05b.png" alt="Product 2">
+                    <h3 class="product-title">야광클립</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.imweb.me/thumbnail/20230120/9607e61c7532b.jpg" alt="Product 1">
+                    <h3 class="product-title">샴푸</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.imweb.me/thumbnail/20230615/5c7ff612db0bb.png" alt="Product 2">
+                    <h3 class="product-title">사료</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvS1P-rIdbDo9I0dmyeq3GEMAHEhKpkyXtsmI-lVsujADcdk-txYY5OZwMT2iyD75Hok&usqp=CAU" alt="Product 1">
+                    <h3 class="product-title">장난감</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://shopping-phinf.pstatic.net/main_8236601/82366017734.3.jpg?type=f300" alt="Product 2">
+                    <h3 class="product-title">상품 6</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 7</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 8</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 9</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 10</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 11</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 12</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 13</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 14</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 15</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 16</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 17</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 18</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 1">
+                    <h3 class="product-title">상품 19</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+                <div class="product">
+                    <img src="https://img.dogpre.com/mobile/dogpre/product/93/92557_detail_01825903.png" alt="Product 2">
+                    <h3 class="product-title">상품 20</h3>
+                    <p class="product-price">30,000원</p>
+                    <button class="add-to-cart">장바구니에 추가</button>
+                </div>
+            </div>
+            <!-- 추가 상품들 -->
+        </section>
+        
+    
+
+    <footer>
+        <!-- 하단 내용 및 링크 -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
