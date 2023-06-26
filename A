@@ -1,1 +1,221 @@
+// 박경호
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty&Hotel</title>
+    <style>
+        body {
+            background-color: #F5F6F7;
+            font-size: 14px;
+            color: #222;
+            line-height: 1.5em;
+            margin: 0;
+        }
+        .member {
+            /* border: 1px solid #000; */
+            width: 900px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        .member .logo {
+            display: block;
+            margin: 50px auto;
+        }
+        .member .field.time {
+            /* border: 1px solid red; */
+            margin-bottom: 5px;
+        }
+        .member .field.time b {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .member input:not(input[type="radio"]), .member select {
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dadada;
+            margin-bottom: 5px;
+        }
+        .member input[type=button],
+        .member input[type=submit] {
+            background-color: rgb(212, 149, 72);
+            color: black;
+        }
 
+        .field.search div {
+            display: flex;
+            gap: 10px;
+        }
+
+        .field.choice div {
+            border: 1px solid #dadada;
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .field.date article {
+            display: flex;
+            gap: 10px;
+        }
+
+        .field.date button {
+            flex: 1;
+            background-color: #ffffff;
+            border: 1px solid #dadada;
+            margin-bottom: 5px;
+            padding: 15px;
+        }
+
+        .placehold-text {
+            /* border: 1px solid #000; */
+            position: relative;
+            display: block;
+        }
+        .datepicker {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="member">
+        <!-- 1. 로고 -->
+        <img class="logo" src="">
+
+        <!-- 2. 항목 선택하기 -->
+        <div class="field choice">
+            <b>선택</b>
+            <div>
+                <label><input type="radio" name="gender">Beauty</label>
+                <label><input type="radio" name="gender">Hotel</label> 
+            </div>
+        </div>
+
+        <div class="field date">
+            <b>이용 기간 / 반려동물 수 및 크기</b>
+            <article>
+                <button id="dateButton">        <!-- 클릭했을때 달력이 출력 -->
+                    <span id="startDate"></span>
+                    <span> ~ </span>
+                    <span id="endDate"></span>
+                    <span>•</span>
+                    <span id="nightCount">1박</span>
+                </button>
+                <button>                        <!-- 클릭했을때 동물의 수와 크기를 체크 할 수 있는 창이 출력 -->
+                    <span>
+                        반려동물 수, 반려동물 크기
+                    </span>
+                </button>
+            </article>
+        </div>
+
+        <!-- 3. 위치 검색 -->
+        <div class="field search">
+            <b>위치검색</b>
+            <div>
+                <input type="text" placeholder="직접 입력">                
+                <select>
+                    <option value="">서울</option>
+                    <option value="">경기도</option>
+                    <option value="">경상도</option>
+                    <option value="">강원도</option>
+                    <option value="">충청도</option>
+                    <option value="">전라도</option>
+                    <option value="">제주도</option>
+                </select>
+            </div>
+            <img src="./jpg/화면 캡처 2023-06-25 115621.png" width="800px">
+        </div>
+
+        <!-- 4. 날짜, 비교하기 -->
+        <div class="field time">
+            <b>이용시간 선택하기</b>
+            <div>              
+                <select>
+                    <option value="">1시간</option>
+                    <option value="">3시간</option>
+                    <option value="">6시간</option>
+                    <option value="">12시간</option>
+                    <option value="">24시간</option>
+                </select>
+            </div>
+            <input type="button" value="결과 확인하기">
+        </div>
+
+        
+    </div>
+
+    <div class="datepicker">
+        <div class="calendar">
+          <div class="header">
+            <button class="prev-btn">&lt;</button>
+            <div class="title">
+              <span class="month"></span>
+              <span class="year"></span>
+            </div>
+            <button class="next-btn">&gt;</button>
+          </div>
+          <div class="weekdays">
+            <span class="weekday">일</span>
+            <span class="weekday">월</span>
+            <span class="weekday">화</span>
+            <span class="weekday">수</span>
+            <span class="weekday">목</span>
+            <span class="weekday">금</span>
+            <span class="weekday">토</span>
+          </div>
+          <div class="dates">
+            <!-- 날짜들을 동적으로 생성하고 해당 날짜를 클릭하면 선택된 날짜로 업데이트하는 로직이 필요합니다. -->
+          </div>
+        </div>
+      </div>
+
+    <script>
+        // 날짜 포맷팅 함수
+        function formatDate(date) {
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var weekDay = ["일", "월", "화", "수", "목", "금", "토"][date.getDay()];
+    
+            return `${month < 10 ? '0' + month : month}.${day < 10 ? '0' + day : day} (${weekDay})`;
+        }
+
+        // 오늘 날짜 설정
+        var today = new Date();
+        var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000); // 내일 날짜 계산
+        var todayFormatted = formatDate(today);
+        var tomorrowFormatted = formatDate(tomorrow);
+
+        // 선택한 날짜 초기화
+        var startDateSpan = document.getElementById("startDate");
+        var endDateSpan = document.getElementById("endDate");
+        startDateSpan.textContent = todayFormatted;
+        endDateSpan.textContent = tomorrowFormatted;
+
+        // 날짜 선택 버튼 클릭 시 달력 표시/숨김 처리
+        var dateButton = document.getElementById("dateButton");
+        var datepicker = document.querySelector(".datepicker");
+
+        function toggleDatePicker() {
+            if (datepicker.style.display === "none") {
+                datepicker.style.display = "block";
+            } else {
+                datepicker.style.display = "none";
+            }
+        }
+        dateButton.addEventListener("click", toggleDatePicker);
+    </script>
+</body>
+</html>
