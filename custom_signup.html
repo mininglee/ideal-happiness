@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>신규 회원가입</title>
+</head>
+<body>
+  <h1>신규 회원가입</h1>
+  <button id="kakao-login-button" onclick="kakaoLogin()">Kakao 회원가입</button>
+  <button id="additional-consent-button" onclick="additionalConsent()">추가 항목 동의받기</button>
+
+  <script>
+    function kakaoLogin() {
+      // Kakao 로그인 페이지로 연결합니다.
+      // REDIRECT_URI와 scope 값을 사용하여 Kakao.Auth.authorize() 함수를 호출합니다.
+      // REDIRECT_URI는 실제 사용되는 값으로 대체되어야 합니다.
+      window.location.href = "${REDIRECT_URI}";
+    }
+
+    function additionalConsent() {
+      // 추가 항목 동의받기 페이지로 이동합니다.
+      window.location.href = "additional_consent.html";
+    }
+  </script>
+</body>
+</html>
