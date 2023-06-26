@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>커뮤니티 홈페이지</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>커뮤니티 홈페이지</title>
+    <style>
+        /* CSS 스타일을 직접 작성합니다. */
+        nav {
+            width: 100%; /* 네비게이션 바의 가로 폭을 100%로 설정합니다. */
+            background-color: #faf5a9;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        nav li {
+            float: left;
+        }
+        
+        nav li a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        nav li a:hover {
+            background-color: #ddd;
+        }
+    
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" style="background-color: #fffb03;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              
+              
+                <a class="nav-link" href="#">최신 게시물</a>
+              
+              
+                <a class="nav-link" href="#">인기 게시물</a>
+              
+              
+                <a class="nav-link disabled">산책친구찾기</a>
+              
+              
+                <a class="nav-link disabled">이벤트</a>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <header>
+        <h1>커뮤니티 홈페이지</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">게시판</a></li>
+            <li><a href="#">친구맺기</a></li>
+            <li><a href="#">이벤트</a></li>
+            <li><a href="#">회원가입/Log-In</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>최신 게시물</h2>
+            <ul>
+                <li><a href="#">게시물 제목 1</a></li>
+                <li><a href="#">게시물 제목 2</a></li>
+                <li><a href="#">게시물 제목 3</a></li>
+                <li><a href="#">게시물 제목 4</a></li>
+                <li><a href="#">게시물 제목 5</a></li>
+                <a href="more">더보기</a>
+            </ul>
+        </section>
+
+        <section>
+            <h2>인기 게시물</h2>
+            <ul>
+                <li><a href="#">게시물 제목 1</a></li>
+                <li><a href="#">게시물 제목 2</a></li>
+                <li><a href="#">게시물 제목 3</a></li>
+                <li><a href="#">게시물 제목 4</a></li>
+                <li><a href="#">게시물 제목 5</a></li>
+                <a href="more">더보기</a>
+            </ul>
+        </section>
+    </main>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>커뮤니티 홈페이지</title>
+</head>
+<body>
+    <h2>친구 맺기</h2>
+    
+    <ul>
+        <li>
+            <h2><a href="#">게시물 제목 1</a></h2>
+            <p>게시물 내용 1</p>
+            <p>작성자: 사용자1</p>
+            <p>작성일: 2023-06-25</p>
+        </li>
+        <li>
+            <h2><a href="#">게시물 제목 2</a></h2>
+            <p>게시물 내용 2</p>
+            <p>작성자: 사용자2</p>
+            <p>작성일: 2023-06-26</p>
+        </li>
+        <li>
+            <h2><a href="#">게시물 제목 3</a></h2>
+            <p>게시물 내용 3</p>
+            <p>작성자: 사용자3</p>
+            <p>작성일: 2023-06-27</p>
+        </li>
+        <a href="more">더보기</a>
+    </ul>
+</body>
+</html>
+
+    <footer>
+        <p>&copy; 2023 커뮤니티 홈페이지. All rights reserved.</p>
+    </footer>
+</body>
+</html>
