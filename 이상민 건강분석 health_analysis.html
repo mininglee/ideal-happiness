@@ -1,36 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>애완동물 건강 분석</title>
-  <style>
-    .navbar {
-      background-color: #333;
-      overflow: hidden;
-    }
-
-    .navbar a {
-      float: left;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    .navbar a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애완동물 건강 분석</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="health_analysis.css">
 </head>
 <body>
-  <div class="navbar">
-    <a href="category.html">미용/호텔</a>
-    <a href="category.html">여행/음식점</a>
-    <a href="category.html">병원</a>
-    <a href="category.html">쇼핑</a>
-    <a href="health_analysis.html">건강 분석</a>
-    <a href="category.html">커뮤니티</a>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/cute-shiba-…al-pet-shop-pet-logo-product_123553-258.jpg?w=740" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Lovely Dog   
+            <!-- 버튼으로 구현하기 -->
+          </a>
+        </div>
+      </nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['홈', 'Home'])">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="health_analysis.html" onmouseover="changeWord(this, ['건강', 'Healthy'])">Healthy</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['커뮤니티', 'Community'])">Community</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['쇼핑', 'Shopping'])">Shopping</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['병원', 'Hospital'])">Hospital</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="./" onmouseover="changeWord(this, ['여행 음식', 'Travel & Restaurant'])">Travel & Restaurant</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['호텔 뷰티', 'Hotel & Beauty'])">Hotel & Beauty</a>
+</li>
+
+
+</ul>
+</div>
+
+<script>
+function changeWord(element, words) {
+var currentWord = element.innerHTML;
+var index = words.indexOf(currentWord);
+
+if (index === -1) {
+  index = 0; // 기본적으로 첫 번째 단어로 시작
+} else {
+  index = (index + 1) % words.length; // 다음 단어로 변경
+}
+
+element.innerHTML = words[index];
+}
+</script>
+        <div class="navbar-nav">
+          <a class="nav-link" href="./login.html">로그인</a>
+          <a class="nav-link" href="./custom_signup.html">회원가입</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <h1>애완동물 건강 분석</h1>
 
@@ -87,5 +128,38 @@
       document.getElementById('result').innerHTML = result;
     }
   </script>
+  
+  <footer>
+    <div class="container">
+        <div class="first-line pb-5 pt-5">
+            Lovelydog
+        </div>
+        <div class="row pb-5 pt-5 second-line ">
+            <div class="flag col">
+                <img src="" width=16 height=12 />
+                Republic korea
+            </div>
+            <div class="col"><a href="#">
+                Email Sign-Up</a></div>
+            <div class="col"> <a href="#">Contact Us</a></div>
+            <div class="col"> <a href="#">Apps</a></div>
+            <div class="col"> <a href="#">Follow Us</a></div>
+            <div class="col"> <a href="#">California Transparency</a></div>
+            <div class="col"><a href="#"> Legal Notice</a></div>
+            <div class="col"> <a href="#">Careers</a></div>
+            <div class="col"> <a href="#">Sitemap</a></div>     
+        </div>         
+        <div class=" mobile-footer">
+            Shipt to : <img src="https://us.louisvuitton.com/flags/us.svg"
+                width=16 height=12 class="flag-img" /> Unitied States
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
 </body>
 </html>
