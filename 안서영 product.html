@@ -1,0 +1,220 @@
+// product.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="icon" href="https://us.louisvuitton.com/static_lvfront/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">  
+    <style>
+      </style>
+      <link rel="stylesheet" href="./product.css">
+    </head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/cute-shiba-…al-pet-shop-pet-logo-product_123553-258.jpg?w=740" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Lovely Dog   
+            <!-- 버튼으로 구현하기 -->
+          </a>
+        </div>
+      </nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['홈', 'Home'])">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="health_analysis.html" onmouseover="changeWord(this, ['건강', 'Healthy'])">Healthy</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['커뮤니티', 'Community'])">Community</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['쇼핑', 'Shopping'])">Shopping</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['병원', 'Hospital'])">Hospital</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="./" onmouseover="changeWord(this, ['여행 음식', 'Travel & Restaurant'])">Travel & Restaurant</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#" onmouseover="changeWord(this, ['호텔 뷰티', 'Hotel & Beauty'])">Hotel & Beauty</a>
+</li>
+
+
+</ul>
+</div>
+
+<script>
+function changeWord(element, words) {
+var currentWord = element.innerHTML;
+var index = words.indexOf(currentWord);
+
+if (index === -1) {
+  index = 0; // 기본적으로 첫 번째 단어로 시작
+} else {
+  index = (index + 1) % words.length; // 다음 단어로 변경
+}
+
+element.innerHTML = words[index];
+}
+</script>
+
+        <div class="navbar-nav">
+          <a class="nav-link" href="./login.html">로그인</a>
+          <a class="nav-link" href="./custom_signup.html">회원가입</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <section>
+        <h2>제품 추천</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성 날짜</th>
+              <th>조회수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">러블리 도그에서 구매한 강아지 삼푸</a></td>
+              <td>작성자1</td>
+              <td>2023-06-25</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td><a href="#">입 짧은 강아지 사료 추천!</a></td>
+              <td>작성자2</td>
+              <td>2023-06-24</td>
+              <td>75</td>
+            </tr>
+            <tr>
+              <td><a href="#">여름에 먹이기 좋은 간식</a></td>
+              <td>작성자3</td>
+              <td>2023-06-23</td>
+              <td>120</td>
+            </tr>
+            <tr>
+                <td><a href="#">장모 강아지용 브러쉬 추천 부탁드립니다.</a></td>
+                <td>작성자4</td>
+                <td>2023-06-23</td>
+                <td>120</td>
+              </tr>
+            <tr>
+              <td><a href="#">알러지가 있는 강아지를 위한 사료 모음</a></td>
+              <td>작성자5</td>
+              <td>2023-06-23</td>
+              <td>195</td>
+            </tr>
+            <tr>
+                <td><a href="#">다이어트 중인 강아지에게 좋은 칼로리 낮은 간식 추천</a></td>
+                <td>작성자6</td>
+                <td>2023-06-23</td>
+                <td>111</td>
+              </tr>
+            <tr>
+                <td><a href="#">게시물 제목 7</a></td>
+                <td>작성자7</td>
+                <td>2023-06-23</td>
+                <td>102</td>
+            </tr>
+            <tr>
+                <td><a href="#">게시물 제목 8</a></td>
+                <td>작성자8</td>
+                <td>2023-06-23</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td><a href="#">게시물 제목 9</a></td>
+                <td>작성자9</td>
+                <td>2023-06-23</td>
+                <td>39</td>
+            </tr>  
+            <tr>
+                <td><a href="#">게시물 제목 10</a></td>
+                <td>작성자10</td>
+                <td>2023-06-23</td>
+                <td>113</td>
+            </tr>
+            <tr>
+              <td><a href="#">게시물 제목 11</a></td>
+              <td>작성자11</td>
+              <td>2023-06-23</td>
+              <td>59</td>
+          </tr>
+          <tr>
+            <td><a href="#">게시물 제목 12</a></td>
+            <td>작성자12</td>
+            <td>2023-06-23</td>
+            <td>102</td>
+        </tr>
+          </tbody>
+        </table>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="검색">
+            <button id="search-button">검색</button>
+        </div>
+      </section>
+
+      <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+      </div>
+    
+      <footer>
+        <div class="container">
+            <div class="first-line pb-5 pt-5">
+                Lovelydog
+            </div>
+            <div class="row pb-5 pt-5 second-line ">
+                <div class="flag col">
+                    <img src="" width=16 height=12 />
+                    Republic korea
+                </div>
+                <div class="col"><a href="#">
+                    Email Sign-Up</a></div>
+                <div class="col"> <a href="#">Contact Us</a></div>
+                <div class="col"> <a href="#">Apps</a></div>
+                <div class="col"> <a href="#">Follow Us</a></div>
+                <div class="col"> <a href="#">California Transparency</a></div>
+                <div class="col"><a href="#"> Legal Notice</a></div>
+                <div class="col"> <a href="#">Careers</a></div>
+                <div class="col"> <a href="#">Sitemap</a></div>     
+            </div>         
+            <div class=" mobile-footer">
+                Shipt to : <img src="https://us.louisvuitton.com/flags/us.svg"
+                    width=16 height=12 class="flag-img" /> Unitied States
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+      
+
+</body>
+</html>
