@@ -1,3 +1,4 @@
+<!--order.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,8 +78,16 @@
           </div>
         </div>
       </nav>
-
+    <!-- 결체 창-->
     <main>
+      <div class="info">
+        <div class="name">
+          <span>상품명</span>
+        </div>
+        <div class="money">
+          <span>금액</span>
+        </div>
+      </div>
         <div id="cart-items">
             <!-- 장바구니 아이템들이 동적으로 추가될 부분 -->
         </div>
@@ -130,3 +139,4 @@
     </script>
 </body>
 </html>
+
