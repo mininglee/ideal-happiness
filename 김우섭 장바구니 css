@@ -6,7 +6,7 @@ body {
 }
 
 
-/* 메인화면 css */
+
 nav {
     padding: 2rem;
     position:fixed;
@@ -90,7 +90,17 @@ header {
     padding: 20px;
     text-align: center;
 }
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
+.info .name,
+.info .money {
+  flex-basis: 50%;
+}
 h1 {
     margin: 0;
 }
@@ -123,3 +133,4 @@ main {
     border: none;
     cursor: pointer;
 }
+
