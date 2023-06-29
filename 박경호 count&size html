@@ -47,6 +47,17 @@
         .size-radio label {
             margin-right: 15px;
         }
+
+        .custom-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -54,44 +65,62 @@
         <h2>강아지 수:</h2>
         <div class="count-buttons">
             <button id="decrementButton">-</button>
-            <span id="dogCount">0</span>
+            <span id="dogCount">1</span>
             <button id="incrementButton">+</button>
         </div>
         <h2>강아지 사이즈:</h2>
         <div class="size-radio">
             <label>
-                <input type="radio" name="dogSize" value="소"> 소
+                <input type="radio" name="dogSize" value="소" onchange="updateResult()"> 소
             </label>
             <label>
-                <input type="radio" name="dogSize" value="중"> 중
+                <input type="radio" name="dogSize" value="중" onchange="updateResult()"> 중
             </label>
             <label>
-                <input type="radio" name="dogSize" value="대"> 대
+                <input type="radio" name="dogSize" value="대" onchange="updateResult()"> 대
             </label>
         </div>
+        <button class="custom-button" onclick="goBack()">강아지 수 : 마리/ 강아지 사이즈 : </button>
     </div>
 
     <script>
         const dogCountElement = document.getElementById('dogCount');
         const decrementButton = document.getElementById('decrementButton');
         const incrementButton = document.getElementById('incrementButton');
-
-        let dogCount = 0;
+        const sizeRadio = document.querySelectorAll('input[name="dogSize"]');
+        let dogCount = 1;
+        let selectedSize = '';
 
         decrementButton.addEventListener('click', function() {
             if (dogCount > 0) {
                 dogCount--;
                 updateDogCount();
+                updateResult();
             }
         });
 
         incrementButton.addEventListener('click', function() {
             dogCount++;
             updateDogCount();
+            updateResult();
         });
 
         function updateDogCount() {
             dogCountElement.textContent = dogCount;
+        }
+
+        function updateResult() {
+            const checkedRadio = document.querySelector('input[name="dogSize"]:checked');
+            if (checkedRadio) {
+                selectedSize = checkedRadio.value;
+                const result = `강아지 수: ${dogCount}마리 / 강아지 사이즈: ${selectedSize}`;
+                const customButton = document.querySelector('.custom-button');
+                customButton.textContent = result;
+            }
+        }
+
+        function goBack() {
+            window.history.back();
         }
     </script>
 </body>
