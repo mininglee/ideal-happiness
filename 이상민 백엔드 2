@@ -1,0 +1,45 @@
+import java.sql.*;
+
+public class HealthManagementProgram {
+    private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe"; // 오라클 서버 주소
+    private static final String USERNAME = "your_username"; // 오라클 계정 사용자 이름
+    private static final String PASSWORD = "your_password"; // 오라클 계정 비밀번호
+
+    public static void main(String[] args) {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+
+            // 현재 모자란 부분 조회
+            String deficientQuery = "SELECT animal_name, age FROM 동물 WHERE 운동량 < ?"; // 운동량이 모자란 동물 조회 쿼리
+            PreparedStatement deficientStatement = connection.prepareStatement(deficientQuery);
+            deficientStatement.setInt(1, 30); // 예시로 운동량 30 이하인 동물을 모자란 동물로 가정
+            ResultSet deficientResult = deficientStatement.executeQuery();
+
+            System.out.println("현재 모자란 부분:");
+            while (deficientResult.next()) {
+                String animalName = deficientResult.getString("animal_name");
+                int age = deficientResult.getInt("age");
+                System.out.println("동물 이름: " + animalName + ", 나이: " + age);
+            }
+
+            System.out.println();
+
+            // 과거 데이터 대비 계선된 부분 조회
+            String improvementQuery = "SELECT animal_name, age FROM 동물 WHERE 운동량 > ?"; // 운동량이 개선된 동물 조회 쿼리
+            PreparedStatement improvementStatement = connection.prepareStatement(improvementQuery);
+            improvementStatement.setInt(1, 10); // 예시로 운동량 10 이상인 동물을 개선된 동물로 가정
+            ResultSet improvementResult = improvementStatement.executeQuery();
+
+            System.out.println("과거 데이터 대비 계선된 부분:");
+            while (improvementResult.next()) {
+                String animalName = improvementResult.getString("animal_name");
+                int age = improvementResult.getInt("age");
+                System.out.println("동물 이름: " + animalName + ", 나이: " + age);
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
