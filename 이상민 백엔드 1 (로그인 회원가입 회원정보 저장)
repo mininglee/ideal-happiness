@@ -1,0 +1,61 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Member {
+    private String id;
+    private String password;
+    private String phoneNumber;
+    private String gender;
+    private int age;
+
+    private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe"; // 오라클 서버 주소
+    private static final String USERNAME = "c##kic"; // 오라클 계정 사용자 이름
+    private static final String PASSWORD = "1111"; // 오라클 계정 비밀번호
+
+    // 생성자, getter, setter 등 생략
+
+    // 회원 정보를 데이터베이스에 저장하는 메서드
+    public void saveToDatabase() {
+        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+            // SQL 문 실행
+            String sql = "INSERT INTO Members (id, password, phoneNumber, gender, age) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.setString(2, password);
+            statement.setString(3, phoneNumber);
+            statement.setString(4, gender);
+            statement.setInt(5, age);
+            statement.executeUpdate();
+            System.out.println("회원 정보가 데이터베이스에 저장되었습니다.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 입력한 아이디와 비밀번호로 로그인을 수행하는 메서드
+    public static boolean login(String id, String password) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+            // SQL 문 실행
+            String sql = "SELECT * FROM Members WHERE id = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+
+            // 결과 확인
+            if (resultSet.next()) {
+                System.out.println("로그인 성공");
+                return true;
+            } else {
+                System.out.println("로그인 실패");
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
