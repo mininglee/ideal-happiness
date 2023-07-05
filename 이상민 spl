@@ -1,13 +1,12 @@
-SQL>
-SQL>
-SQL>
-SQL> CREATE TABLE Members (
-  2    id VARCHAR(50),
-  3    password VARCHAR(50),
-  4    phoneNumber VARCHAR(50),
-  5    gender VARCHAR(10),
-  6    age INT
-  7  );
+CREATE TABLE Members (
+    id VARCHAR(50),
+    password VARCHAR(50),
+    phoneNumber VARCHAR(50),
+    gender VARCHAR(10),
+    age INT,
+    address VARCHAR(100)
+);
+
 
 테이블이 생성되었습니다.
 
@@ -17,27 +16,27 @@ SQL> INSERT INTO Members (id, password, phoneNumber, gender, age)
 1 개의 행이 만들어졌습니다.
 
 SQL> -- 동물 테이블 생성
-SQL> CREATE TABLE animals (
-  2    animal_id INT PRIMARY KEY,
-  3    animal_name VARCHAR(255),
-  4    age INT,
-  5    exercise_amount INT,
-  6    eating_habits VARCHAR(255)
-  7  );
+CREATE TABLE animals2 (
+    member_id INT,
+    animal_name VARCHAR(255),
+    birth_year INT
+);
+
 
 테이블이 생성되었습니다.
 
 SQL>
 SQL> -- 건강정보 테이블 생성
 SQL> CREATE TABLE health_information (
-  2    health_id INT PRIMARY KEY,
-  3    animal_id INT,
-  4    checkup_date DATE,
-  5    age_range VARCHAR(50),
-  6    risk_disease VARCHAR(255),
-  7    FOREIGN KEY (animal_id) REFERENCES animals(animal_id)
-  8  );
-
+    member_id INT,
+    animal_name VARCHAR(255),
+    checkup_date DATE,
+    age_range VARCHAR(50),
+    risk_disease VARCHAR(255),
+    exercise_amount INT,
+    eating_habits VARCHAR(255),
+    
+);
 테이블이 생성되었습니다.
 
 SQL>
