@@ -1,0 +1,44 @@
+SQL>
+SQL>
+SQL>
+SQL> CREATE TABLE Members (
+  2    id VARCHAR(50),
+  3    password VARCHAR(50),
+  4    phoneNumber VARCHAR(50),
+  5    gender VARCHAR(10),
+  6    age INT
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO Members (id, password, phoneNumber, gender, age)
+  2  VALUES ('user123', 'password123', '010-1234-5678', 'male', 30);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> -- 동물 테이블 생성
+SQL> CREATE TABLE animals (
+  2    animal_id INT PRIMARY KEY,
+  3    animal_name VARCHAR(255),
+  4    age INT,
+  5    exercise_amount INT,
+  6    eating_habits VARCHAR(255)
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL>
+SQL> -- 건강정보 테이블 생성
+SQL> CREATE TABLE health_information (
+  2    health_id INT PRIMARY KEY,
+  3    animal_id INT,
+  4    checkup_date DATE,
+  5    age_range VARCHAR(50),
+  6    risk_disease VARCHAR(255),
+  7    FOREIGN KEY (animal_id) REFERENCES animals(animal_id)
+  8  );
+
+테이블이 생성되었습니다.
+
+SQL>
+SQL>
