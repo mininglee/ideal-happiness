@@ -1,4 +1,4 @@
-CREATE TABLE Members (
+CREATE TABLE Members3 (
     id VARCHAR(50),
     password VARCHAR(50),
     phoneNumber VARCHAR(50),
@@ -10,13 +10,13 @@ CREATE TABLE Members (
 
 테이블이 생성되었습니다.
 
-SQL> INSERT INTO Members (id, password, phoneNumber, gender, age)
+SQL> INSERT INTO Members3 (id, password, phoneNumber, gender, age)
   2  VALUES ('user123', 'password123', '010-1234-5678', 'male', 30);
 
 1 개의 행이 만들어졌습니다.
 
 SQL> -- 동물 테이블 생성
-CREATE TABLE animals2 (
+CREATE TABLE animals3 (
     member_id INT,
     animal_name VARCHAR(255),
     birth_year INT
@@ -27,7 +27,7 @@ CREATE TABLE animals2 (
 
 SQL>
 SQL> -- 건강정보 테이블 생성
-SQL> CREATE TABLE health_information (
+SQL> CREATE TABLE health_information3 (
     member_id INT,
     animal_name VARCHAR(255),
     checkup_date DATE,
