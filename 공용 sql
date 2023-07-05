@@ -1,9 +1,10 @@
-CREATE TABLE Hospitals (
+CREATE TABLE Hospitals 
+(
     hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     member_id INT,
     location VARCHAR(255),
     details VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members(id)
+    date INT
 );
 
 -- 호텔 테이블
@@ -12,7 +13,8 @@ CREATE TABLE Hotels (
     member_id INT,
     location VARCHAR(255),
     details VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members(id)
+    date INT
+    many INT
 );
 
 -- 여행지 테이블
@@ -21,7 +23,7 @@ CREATE TABLE Destinations (
     member_id INT,
     location VARCHAR(255),
     details VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members(id)
+    date INT
 );
 
 -- 쇼핑물품 테이블
