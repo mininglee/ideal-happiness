@@ -30,6 +30,7 @@ CREATE TABLE Destinations (
 CREATE TABLE ShoppingItems (
     item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     member_id INT,
+    price VARCHAR(300)
     category VARCHAR(50),  -- 사료, 간식, 장난감, 샴푸비누 등의 카테고리
     details VARCHAR(255),
     FOREIGN KEY (member_id) REFERENCES Members(id)
