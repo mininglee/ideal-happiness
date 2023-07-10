@@ -207,7 +207,7 @@ VALUES
             many INT -- 1~5
           );
 
-                        INSERT INTO 강아지마법사 골드맘 (grooming_name, services, location, details, date, breed_name, dog_size, many)
+                        INSERT INTO 강아지마법사 골드맘 (grooming_name, services, details, date, breed_name, dog_size, many)
                         VALUES
                         ('강아지마법사 골드맘', '1', '('2시간 주차가능','와이파이')', '', '', '', )
                         ('강아지마법사 골드맘', '2', '('2시간 주차가능','와이파이')', '', '', '', )
@@ -226,7 +226,7 @@ VALUES
             many INT -- 1~5
           );
 
-                      INSERT INTO 리줄리살롱 (grooming_name, services, location, details, date, breed_name, dog_size, many)
+                      INSERT INTO 리줄리살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
                       VALUES
                       ('리줄리살롱', '1', '('2시간 주차가능','와이파이')', '', '', '', )
                       ('리줄리살롱', '2', '('2시간 주차가능','와이파이')', '', '', '', )
@@ -245,7 +245,7 @@ VALUES
             many INT -- 강아지 수(1~5)
           );
 
-                      INSERT INTO 투퍼피 (grooming_name, services, location, details, date, breed_name, dog_size, many)
+                      INSERT INTO 투퍼피 (grooming_name, services, details, date, breed_name, dog_size, many)
                       VALUES
                       ('투퍼피', '1', '('2시간 주차가능','와이파이')', '', '', '', )
                       ('투퍼피', '2', '('2시간 주차가능','와이파이')', '', '', '', )
@@ -264,7 +264,7 @@ VALUES
           many INT -- 1~5
         );
 
-                      INSERT INTO 나나리펫하우스 (grooming_name, services, location, details, date, breed_name, dog_size, many)
+                      INSERT INTO 나나리펫하우스 (grooming_name, services, details, date, breed_name, dog_size, many)
                       VALUES
                       ('나나리펫하우스', '1', '('와이파이')', '', '', '', )
                       ('나나리펫하우스', '2', '('와이파이')', '', '', '', )
@@ -283,7 +283,7 @@ VALUES
             many INT -- 1~5
           );
 
-                      INSERT INTO 루시몽 (grooming_name, services, location, details, date, breed_name, dog_size, many)
+                      INSERT INTO 루시몽 (grooming_name, services, details, date, breed_name, dog_size, many)
                       VALUES
                       ('루시몽', '1', '('4시간 주차가능','와이파이')', '', '', '', )
                       ('루시몽', '2', '('4시간 주차가능','와이파이')', '', '', '', )
