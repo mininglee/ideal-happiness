@@ -1,7 +1,6 @@
 CREATE TABLE Travel (
     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     member_id INT,
-    Type VARCHAR(255),  -- Travel
     date1 VARCHAR(255), -- 오픈일
     date2 VARCHAR(255),  -- 휴무일 
     location VARCHAR(255), -- 지역명 
@@ -11,4 +10,5 @@ CREATE TABLE Travel (
     details VARCHAR(255) -- 세부정보
 );
 
-INSERT INTO Hotels (Type, date1, date2, location, name, address, review, details) VALUES
+INSERT INTO Hotels ( date1, date2, location, name, address, review, details) VALUES
+ ('상시개방', 'NULL', '서울' , '한강 공원', '서울특별시 여의도동'  )
