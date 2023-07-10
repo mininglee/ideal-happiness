@@ -22,6 +22,16 @@ CREATE TABLE animals3 (
     birth_year INT
 );
 
+INSERT INTO animals3 (member_id, animal_name, birth_year)
+VALUES (:member_id, :animal_name, :birth_year);
+
+UPDATE animals3
+SET animal_type = CASE
+    WHEN birth_year > :current_year - 1 THEN '어린 강아지'
+    WHEN birth_year > :current_year - 1.5 THEN '성장 중인 강아지'
+    ELSE '성체 강아지'
+END;
+
 
 테이블이 생성되었습니다.
 
