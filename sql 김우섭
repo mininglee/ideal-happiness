@@ -1,0 +1,17 @@
+-- 쇼핑물품 테이블
+CREATE TABLE ShoppingItems (
+    item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    member_id INT,
+    name VARCHAR(300),
+    price VARCHAR(300),
+    img VARCHAR(300),
+    category VARCHAR(50),  -- 사료, 간식, 장난감, 샴푸비누 등의 카테고리
+    details VARCHAR(255),
+    many VARCHAR(255)
+  );
+
+INSERT INTO ShoppingItems (name , price ,img ,category, details, many)
+VALUES
+('로반 잘먹잘싸 전연령 강아지 사료', '44,500원', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/725767035310288-fed7017e-3d9a-4074-9e38-6aa487d35ac1.jpg  ', '1', '건사료', '99', )
+
+
