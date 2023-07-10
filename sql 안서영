@@ -1,0 +1,38 @@
+
+CREATE TABLE Board (
+    id INT AUTO_INCREMENT,
+    member_id INT,
+    category VARCHAR(50),
+    title VARCHAR(255),
+    content VARCHAR(255),
+    png INT
+    details VARCHAR(255),
+    views INT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+
+
+INSERT INTO Board (category, title, content, png,  details , views) 
+VALUES 
+( 'aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 75),
+( 'bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 42),
+( 'ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 245),
+
+INSERT INTO Board (category, title, content, png,  details , views) 
+VALUES 
+( 'qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 45),
+( 'wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 17),
+( 'eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 32),
+
+INSERT INTO Board (category, title, content, png,  details , views) 
+VALUES 
+( 'xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 15),
+( 'zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 45),
+( 'yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 32),
+
+INSERT INTO Board (category, title, content, png,  details , views) 
+VALUES 
+( 'aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 76),
+( 'bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 12),
+( 'cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 144),
