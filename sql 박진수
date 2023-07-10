@@ -1,0 +1,14 @@
+CREATE TABLE Travel (
+    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    member_id INT,
+    Type VARCHAR(255),  -- Travel
+    date1 VARCHAR(255), -- 오픈일
+    date2 VARCHAR(255),  -- 휴무일 
+    location VARCHAR(255), -- 지역명 
+    name VARCHAR(255),  -- 여행지명
+    address  VARCHAR(255), -- 주소명
+    review VARCHAR(255), -- 리뷰(out ->in)
+    details VARCHAR(255) -- 세부정보
+);
+
+INSERT INTO Hotels (Type, date1, date2, location, name, address, review, details) VALUES
