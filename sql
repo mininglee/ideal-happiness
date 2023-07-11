@@ -127,15 +127,20 @@ CREATE TABLE Members3 (
                 
                                           INSERT INTO 이을애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
                                           VALUES
-                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', )
-                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', )
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', )
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', )
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', )
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', )
+                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
+                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
+                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
+                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
+                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
+                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
+                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
+                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
+                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', );
+
+                                          UPDATE 이을애견호텔
+                                          SET details = REPLACE(details, '주차가능', '주차불가능')
+                                          WHERE grade IN ('3');
+  
                 
                 
                           CREATE TABLE 편안하개 (
@@ -206,6 +211,9 @@ CREATE TABLE Members3 (
                                         ('까르텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
                                         ('까르텔', '3', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
                                         ('까르텔', '3', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', )
+
+                                        DELETE FROM 까르텔
+                                        WHERE grade = '3' AND details LIKE '%유기농 간식 제공%';
                  
                           
                             CREATE TABLE 프로독 애견호텔 (
@@ -433,7 +441,7 @@ CREATE TABLE Members3 (
                     comment VARCHA(255),
                     FOREIGN KEY (member_id) REFERENCES Members3(id)                          
                 );
-                                 INSERT INTO 이을애견호텔 (location1, location2, name, details_location, site, tel, time, comment)
+                                 INSERT INTO Hospitals (location1, location2, name, details_location, site, tel, time)
                                  VALUES 
                                 ('서울', '강남', '츄츄동물병원', '서울 강남구 논현로67길 56', 'blog.naver.com/vetlucy', '02-512-0075', '매일 09:30~20:00')
                                 ('서울', '강남', '예은동물병원', '서울 강남구 도곡로 189 (우)06257', 'blog.naver.com/sdvm', '02-529-5575', '수~토 10:00 ~ 21:00 월,화,일 10:00 ~ 18:00 월,화 휴게시간 13:00 ~ 14:00')
@@ -447,12 +455,12 @@ CREATE TABLE Members3 (
                                 ('서울', '관악', '와우종합동물병원', '서울 관악구 난곡로 247', 'null', '02-866-0880', '월~금 10:00 ~ 19:00 토10:00~17:00')
                                 ('서울', '관악', '봉천현대동물병원', '서울 관악구 봉천로 520 3층', 'pf.kakao.com/_yquSxb', '02-878-9978', '평일10:00~19:00 토10:00~18:00')
                                 ('서울', '관악', '러브펫종합동물병원', '서울 관악구 남부순환로 1429 (우)08766', 'https://blog.naver.com/pianogrl', '02-837-8875', '매일 10:00 ~ 20:00')
-                                ('서울', '동작', '원동물병원', '서울 동작구 사당로 180 (우)07030', 'https://blog.naver.com/jjaem76', '02-587-5618', '평일10:00~18:00 토10:00~16:00')
+                                ('서울', '동작', '원동물병원', '서울 서초구 효령로', 'https://blog.naver.com/jjaem76', '02-587-5618', '평일10:00~18:00 토10:00~16:00')
                                 ('서울', '동작', '보라매웰종합동물병원', '서울 동작구 상도로 16 MGI빌딩 1층 (우)07055', 'blog.naver.com/wellvc', '02-3280-7975', '평일09:00~20:30 토09:00~19:30 일13:00~18:30')
                                 ('서울', '동작', '정겨운동물병원', '서울 동작구 상도로 315 (우)06970', 'blog.naver.com/friendlyac', '02-817-8172', '매일 10:00 ~ 20:00')
                                 ('서울', '강동', '로얄동물메디컬센터 강동', '서울 강동구 천호대로 1171 1~3층', 'royalamcgd.com', '02-457-0075', '매일 00:00 ~ 24:00')
                                 ('서울', '강동', '내품에동물병원', '서울 강동구 천호대로 1120 LIG건영 주상복합 102호 (우)05373', 'blog.naver.com/mylovehug', '02-477-1775', '월~토10:00~21:00')
-                                ('서울', '강동', '길종합동물병원', '서울 강동구 천호대로 1199 (우)05350', 'null', '02-484-0075', '평일10:00~19:00')
+                                ('서울', '강동', '길종합동물병원', '서울 강동구 천호대로 1199 (우)05350', 'https://www.bing.com', '02-484-0075', '평일10:00~19:00')
                                 ('서울', '용산', '이태원동물병원', '서울 용산구 녹사평대로 210 1층', 'www.vetmedic.co.kr', '02-797-6677 ', '매일 09:00 ~ 18:00')
                                 ('서울', '용산', '더힐동물의료센터', '서울 용산구 독서당로 81-1 3층 (우)04419', 'blog.naver.com/thehillvmc', '02-792-8275', '매일 00:00 ~ 24:00')
                                 ('서울', '용산', '퍼스동물병원', '서울 용산구 신흥로 54 (우)04339', 'null', '02-790-7508', '뭘~토10:00~19:00')
@@ -462,6 +470,13 @@ CREATE TABLE Members3 (
                                 ('서울', '종로구', '우리동물병원', '서울 종로구 지봉로 96-3 (우)03108', 'http://woorieah.modoo.at/', '02-3676-1191 ', '월금 10:00~19:30 토12:00~17:00 일휴무')
                                 ('서울', '종로구', '올리브동물병원', '서울 종로구 자하문로 305 (우)03021', 'olivehospital.modoo.at', '02-391-7502', '매일10:00~20:00')
                                 ('서울', '종로구', '누리봄동물병원', '서울 종로구 사직로12길 2', 'https://blog.naver.com/nuribom_', '02-735-7530', '평일09:30~19:30 토10:00~16:00 일 휴무')
+                                DELETE FROM Hospitals
+                                        WHERE name = '길종합동물병원' AND site LIKE '%https://www.bing.com%';
+
+                                UPDATE Hospitals
+                                SET details_location = REPLACE(details_location, 'details_location', '서울 동작구 사당로 180 (우)07030')
+                                WHERE details_location LIKE '%details_location%';
+
 
 
 
@@ -478,7 +493,7 @@ CREATE TABLE Members3 (
                     FOREIGN KEY (member_id) REFERENCES Members3(id)                 
                 );
                 
-                                INSERT INTO Hotels ( date1, date2, location, name, address, review) VALUES
+                                INSERT INTO Travel ( date1, date2, location, name, address, review) VALUES
                                  ('상시개방', 'NULL', '서울' , '한강 공원', '서울특별시 여의도동','NULL')
                                  ('상시개방', 'NULL', '서울' , '남산 공원', '서울특별시 중구 남산동','NULL')
                                  ('상시개방', 'NULL', '서울' , '선유도 공원', '서울특별시 영등포구 선유로 343','NULL')
@@ -513,8 +528,19 @@ CREATE TABLE Members3 (
                                  ('상시개방', 'NULL', '부산' , '광안리 해수욕장', '부산광역시 수영구 광안해변로 219','NULL')
                                  ('상시개방', 'NULL', '부산' , '동백섬', '강원도 춘천시 소양로 26번길 42-12','NULL')
                                  ('상시개방', 'NULL', '부산' , '송정해수욕장', '부산광역시 기장군 기장읍 송정해변로 59','NULL')
+                                 ('null', 'NULL', '부산' , '롯데월드', '부산광역시 기장군 기장읍 송정해변로 59','NULL')
                                  ('상시개방', 'NULL', '부산' , '태종대', '부산광역시 영도구 태종대로 24','NULL')
-                
+
+                                 DELETE FROM Travel
+                                 WHERE ( date1 ='상시개방', date2= 'NULL', location = '부산' , name= '롯데월드', address ='부산광역시 기장군 기장읍 송정해변로 59',review='NULL');
+
+                                 UPDATE Travel
+                                 SET date1 = '상시개방'
+                                 WHERE date1 LIKE '%date1%';
+
+
+
+
                 
                 CREATE TABLE Restaurant (
                     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -562,6 +588,7 @@ CREATE TABLE Members3 (
 
 
 
+                                    
 
                 -- 쇼핑물품 테이블
                 CREATE TABLE ShoppingItems (
@@ -648,7 +675,18 @@ CREATE TABLE Members3 (
                                 ('동구밭 반려동물 저자극 발비누 시어버터', '13,000원', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/8756/2d5489bef928255cc1474b6c09e066b90f092df8baf90b445bded9382c05.png', '4', '99', '강아지 비누,무향,진정,보습')
                                 ('애견목욕비누 100g x 2개 강아지비누 촉촉한보습 스위트레인', '9,800원', 'https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/3494/7e21d24781d7061b0544a016a639d050f37ab816479ef5815bf0ffe0b200.jpg', '4', '99', '강아지비누')
                                 ('반려견 천연목욕비누 각질 모근강화 펫케어 샴푸바 대용량 130g 2개', '9,900원', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/dee1/4e3db2e28cc71dbe7939fe8bfe817726195ef4e1c0b5d2522fb71d1f35b4.jpg', '4', '99', '비누,약산성')
-                
+                                ('강아지 개껌딱지', '9,900원', '', '4', '99', '비누,약산성성')
+                                
+                                UPDATE ShoppingItems
+                                SET details = REPLACE(details, '비누,약산성성', '개껌')
+                                WHERE name IN ('강아지 개껌딱지');
+
+                                DELETE FROM ShoppingItems
+                                    WHERE name = '강아지 개껌딱지' AND many '%99%';
+  
+
+                                
+                                    
 
 
                 CREATE TABLE Board (
