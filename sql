@@ -16,7 +16,8 @@ CREATE TABLE Members3 (
                 CREATE TABLE animals3 (
                 member_id INT,
                 animal_name VARCHAR(255),
-                birth_year INT
+                birth_year INT,
+                FOREIGN KEY (member_id) REFERENCES Members3(id)
             );
 
                 INSERT INTO animals3 (member_id, animal_name, birth_year)
@@ -39,7 +40,8 @@ CREATE TABLE Members3 (
                             exercise_amount INT,
                             disease VARCHAR(255),
                             height_range INT,
-                            weight_range VARCHAR(255)
+                            weight_range VARCHAR(255),
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
 
 );
 
@@ -106,10 +108,12 @@ CREATE TABLE Members3 (
                 INSERT INTO Hotels (hotel_name, location)
                 VALUES
                     ('('이을애견호텔'), ('편안하개'), ('아이뽀애견유치원호텔'), ('까르텔'), ('프로독 애견호텔'), ('개러리아 강남점')', 
-                '('서울 서초구 사평대로20길 3 1층'), ('서울 강남구 언주로125길 11 3층'), ('서울 송파구 새말로8길 28 3층'), ('서울 강남구 강남대로162길 21'), ('서울 송파구 송파대로22길 10 태공빌딩 1층 101호'), ('서울 강남구 선릉로122길 4 개러리아')', 
+                '('서울 서초구 사평대로20길 3 1층'), ('서울 강남구 언주로125길 11 3층'), ('서울 송파구 새말로8길 28 3층'), ('서울 강남구 강남대로162길 21'), ('서울 송파구 송파대로22길 10 태공빌딩 1층 101호'), ('서울 강남구 선릉로122길 4 개러리아')',
+                
                 )
                 
                             CREATE TABLE 이을애견호텔 (
+                              member_id INT,  
                               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                               hotel_name VARCHAR(255), // 이을애견호텔
                               grade VARCHAR(255) // 1, 2, 3
@@ -118,6 +122,7 @@ CREATE TABLE Members3 (
                               breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                               dog_size VARCHAR(255), // 소, 중, 대
                               many INT // 1~5
+                              FOREIGN KEY (member_id) REFERENCES Members3(id)  
                             );
                 
                                           INSERT INTO 이을애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -134,6 +139,7 @@ CREATE TABLE Members3 (
                 
                 
                           CREATE TABLE 편안하개 (
+                            member_id INT,                  
                             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             hotel_name VARCHAR(255), // 편안하개
                             grade VARCHAR(255) // 1, 2, 3
@@ -141,7 +147,8 @@ CREATE TABLE Members3 (
                             date DATE, // 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
                           );
                 
                                           INSERT INTO 편안하개 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -155,6 +162,7 @@ CREATE TABLE Members3 (
                 
                 
                          CREATE TABLE 아이뽀애견유치원호텔 (
+                            member_id INT,                 
                             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             hotel_name VARCHAR(255), // 아이뽀애견유치원호텔
                             grade VARCHAR(255) // 1, 2, 3
@@ -162,7 +170,8 @@ CREATE TABLE Members3 (
                             date DATE, // 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
                           );
                 
                                           INSERT INTO 아이뽀애견유치원호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -178,6 +187,7 @@ CREATE TABLE Members3 (
                 
                 
                           CREATE TABLE 까르텔 (
+                            member_id INT,
                             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             hotel_name VARCHAR(255), // 까르텔
                             grade VARCHAR(255) // 1, 2, 3
@@ -185,7 +195,8 @@ CREATE TABLE Members3 (
                             date DATE, // 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
                           );
                 
                                         INSERT INTO 까르텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -198,6 +209,7 @@ CREATE TABLE Members3 (
                  
                           
                             CREATE TABLE 프로독 애견호텔 (
+                              member_id INT,              
                               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                               hotel_name VARCHAR(255), // 프로독 애견호텔
                               grade VARCHAR(255) // 등급(1, 2, 3)
@@ -205,7 +217,8 @@ CREATE TABLE Members3 (
                               date DATE, // 날짜(2023.07.10~2023.07.23)
                               breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
                               dog_size VARCHAR(255), // 강아지 사이즈(소, 중, 대)
-                              many INT // 강아지 수(1~5)
+                              many INT, // 강아지 수(1~5)
+                              FOREIGN KEY (member_id) REFERENCES Members3(id)              
                             );
                 
                                         INSERT INTO 프로독 애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -218,6 +231,7 @@ CREATE TABLE Members3 (
                 
                 
                             CREATE TABLE 개러리아 강남점 (
+                              member_id INT,              
                               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                               hotel_name VARCHAR(255), // 개러리아 강남점
                               grade VARCHAR(255) // 1, 2, 3
@@ -225,7 +239,8 @@ CREATE TABLE Members3 (
                               date DATE, // 날짜(2023.07.10~2023.07.23)
                               breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                               dog_size VARCHAR(255), // 소, 중, 대
-                              many INT // 1~5
+                              many INT, // 1~5
+                              FOREIGN KEY (member_id) REFERENCES Members3(id)
                             );
                 
                                       INSERT INTO 개러리아 강남점 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -259,6 +274,7 @@ CREATE TABLE Members3 (
                             
                 
                            CREATE TABLE 서촌도그살롱 (
+                            member_id INT,
                             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             grooming_name VARCHAR(255), // 서촌도그살롱
                             services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
@@ -266,7 +282,8 @@ CREATE TABLE Members3 (
                             date DATE, -- 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
                           );
                 
                                         INSERT INTO 서촌도그살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -278,6 +295,7 @@ CREATE TABLE Members3 (
                 
                 
                            CREATE TABLE 애뚜애뚜펫살롱 (
+                            member_id INT,
                             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             grooming_name VARCHAR(255), // 애뚜애뚜펫살롱
                             services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -285,7 +303,8 @@ CREATE TABLE Members3 (
                             date DATE, // 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)                
                           );
         
                                         INSERT INTO 애뚜애뚜펫살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -316,6 +335,7 @@ CREATE TABLE Members3 (
                 
                 
                           CREATE TABLE 리줄리살롱 (
+                            member_id INT,
                             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                             grooming_name VARCHAR(255), // 리줄리살롱
                             services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -323,7 +343,8 @@ CREATE TABLE Members3 (
                             date DATE, // 날짜(2023.07.10~2023.07.23)
                             breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                             dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
+                            many INT, // 1~5
+                            FOREIGN KEY (member_id) REFERENCES Members3(id)
                           );
 
                                       INSERT INTO 리줄리살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -335,6 +356,7 @@ CREATE TABLE Members3 (
 
                     
                               CREATE TABLE 투퍼피 (
+                                member_id INT,
                                 grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                                 grooming_name VARCHAR(255), // 투퍼피
                                 services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -342,7 +364,8 @@ CREATE TABLE Members3 (
                                 date DATE, // 날짜(2023.07.10~2023.07.23)
                                 breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
                                 dog_size VARCHAR(255), // 소, 중, 대
-                                many INT // 강아지 수(1~5)
+                                many INT, // 강아지 수(1~5)
+                                FOREIGN KEY (member_id) REFERENCES Members3(id)
                               );
                     
                                           INSERT INTO 투퍼피 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -354,6 +377,7 @@ CREATE TABLE Members3 (
                     
                     
                               CREATE TABLE 나나리펫하우스 (
+                              member_id INT,  
                               grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                               grooming_name VARCHAR(255), // 나나리펫하우스
                               services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -361,7 +385,8 @@ CREATE TABLE Members3 (
                               date DATE, // 날짜(2023.07.10~2023.07.23)
                               breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                               dog_size VARCHAR(255), // 소, 중, 대
-                              many INT // 1~5
+                              many INT, // 1~5
+                              FOREIGN KEY (member_id) REFERENCES Members3(id)
                             );
                     
                                           INSERT INTO 나나리펫하우스 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -373,6 +398,7 @@ CREATE TABLE Members3 (
                     
                     
                               CREATE TABLE 루시몽 (
+                                member_id INT,
                                 grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                                 grooming_name VARCHAR(255), // 루시몽
                                 services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -380,7 +406,8 @@ CREATE TABLE Members3 (
                                 date DATE, // 날짜(2023.07.10~2023.07.23)
                                 breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
                                 dog_size VARCHAR(255), // 소, 중, 대
-                                many INT // 1~5
+                                many INT, // 1~5
+                                FOREIGN KEY (member_id) REFERENCES Members3(id)
                               );
                     
                                           INSERT INTO 루시몽 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -392,7 +419,8 @@ CREATE TABLE Members3 (
 
                 
                  CREATE TABLE Hospitals 
-                (
+                (   
+                    member_id INT,
                     hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                     member_id INT,
                     location1 VARCHAR(255),
@@ -402,7 +430,8 @@ CREATE TABLE Members3 (
                     site VARCHA(255),
                     tel VARCHA(255),
                     time VARCHA(255),
-                    comment VARCHA(255)
+                    comment VARCHA(255),
+                    FOREIGN KEY (member_id) REFERENCES Members3(id)                          
                 );
                                  INSERT INTO 이을애견호텔 (location1, location2, name, details_location, site, tel, time, comment)
                                  VALUES 
@@ -446,6 +475,7 @@ CREATE TABLE Members3 (
                     address  VARCHAR(255), -- 주소명
                     review VARCHAR(255), -- 리뷰(out ->in)
                     details VARCHAR(255) -- 세부정보
+                    FOREIGN KEY (member_id) REFERENCES Members3(id)                 
                 );
                 
                                 INSERT INTO Hotels ( date1, date2, location, name, address, review) VALUES
@@ -495,7 +525,8 @@ CREATE TABLE Members3 (
                     name VARCHAR(255),  -- 식당명
                     address  VARCHAR(255), -- 주소명
                     tel  VARCHAR(255), -- 전화번호
-                    review VARCHAR(255), -- 리뷰(out ->in)   
+                    review VARCHAR(255), -- 리뷰(out ->in)
+                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
                 );
                 
                                 INSERT INTO Hotels ( date1, date2, location, name, address,tel,revuew) VALUES
@@ -542,6 +573,7 @@ CREATE TABLE Members3 (
                     category VARCHAR(50),  -- 사료, 간식, 장난감, 샴푸비누 등의 카테고리
                     many VARCHAR(255),
                     details VARCHAR(255)
+                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
                   );
                 
                                 INSERT INTO ShoppingItems (name , price ,img ,category, many, details)
@@ -629,6 +661,7 @@ CREATE TABLE Members3 (
                     details VARCHAR(255),
                     views INT DEFAULT 0,
                     PRIMARY KEY (id)
+                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
                 );
                 
                 
