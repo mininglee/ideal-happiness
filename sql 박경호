@@ -1,7 +1,7 @@
 CREATE TABLE Hotels (
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 호텔 이름
-  location VARCHAR(255), -- 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) --> 태인님이랑 같이 정한 범위 / 호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
+  hotel_name VARCHAR(255), // 호텔 이름
+  location VARCHAR(255), // 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동)  태인님이랑 같이 정한 범위  호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
 )
 INSERT INTO Hotels (hotel_name, location)
 VALUES
@@ -11,13 +11,13 @@ VALUES
 
             CREATE TABLE 이을애견호텔 (
               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-              hotel_name VARCHAR(255), -- 이을애견호텔
-              grade VARCHAR(255) -- 1, 2, 3
-              details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-              date DATE, -- 날짜(2023.07.10~2023.07.23)
-              breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-              dog_size VARCHAR(255), --소, 중, 대
-              many INT -- 1~5
+              hotel_name VARCHAR(255), // 이을애견호텔
+              grade VARCHAR(255) // 1, 2, 3
+              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+              date DATE, // 날짜(2023.07.10~2023.07.23)
+              breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+              dog_size VARCHAR(255), // 소, 중, 대
+              many INT // 1~5
             );
 
                           INSERT INTO 이을애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -35,13 +35,13 @@ VALUES
 
           CREATE TABLE 편안하개 (
             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            hotel_name VARCHAR(255), -- 편안하개
-            grade VARCHAR(255) -- 1, 2, 3
-            details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            hotel_name VARCHAR(255), // 편안하개
+            grade VARCHAR(255) // 1, 2, 3
+            details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                           INSERT INTO 편안하개 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -56,13 +56,13 @@ VALUES
 
          CREATE TABLE 아이뽀애견유치원호텔 (
             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            hotel_name VARCHAR(255), -- 아이뽀애견유치원호텔
-            grade VARCHAR(255) -- 1, 2, 3
-            details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            hotel_name VARCHAR(255), // 아이뽀애견유치원호텔
+            grade VARCHAR(255) // 1, 2, 3
+            details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                           INSERT INTO 아이뽀애견유치원호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -79,13 +79,13 @@ VALUES
 
           CREATE TABLE 까르텔 (
             hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            hotel_name VARCHAR(255), -- 까르텔
-            grade VARCHAR(255) -- 1, 2, 3
-            details VARCHAR(225), -- 주차가능, 와이파이, 유기농 간식 제공
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            hotel_name VARCHAR(255), // 까르텔
+            grade VARCHAR(255) // 1, 2, 3
+            details VARCHAR(225), // 주차가능, 와이파이, 유기농 간식 제공
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                         INSERT INTO 까르텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -99,13 +99,13 @@ VALUES
           
             CREATE TABLE 프로독 애견호텔 (
               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-              hotel_name VARCHAR(255), -- 프로독 애견호텔
-              grade VARCHAR(255) -- 등급(1, 2, 3)
-              details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-              date DATE, -- 날짜(2023.07.10~2023.07.23)
-              breed_name VARCHAR(255), -- 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
-              dog_size VARCHAR(255), -- 강아지 사이즈(소, 중, 대)
-              many INT -- 강아지 수(1~5)
+              hotel_name VARCHAR(255), // 프로독 애견호텔
+              grade VARCHAR(255) // 등급(1, 2, 3)
+              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+              date DATE, // 날짜(2023.07.10~2023.07.23)
+              breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
+              dog_size VARCHAR(255), // 강아지 사이즈(소, 중, 대)
+              many INT // 강아지 수(1~5)
             );
 
                         INSERT INTO 프로독 애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -119,13 +119,13 @@ VALUES
 
             CREATE TABLE 개러리아 강남점 (
               hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-              hotel_name VARCHAR(255), -- 개러리아 강남점
-              grade VARCHAR(255) -- 1, 2, 3
-              details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-              date DATE, -- 날짜(2023.07.10~2023.07.23)
-              breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-              dog_size VARCHAR(255), -- 소, 중, 대
-              many INT -- 1~5
+              hotel_name VARCHAR(255), // 개러리아 강남점
+              grade VARCHAR(255) // 1, 2, 3
+              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+              date DATE, // 날짜(2023.07.10~2023.07.23)
+              breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+              dog_size VARCHAR(255), // 소, 중, 대
+              many INT // 1~5
             );
 
                       INSERT INTO 개러리아 강남점 (hotel_name, grade, details, date, breed_name, dog_size, many)
@@ -148,8 +148,8 @@ VALUES
 - 미용 테이블
 CREATE TABLE Grooming (
     grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    grooming_name VARCHAR(255), -- 샵 이름
-    location VARCHAR(255), -- 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) --> 태인님이랑 같이 정한 범위 / 호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
+    grooming_name VARCHAR(255), // 샵 이름
+    location VARCHAR(255), // 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) 태인님이랑 같이 정한 범위  호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
 );
 INSERT INTO Grooming (hotel_name, location,)
 VALUES
@@ -160,13 +160,13 @@ VALUES
 
            CREATE TABLE 서촌도그살롱 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 서촌도그살롱
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
+            grooming_name VARCHAR(255), // 서촌도그살롱
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
             date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                         INSERT INTO 서촌도그살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -179,13 +179,13 @@ VALUES
 
            CREATE TABLE 애뚜애뚜펫살롱 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 애뚜애뚜펫살롱
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            grooming_name VARCHAR(255), // 애뚜애뚜펫살롱
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                         INSERT INTO 애뚜애뚜펫살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -198,13 +198,13 @@ VALUES
 
           CREATE TABLE 강아지마법사 골드맘 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 강아지마법사 골드맘
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            grooming_name VARCHAR(255), // 강아지마법사 골드맘
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                         INSERT INTO 강아지마법사 골드맘 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -217,13 +217,13 @@ VALUES
 
           CREATE TABLE 리줄리살롱 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 리줄리살롱
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            grooming_name VARCHAR(255), // 리줄리살롱
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                       INSERT INTO 리줄리살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -236,13 +236,13 @@ VALUES
 
           CREATE TABLE 투퍼피 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 투퍼피
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 강아지 수(1~5)
+            grooming_name VARCHAR(255), // 투퍼피
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 강아지 수(1~5)
           );
 
                       INSERT INTO 투퍼피 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -255,13 +255,13 @@ VALUES
 
           CREATE TABLE 나나리펫하우스 (
           grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-          grooming_name VARCHAR(255), -- 나나리펫하우스
-          services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-          details VARCHAR(225), -- 2시간 주차가능, 와이파이
-          date DATE, -- 날짜(2023.07.10~2023.07.23)
-          breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-          dog_size VARCHAR(255), -- 소, 중, 대
-          many INT -- 1~5
+          grooming_name VARCHAR(255), // 나나리펫하우스
+          services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+          details VARCHAR(225), // 2시간 주차가능, 와이파이
+          date DATE, // 날짜(2023.07.10~2023.07.23)
+          breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+          dog_size VARCHAR(255), // 소, 중, 대
+          many INT // 1~5
         );
 
                       INSERT INTO 나나리펫하우스 (grooming_name, services, details, date, breed_name, dog_size, many)
@@ -274,13 +274,13 @@ VALUES
 
           CREATE TABLE 루시몽 (
             grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            grooming_name VARCHAR(255), -- 루시몽
-            services VARCHAR(255) -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-            details VARCHAR(225), -- 4시간 주차가능, 6시간 주차가능, 와이파이
-            date DATE, -- 날짜(2023.07.10~2023.07.23)
-            breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-            dog_size VARCHAR(255), -- 소, 중, 대
-            many INT -- 1~5
+            grooming_name VARCHAR(255), // 루시몽
+            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+            details VARCHAR(225), // 4시간 주차가능, 6시간 주차가능, 와이파이
+            date DATE, // 날짜(2023.07.10~2023.07.23)
+            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
+            dog_size VARCHAR(255), // 소, 중, 대
+            many INT // 1~5
           );
 
                       INSERT INTO 루시몽 (grooming_name, services, details, date, breed_name, dog_size, many)
