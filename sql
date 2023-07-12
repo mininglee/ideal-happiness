@@ -714,41 +714,45 @@ CREATE TABLE Members3 (
                                     
 
 
-                CREATE TABLE Board (
-                    id INT AUTO_INCREMENT,
-                    member_id INT,
-                    category VARCHAR(50),
-                    title VARCHAR(255),
-                    content VARCHAR(255),
-                    png INT
-                    details VARCHAR(255),
-                    views INT DEFAULT 0,
-                    PRIMARY KEY (id)
-                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
-                );
-                
-                
-                                
-                                INSERT INTO Board (category, title, content, png,  details , views) 
-                                VALUES 
-                                ( 'aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 75),
-                                ( 'bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 42),
-                                ( 'ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 245);
-                                
-                                INSERT INTO Board (category, title, content, png,  details , views) 
-                                VALUES 
-                                ( 'qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 45),
-                                ( 'wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 17),
-                                ( 'eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 32);
-                                
-                                INSERT INTO Board (category, title, content, png,  details , views) 
-                                VALUES 
-                                ( 'xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 15),
-                                ( 'zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 45),
-                                ( 'yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 32);
-                                
-                                INSERT INTO Board (category, title, content, png,  details , views) 
-                                VALUES 
-                                ( 'aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 76),
-                                ( 'bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 12),
-                                ( 'cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', 'img,jpg','N, 장소 미정, 날짜 시간', 144);
+    CREATE TABLE Board (
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    member_id INT,
+    category VARCHAR2(50),
+    title VARCHAR2(255),
+    content VARCHAR2(255),
+    png INT,
+    details VARCHAR2(255),
+    views INT DEFAULT 0,
+    PRIMARY KEY (id),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO Board (writer, category, title, content, png, details, views) 
+VALUES 
+    ('aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 75);
+    ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 42);
+    ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 245);
+    
+    DELETE FROM Board
+    WHERE (writer = 'aaa', category = '자유게시판', title= '시험용 작성글입니다', content = '기능 추가 예정입니다', png= '(img,jpg)', details ='N, 장소 미정, 날짜 시간', views='75');
+    
+INSERT INTO Board (writer, category, title, content, png, details, views) 
+VALUES 
+    ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45); 
+    ('wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 17);
+    ('eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 32);
+    
+INSERT INTO Board (writer, category, title, content, png, details, views) 
+VALUES 
+    ('xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 15);
+    ('zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45);
+    ('yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 32);
+    
+INSERT INTO Board (writer, category, title, content, png, details, views
+    ('aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 76);
+    ('bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 12);
+    ('cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 144);
+
+    UPDATE Board
+    SET title = REPLACE(title, '시험용 작성글입니다', '테스트가 완료되었습니다')
+    WHERE writer IN ('cc1');
