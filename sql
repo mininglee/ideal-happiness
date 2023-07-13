@@ -14,7 +14,7 @@ VALUES ('user123', 'password123', '010-1234-5678', 'male', 30, '123 Main Street'
 
 -- animals3 테이블 생성
 CREATE TABLE animals3 (
-    member_id INT,
+    member_id VARCHAR(50),
     animal_name VARCHAR(255),
     birth_year INT,
     animal_type VARCHAR(20),
@@ -35,7 +35,7 @@ END;
 
 -- health_information3 테이블 생성
 CREATE TABLE health_information3 (
-    member_id INT,
+    member_id VARCHAR(50),
     animal_name VARCHAR(255),
     breed_name VARCHAR(255),
     age_range VARCHAR(50),
@@ -111,7 +111,7 @@ VALUES
   ('개러리아 강남점', NULL);
 
 CREATE TABLE 이을애견호텔 (
-  member_id INT,  
+  member_id VARCHAR(50),  
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 이을애견호텔
   grade VARCHAR(255), -- 1, 2, 3
@@ -140,7 +140,7 @@ SET details = REPLACE(details, '주차가능', '주차불가능')
 WHERE grade IN ('3');
 
 CREATE TABLE 편안하개 (
-  member_id INT,                  
+  member_id VARCHAR(50),                  
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 편안하개
   grade VARCHAR(255), -- 1, 2, 3
@@ -162,7 +162,7 @@ VALUES
   (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 CREATE TABLE 아이뽀애견유치원호텔 (
-  member_id INT,                 
+  member_id VARCHAR(50),                 
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 아이뽀애견유치원호텔
   grade VARCHAR(255), -- 1, 2, 3
@@ -190,7 +190,7 @@ SET details = REPLACE(details, '주차가능', '주차불가능')
 WHERE grade IN ('3');
 
 CREATE TABLE 까르텔 (
-  member_id INT,
+  member_id VARCHAR(50),
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 까르텔
   grade VARCHAR(255), -- 1, 2, 3
@@ -214,7 +214,7 @@ DELETE FROM 까르텔
 WHERE grade = '3' AND details LIKE '%유기농 간식 제공%';
 
 CREATE TABLE 프로독애견호텔 (
-  member_id INT,              
+  member_id VARCHAR(50),              
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 프로독 애견호텔
   grade VARCHAR(255), -- 등급(1, 2, 3)
@@ -238,7 +238,7 @@ DELETE FROM 프로독애견호텔
 WHERE grade = '3' AND details LIKE '%주차가능%';
 
 CREATE TABLE 개러리아강남점 (
-  member_id INT,              
+  member_id VARCHAR(50),              
   hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   hotel_name VARCHAR(255), -- 개러리아 강남점
   grade VARCHAR(255), -- 1, 2, 3
@@ -283,7 +283,7 @@ VALUES
   ('루시몽', '서울 송파구 성내천로8길 3 2층');
 
 CREATE TABLE 서촌도그살롱 (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 서촌도그살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
@@ -303,7 +303,7 @@ VALUES
   ('서촌도그살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 CREATE TABLE 애뚜애뚜펫살롱 (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 애뚜애뚜펫살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -326,6 +326,7 @@ DELETE FROM 애뚜애뚜펫살롱
 WHERE services = '1' AND details LIKE '%2시간 주차가능%';
 
 CREATE TABLE "강아지마법사 골드맘" (
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 강아지마법사 골드맘
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -347,7 +348,7 @@ DELETE FROM "강아지마법사 골드맘"
 WHERE services = '1' AND details LIKE '%2시간 주차가능%';
 
 CREATE TABLE "릴리줄리살롱" (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 릴리줄리살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -367,7 +368,7 @@ VALUES
   ('릴리줄리살롱', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 CREATE TABLE "투퍼피" (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 투퍼피
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -391,7 +392,7 @@ SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
 WHERE services IN ('3');
 
 CREATE TABLE "나나리펫하우스" (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 나나리펫하우스
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -415,7 +416,7 @@ SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
 WHERE services IN ('ALL');
 
 CREATE TABLE "루시몽" (
-  member_id INT,
+  member_id VARCHAR(50),
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 루시몽
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -447,7 +448,7 @@ WHERE services IN ('1');
 
 CREATE TABLE Hospitals 
 (   
-    member_id INT,
+    member_id VARCHAR(50),
     hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     location1 VARCHAR(255),
     location2 VARCHAR(255),
@@ -506,7 +507,7 @@ WHERE details_location LIKE '%details_location%';
 
 CREATE TABLE Travel (
     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id INT,
+    member_id VARCHAR(50),
     date1 VARCHAR(255),
     date2 VARCHAR(255),
     location VARCHAR(255),
@@ -570,7 +571,7 @@ WHERE date1 LIKE '%date1%';
                 
       CREATE TABLE Restaurant (
     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id INT,
+    member_id VARCHAR(50),
     date1 VARCHAR(255),
     date2 VARCHAR(255),
     location VARCHAR(255),
@@ -619,7 +620,7 @@ VALUES
                 -- 쇼핑물품 테이블
 CREATE TABLE ShoppingItems (
     item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id INT,
+    member_id VARCHAR(50),
     name VARCHAR(300),
     price VARCHAR(300),
     img VARCHAR(300),
@@ -716,7 +717,7 @@ WHERE name = '강아지 개껌딱지' AND many LIKE '%99%'
 
 CREATE TABLE Board (
     id NUMBER GENERATED ALWAYS AS IDENTITY,
-    member_id INT,
+    member_id VARCHAR(50),
     category VARCHAR2(50),
     title VARCHAR2(255),
     content VARCHAR2(255),
@@ -729,9 +730,9 @@ CREATE TABLE Board (
 
 INSERT INTO Board (member_id, category, title, content, png, details, views) 
 VALUES 
-    ('aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 75);
-    ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 42);
-    ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 245);
+    ('aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 75);
+    ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 42);
+    ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 245);
     
 DELETE FROM Board
 WHERE member_id = 1 AND category = '자유게시판' AND title= '시험용 작성글입니다' AND content = '기능 추가 예정입니다' AND png= '(img,jpg)' AND details ='N, 장소 미정, 날짜 시간' AND views=75;
@@ -739,21 +740,21 @@ WHERE member_id = 1 AND category = '자유게시판' AND title= '시험용 작�
 
 INSERT INTO Board (writer, category, title, content, png, details, views) 
 VALUES 
-    ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45); 
-    ('wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 17);
-    ('eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 32);
+    ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 45); 
+    ('wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 17);
+    ('eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 32);
     
 INSERT INTO Board (writer, category, title, content, png, details, views) 
 VALUES 
-    ('xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 15);
-    ('zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45);
-    ('yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 32);
+    ('xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 15);
+    ('zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 45);
+    ('yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 32);
     
 INSERT INTO Board (member_id, category, title, content, png, details, views) 
 VALUES
-    ('aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 76);
-    ('bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 12);
-    ('cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 144);
+    ('aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 76);
+    ('bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 12);
+    ('cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 144);
 
 UPDATE Board
 SET title = REPLACE(title, '시험용 작성글입니다', '테스트가 완료되었습니다')
