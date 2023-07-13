@@ -456,7 +456,7 @@ CREATE TABLE Hospitals
     site VARCHAR(255),
     tel VARCHAR(255),
     time VARCHAR(255),
-    comment VARCHAR(255),
+   
     FOREIGN KEY (member_id) REFERENCES Members3(id)                          
 );
 
