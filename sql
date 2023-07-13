@@ -1,6 +1,6 @@
--- Members3 테이블 생성
 CREATE TABLE Members3 (
-    id VARCHAR(50),
+    id INT PRIMARY KEY,  -- id를 INT 타입으로 변경하고 기본 키로 설정
+    username VARCHAR(50),
     password VARCHAR(50),
     phoneNumber VARCHAR(50),
     gender VARCHAR(10),
@@ -9,12 +9,13 @@ CREATE TABLE Members3 (
 );
 
 -- 데이터 삽입
-INSERT INTO Members3 (id, password, phoneNumber, gender, age, address)
-VALUES ('user123', 'password123', '010-1234-5678', 'male', 30, '123 Main Street');
+INSERT INTO Members3 (id, username, password, phoneNumber, gender, age, address)
+VALUES (1, 'user123', 'password123', '010-1234-5678', 'male', 30, '123 Main Street');
 
 -- animals3 테이블 생성
 CREATE TABLE animals3 (
-    member_id VARCHAR(50),
+    id INT PRIMARY KEY,  -- 각 동물을 고유하게 식별할 수 있는 기본 키 필드 추가
+    member_id INT,
     animal_name VARCHAR(255),
     birth_year INT,
     animal_type VARCHAR(20),
@@ -22,20 +23,13 @@ CREATE TABLE animals3 (
 );
 
 -- 데이터 삽입
-INSERT INTO animals3 (member_id, animal_name, birth_year)
-VALUES (1, 'Max', 2020);
-
--- animal_type 업데이트
-UPDATE animals3
-SET animal_type = CASE
-    WHEN birth_year > EXTRACT(YEAR FROM SYSDATE) - 1 THEN '어린 강아지'
-    WHEN birth_year > EXTRACT(YEAR FROM SYSDATE) - 1.5 THEN '성장 중인 강아지'
-    ELSE '성체 강아지'
-END;
+INSERT INTO animals3 (id, member_id, animal_name, birth_year)
+VALUES (1, 1, 'Max', 2020);
 
 -- health_information3 테이블 생성
 CREATE TABLE health_information3 (
-    member_id VARCHAR(50),
+    id INT PRIMARY KEY,  -- 각 정보를 고유하게 식별할 수 있는 기본 키 필드 추가
+    member_id INT,
     animal_name VARCHAR(255),
     breed_name VARCHAR(255),
     age_range VARCHAR(50),
@@ -45,6 +39,7 @@ CREATE TABLE health_information3 (
     weight_range VARCHAR(255),
     FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
+
 
 -- 데이터 삽입
 INSERT INTO health_information3 (member_id, animal_name, breed_name, age_range, exercise_amount, disease, height_range, weight_range)
@@ -95,172 +90,170 @@ SELECT * FROM health_information3;
 
 
 
+
 CREATE TABLE Hotels (
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 호텔 이름
-  location VARCHAR(255) -- 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) 태인님이랑 같이 정한 범위 호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    location VARCHAR2(255)
 );
 
 INSERT INTO Hotels (hotel_name, location)
 VALUES
-  ('이을애견호텔', '용산'),
-  ('편안하개', '동작'),
-  ('아이뽀애견유치원호텔', '강동'),
-  ('까르텔', NULL),
-  ('프로독 애견호텔', NULL),
-  ('개러리아 강남점', NULL);
+    ('이을애견호텔', '용산'),
+    ('편안하개', '동작'),
+    ('아이뽀애견유치원호텔', '강동'),
+    ('까르텔', NULL),
+    ('프로독 애견호텔', NULL),
+    ('개러리아 강남점', NULL);
 
 CREATE TABLE 이을애견호텔 (
-  member_id VARCHAR(50),  
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 이을애견호텔
-  grade VARCHAR(255), -- 1, 2, 3
-  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-  dog_size VARCHAR(255), -- 소, 중, 대
-  many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)  
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 이을애견호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 이을애견호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
-  (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+    (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 UPDATE 이을애견호텔
 SET details = REPLACE(details, '주차가능', '주차불가능')
-WHERE grade IN ('3');
+WHERE grade = '3';
 
 CREATE TABLE 편안하개 (
-  member_id VARCHAR(50),                  
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 편안하개
-  grade VARCHAR(255), -- 1, 2, 3
-  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-  dog_size VARCHAR(255), -- 소, 중, 대
-  many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 편안하개 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 편안하개 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
-  (1, '편안하개', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+    (1, '편안하개', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 CREATE TABLE 아이뽀애견유치원호텔 (
-  member_id VARCHAR(50),                 
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 아이뽀애견유치원호텔
-  grade VARCHAR(255), -- 1, 2, 3
-  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-  dog_size VARCHAR(255), -- 소, 중, 대
-  many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 아이뽀애견유치원호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 아이뽀애견유치원호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
-  (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+    (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+    (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 UPDATE 아이뽀애견유치원호텔
 SET details = REPLACE(details, '주차가능', '주차불가능')
-WHERE grade IN ('3');
+WHERE grade = '3';
 
 CREATE TABLE 까르텔 (
-  member_id VARCHAR(50),
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 까르텔
-  grade VARCHAR(255), -- 1, 2, 3
-  details VARCHAR(225), -- 주차가능, 와이파이, 유기농 간식 제공
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-  dog_size VARCHAR(255), -- 소, 중, 대
-  many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 까르텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 까르텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
-  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '까르텔', '3', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '까르텔', '3', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL);
+    (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL);
 
 DELETE FROM 까르텔
-WHERE grade = '3' AND details LIKE '%유기농 간식 제공%';
+WHERE grade = '2' AND details LIKE '%유기농 간식 제공%';
 
 CREATE TABLE 프로독애견호텔 (
-  member_id VARCHAR(50),              
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 프로독 애견호텔
-  grade VARCHAR(255), -- 등급(1, 2, 3)
-  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
-  dog_size VARCHAR(255), -- 강아지 사이즈(소, 중, 대)
-  many INT, -- 강아지 수(1~5)
-  FOREIGN KEY (member_id) REFERENCES Members3(id)              
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 프로독애견호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 프로독애견호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
-  (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '프로독 애견호텔', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '프로독 애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '프로독 애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+    (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '프로독 애견호텔', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 DELETE FROM 프로독애견호텔
 WHERE grade = '3' AND details LIKE '%주차가능%';
 
 CREATE TABLE 개러리아강남점 (
-  member_id VARCHAR(50),              
-  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  hotel_name VARCHAR(255), -- 개러리아 강남점
-  grade VARCHAR(255), -- 1, 2, 3
-  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
-  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
-  dog_size VARCHAR(255), -- 소, 중, 대
-  many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+    id INT PRIMARY KEY,
+    hotel_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    hotel_name VARCHAR2(255),
+    grade VARCHAR2(255),
+    details VARCHAR2(225),
+    date_val DATE,
+    breed_name VARCHAR2(255),
+    dog_size VARCHAR2(255),
+    dog_count NUMBER,
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 개러리아강남점 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+INSERT INTO 개러리아강남점 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES 
-  (1, '개러리아 강남점', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '개러리아 강남점', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '개러리아 강남점', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
-  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+    (1, '개러리아 강남점', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+    (1, '개러리아 강남점', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL);
+
+COMMIT;
+
 
                 
                 
+
+
 
 
 
@@ -282,8 +275,8 @@ VALUES
   ('나나리펫하우스', '서울 강남구 논현로 70 2층'),
   ('루시몽', '서울 송파구 성내천로8길 3 2층');
 
-CREATE TABLE 서촌도그살롱 (
-  member_id VARCHAR(50),
+CREATE TABLE "서촌도그살롱" (
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 서촌도그살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
@@ -295,15 +288,15 @@ CREATE TABLE 서촌도그살롱 (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 서촌도그살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "서촌도그살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('서촌도그살롱', '1', '와이파이', NULL, NULL, NULL, NULL),
-  ('서촌도그살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('서촌도그살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('서촌도그살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '서촌도그살롱', '1', '와이파이', NULL, NULL, NULL, NULL),
+  ('', '서촌도그살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '서촌도그살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '서촌도그살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
-CREATE TABLE 애뚜애뚜펫살롱 (
-  member_id VARCHAR(50),
+CREATE TABLE "애뚜애뚜펫살롱" (
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 애뚜애뚜펫살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -315,18 +308,18 @@ CREATE TABLE 애뚜애뚜펫살롱 (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO 애뚜애뚜펫살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "애뚜애뚜펫살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('애뚜애뚜펫살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('애뚜애뚜펫살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('애뚜애뚜펫살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('애뚜애뚜펫살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '애뚜애뚜펫살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '애뚜애뚜펫살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '애뚜애뚜펫살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '애뚜애뚜펫살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
-DELETE FROM 애뚜애뚜펫살롱
+DELETE FROM "애뚜애뚜펫살롱"
 WHERE services = '1' AND details LIKE '%2시간 주차가능%';
 
 CREATE TABLE "강아지마법사 골드맘" (
-  member_id VARCHAR(50),
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 강아지마법사 골드맘
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -337,18 +330,18 @@ CREATE TABLE "강아지마법사 골드맘" (
   many INT -- 1~5
 );
 
-INSERT INTO "강아지마법사 골드맘" (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "강아지마법사 골드맘" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('강아지마법사 골드맘', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('강아지마법사 골드맘', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('강아지마법사 골드맘', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('강아지마법사 골드맘', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '강아지마법사 골드맘', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '강아지마법사 골드맘', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '강아지마법사 골드맘', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '강아지마법사 골드맘', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 DELETE FROM "강아지마법사 골드맘"
 WHERE services = '1' AND details LIKE '%2시간 주차가능%';
 
 CREATE TABLE "릴리줄리살롱" (
-  member_id VARCHAR(50),
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 릴리줄리살롱
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -360,15 +353,15 @@ CREATE TABLE "릴리줄리살롱" (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO "릴리줄리살롱" (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "릴리줄리살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('릴리줄리살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('릴리줄리살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('릴리줄리살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('릴리줄리살롱', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '릴리줄리살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '릴리줄리살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '릴리줄리살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '릴리줄리살롱', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 CREATE TABLE "투퍼피" (
-  member_id VARCHAR(50),
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 투퍼피
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -380,19 +373,19 @@ CREATE TABLE "투퍼피" (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO "투퍼피" (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "투퍼피" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('투퍼피', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('투퍼피', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('투퍼피', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('투퍼피', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '투퍼피', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '투퍼피', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '투퍼피', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '투퍼피', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 UPDATE "투퍼피"
 SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
-WHERE services IN ('3');
+WHERE services = '3';
 
 CREATE TABLE "나나리펫하우스" (
-  member_id VARCHAR(50),
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 나나리펫하우스
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -404,19 +397,19 @@ CREATE TABLE "나나리펫하우스" (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO "나나리펫하우스" (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "나나리펫하우스" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('나나리펫하우스', '1', '와이파이', NULL, NULL, NULL, NULL),
-  ('나나리펫하우스', '2', '와이파이', NULL, NULL, NULL, NULL),
-  ('나나리펫하우스', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('나나리펫하우스', 'ALL', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '나나리펫하우스', '1', '와이파이', NULL, NULL, NULL, NULL),
+  ('', '나나리펫하우스', '2', '와이파이', NULL, NULL, NULL, NULL),
+  ('', '나나리펫하우스', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '나나리펫하우스', 'ALL', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 UPDATE "나나리펫하우스"
 SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
-WHERE services IN ('ALL');
+WHERE services = 'ALL';
 
 CREATE TABLE "루시몽" (
-  member_id VARCHAR(50),
+  id INT PRIMARY KEY,
   grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   grooming_name VARCHAR(255), -- 루시몽
   services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
@@ -428,16 +421,16 @@ CREATE TABLE "루시몽" (
   FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO "루시몽" (grooming_name, services, details, date, breed_name, dog_size, many)
+INSERT INTO "루시몽" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
 VALUES
-  ('루시몽', '1', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('루시몽', '2', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('루시몽', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
-  ('루시몽', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+  ('', '루시몽', '1', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '루시몽', '2', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '루시몽', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('', '루시몽', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
 UPDATE "루시몽"
 SET details = REPLACE(details, '4시간 주차가능', '2시간 주차가능')
-WHERE services IN ('1');
+WHERE services = '1';
 
 
 
@@ -446,9 +439,10 @@ WHERE services IN ('1');
 
 
 
-CREATE TABLE Hospitals 
-(   
-    member_id VARCHAR(50),
+
+
+CREATE TABLE Hospitals (
+    id INT PRIMARY KEY,
     hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     location1 VARCHAR(255),
     location2 VARCHAR(255),
@@ -458,7 +452,7 @@ CREATE TABLE Hospitals
     tel VARCHAR(255),
     time VARCHAR(255),
     comment VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)                          
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
 INSERT INTO Hospitals (location1, location2, name, details_location, site, tel, time)
@@ -480,7 +474,7 @@ VALUES
     ('서울', '동작', '정겨운동물병원', '서울 동작구 상도로 315 (우)06970', 'blog.naver.com/friendlyac', '02-817-8172', '매일 10:00 ~ 20:00'),
     ('서울', '강동', '로얄동물메디컬센터 강동', '서울 강동구 천호대로 1171 1~3층', 'royalamcgd.com', '02-457-0075', '매일 00:00 ~ 24:00'),
     ('서울', '강동', '내품에동물병원', '서울 강동구 천호대로 1120 LIG건영 주상복합 102호 (우)05373', 'blog.naver.com/mylovehug', '02-477-1775', '월~토10:00~21:00'),
-    ('서울', '강동', '길종합동물병원', '서울 동작구 사당로 180 (우)07030', 'https://www.bing.com', '02-484-0075', '평일10:00~19:00'),
+    ('서울', '강동', '길종합동물병원', '서울 강동구 천호대로 1171 1~3층', 'https://www.bing.com', '02-484-0075', '평일10:00~19:00'),
     ('서울', '용산', '이태원동물병원', '서울 용산구 녹사평대로 210 1층', 'www.vetmedic.co.kr', '02-797-6677 ', '매일 09:00 ~ 18:00'),
     ('서울', '용산', '더힐동물의료센터', '서울 용산구 독서당로 81-1 3층 (우)04419', 'blog.naver.com/thehillvmc', '02-792-8275', '매일 00:00 ~ 24:00'),
     ('서울', '용산', '퍼스동물병원', '서울 용산구 신흥로 54 (우)04339', 'null', '02-790-7508', '뭘~토10:00~19:00'),
@@ -504,17 +498,16 @@ WHERE details_location LIKE '%details_location%';
 
 
 
-
 CREATE TABLE Travel (
     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id VARCHAR(50),
-    date1 VARCHAR(255),
-    date2 VARCHAR(255),
-    location VARCHAR(255),
-    name VARCHAR(255),
-    address VARCHAR(255),
-    review VARCHAR(255),
-    details VARCHAR(255),
+    id NUMBER PRIMARY KEY,
+    date1 VARCHAR2(255),
+    date2 VARCHAR2(255),
+    location VARCHAR2(255),
+    name VARCHAR2(255),
+    address VARCHAR2(255),
+    review VARCHAR2(255),
+    details VARCHAR2(255),
     FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
@@ -558,27 +551,22 @@ VALUES
     ('상시개방', NULL, '부산', '태종대', '부산광역시 영도구 태종대로 24', NULL);
 
 DELETE FROM Travel
-WHERE date1 = '상시개방' AND date2 = 'NULL' AND location = '부산' AND name = '롯데월드' AND address = '부산광역시 기장군 기장읍 송정해변로 59' AND review = 'NULL';
+WHERE date1 = '상시개방' AND date2 IS NULL AND location = '부산' AND name = '롯데월드' AND address = '부산광역시 기장군 기장읍 송정해변로 59';
 
 UPDATE Travel
 SET date1 = '상시개방'
-WHERE date1 LIKE '%date1%';
+WHERE date1 IS NULL;
 
-
-
-
-
-                
-      CREATE TABLE Restaurant (
+CREATE TABLE Restaurant (
     destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id VARCHAR(50),
-    date1 VARCHAR(255),
-    date2 VARCHAR(255),
-    location VARCHAR(255),
-    name VARCHAR(255),
-    address VARCHAR(255),
-    tel VARCHAR(255),
-    review VARCHAR(255),
+    id NUMBER PRIMARY KEY,
+    date1 VARCHAR2(255),
+    date2 VARCHAR2(255),
+    location VARCHAR2(255),
+    name VARCHAR2(255),
+    address VARCHAR2(255),
+    tel VARCHAR2(255),
+    review VARCHAR2(255),
     FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
@@ -614,21 +602,22 @@ VALUES
     ('11:00', NULL, '부산', 'BADA', '부산 기장군 일광읍 이천길 21', '0507-1364-4515', NULL),
     ('12:00', NULL, '부산', '프리윌 피자', '부산 부산진구 전포대로224번길 26 1층 프리윌', '0507-1319-0985', NULL);
 
-
                                     
 
                 -- 쇼핑물품 테이블
 CREATE TABLE ShoppingItems (
     item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id VARCHAR(50),
-    name VARCHAR(300),
-    price VARCHAR(300),
-    img VARCHAR(300),
-    category VARCHAR(50),
-    many VARCHAR(255),
-    details VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)                
+    id NUMBER PRIMARY KEY,
+    name VARCHAR2(300),
+    price VARCHAR2(300),
+    img VARCHAR2(300),
+    category VARCHAR2(50),
+    many VARCHAR2(255),
+    details VARCHAR2(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
+
+-- Insert data into the table
 INSERT INTO ShoppingItems (member_id, name, price, img, category, many, details)
 VALUES 
                                 ('로반 잘먹잘싸 전연령 강아지 사료', '44,500원', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/725767035310288-fed7017e-3d9a-4074-9e38-6aa487d35ac1.jpg', '1', '99', '건사료'),
@@ -705,57 +694,80 @@ VALUES
                                 
 UPDATE ShoppingItems
 SET details = REPLACE(details, '비누,약산성성', '개껌')
-WHERE name IN ('강아지 개껌딱지');
+WHERE name = '강아지 개껌딱지';
+
 
 DELETE FROM ShoppingItems
-WHERE name = '강아지 개껌딱지' AND many LIKE '%99%'
+WHERE name = '강아지 개껌딱지' AND many LIKE '%99%';
   
 
                                 
                                     
 
 
+-- Create the table
 CREATE TABLE Board (
     id NUMBER GENERATED ALWAYS AS IDENTITY,
-    member_id VARCHAR(50),
+    id NUMBER PRIMARY KEY,
     category VARCHAR2(50),
     title VARCHAR2(255),
     content VARCHAR2(255),
-    png VARCHAR2(255),  -- Modify data type to VARCHAR2
+    png VARCHAR2(255),
     details VARCHAR2(255),
     views INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO Board (member_id, category, title, content, png, details, views) 
+-- Insert data into the table
+INSERT INTO Board (member_id, category, title, content, png, details, views)
 VALUES 
     ('aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 75);
-    ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 42);
-    ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 245);
-    
-DELETE FROM Board
-WHERE member_id = 1 AND category = '자유게시판' AND title= '시험용 작성글입니다' AND content = '기능 추가 예정입니다' AND png= '(img,jpg)' AND details ='N, 장소 미정, 날짜 시간' AND views=75;
-
-
-INSERT INTO Board (writer, category, title, content, png, details, views) 
+INSERT INTO Board (member_id, category, title, content, png, details, views)
 VALUES 
-    ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 45); 
+    ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 42);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
+    ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 245);
+
+-- Delete rows from the table
+DELETE FROM Board
+WHERE member_id = '1' AND category = '자유게시판' AND title = '시험용 작성글입니다' AND content = '기능 추가 예정입니다' AND png = '(img,jpg)' AND details = 'N' AND views = 75;
+
+-- Insert data into the table
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
+    ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 45);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('wwww', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 17);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('eeee', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 32);
-    
-INSERT INTO Board (writer, category, title, content, png, details, views) 
+
+-- Insert data into the table
+INSERT INTO Board (member_id, category, title, content, png, details, views)
 VALUES 
     ('xxx', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 15);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 45);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 32);
-    
-INSERT INTO Board (member_id, category, title, content, png, details, views) 
-VALUES
+
+-- Insert data into the table
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 76);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 12);
+INSERT INTO Board (member_id, category, title, content, png, details, views)
+VALUES 
     ('cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N', 144);
 
+-- Update the title column
 UPDATE Board
 SET title = REPLACE(title, '시험용 작성글입니다', '테스트가 완료되었습니다')
-WHERE member_id = 10;
+WHERE member_id = '10';
