@@ -19,7 +19,7 @@ CREATE TABLE animals3 (
     animal_name VARCHAR(255),
     birth_year INT,
     animal_type VARCHAR(20),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 -- 데이터 삽입
@@ -37,8 +37,7 @@ CREATE TABLE health_information3 (
     disease VARCHAR(255),
     height_range INT,
     weight_range VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
-);
+   
 
 
 -- 데이터 삽입
@@ -116,7 +115,7 @@ CREATE TABLE 이을애견호텔 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+   
 );
 
 INSERT INTO 이을애견호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
@@ -145,8 +144,7 @@ CREATE TABLE 편안하개 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
-);
+    
 
 INSERT INTO 편안하개 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
 VALUES
@@ -167,7 +165,7 @@ CREATE TABLE 아이뽀애견유치원호텔 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 INSERT INTO 아이뽀애견유치원호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
@@ -195,7 +193,7 @@ CREATE TABLE 까르텔 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 INSERT INTO 까르텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
@@ -217,7 +215,7 @@ CREATE TABLE 프로독애견호텔 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+   
 );
 
 INSERT INTO 프로독애견호텔 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
@@ -239,7 +237,7 @@ CREATE TABLE 개러리아강남점 (
     breed_name VARCHAR2(255),
     dog_size VARCHAR2(255),
     dog_count NUMBER,
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 INSERT INTO 개러리아강남점 (member_id, hotel_name, grade, details, date_val, breed_name, dog_size, dog_count)
@@ -285,7 +283,7 @@ CREATE TABLE "서촌도그살롱" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "서촌도그살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -305,7 +303,7 @@ CREATE TABLE "애뚜애뚜펫살롱" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "애뚜애뚜펫살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -350,7 +348,7 @@ CREATE TABLE "릴리줄리살롱" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "릴리줄리살롱" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -370,7 +368,7 @@ CREATE TABLE "투퍼피" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "투퍼피" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -394,7 +392,7 @@ CREATE TABLE "나나리펫하우스" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "나나리펫하우스" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -418,7 +416,7 @@ CREATE TABLE "루시몽" (
   breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
   dog_size VARCHAR(255), -- 소, 중, 대
   many INT, -- 1~5
-  FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 INSERT INTO "루시몽" (member_id, grooming_name, services, details, date, breed_name, dog_size, many)
@@ -452,7 +450,7 @@ CREATE TABLE Hospitals (
     tel VARCHAR(255),
     time VARCHAR(255),
     comment VARCHAR(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 INSERT INTO Hospitals (location1, location2, name, details_location, site, tel, time)
@@ -508,7 +506,7 @@ CREATE TABLE Travel (
     address VARCHAR2(255),
     review VARCHAR2(255),
     details VARCHAR2(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+   
 );
 
 INSERT INTO Travel (date1, date2, location, name, address, review)
@@ -567,7 +565,7 @@ CREATE TABLE Restaurant (
     address VARCHAR2(255),
     tel VARCHAR2(255),
     review VARCHAR2(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+    
 );
 
 INSERT INTO Restaurant (date1, date2, location, name, address, tel, review)
@@ -614,7 +612,7 @@ CREATE TABLE ShoppingItems (
     category VARCHAR2(50),
     many VARCHAR2(255),
     details VARCHAR2(255),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+   
 );
 
 -- Insert data into the table
@@ -716,7 +714,7 @@ CREATE TABLE Board (
     details VARCHAR2(255),
     views INT DEFAULT 0,
     PRIMARY KEY (id),
-    FOREIGN KEY (member_id) REFERENCES Members3(id)
+  
 );
 
 -- Insert data into the table
