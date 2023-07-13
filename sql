@@ -1,3 +1,4 @@
+-- Members3 테이블 생성
 CREATE TABLE Members3 (
     id VARCHAR(50),
     password VARCHAR(50),
@@ -7,629 +8,628 @@ CREATE TABLE Members3 (
     address VARCHAR(100)
 );
 
+-- 데이터 삽입
+INSERT INTO Members3 (id, password, phoneNumber, gender, age, address)
+VALUES ('user123', 'password123', '010-1234-5678', 'male', 30, '123 Main Street');
 
- INSERT INTO Members3 (id, password, phoneNumber, gender, age)
-    VALUES ('user123', 'password123', '010-1234-5678', 'male', 30);
-   
-
-             -- 동물 테이블 생성
-                CREATE TABLE animals3 (
-                member_id INT,
-                animal_name VARCHAR(255),
-                birth_year INT,
-                FOREIGN KEY (member_id) REFERENCES Members3(id)
-            );
-
-                INSERT INTO animals3 (member_id, animal_name, birth_year)
-                VALUES (:member_id, :animal_name, :birth_year);
-
-                UPDATE animals3
-                SET animal_type = CASE
-                    WHEN birth_year > :current_year - 1 THEN '어린 강아지'
-                    WHEN birth_year > :current_year - 1.5 THEN '성장 중인 강아지'
-                    ELSE '성체 강아지'
-                END;
-
-
-                         -- 건강정보 테이블 생성
-                           CREATE TABLE health_information3 (
-                            member_id INT,
-                            animal_name VARCHAR(255),
-                            breed_name VARCHAR(255),
-                            age_range VARCHAR(50),
-                            exercise_amount INT,
-                            disease VARCHAR(255),
-                            height_range INT,
-                            weight_range VARCHAR(255),
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-
+-- animals3 테이블 생성
+CREATE TABLE animals3 (
+    member_id INT,
+    animal_name VARCHAR(255),
+    birth_year INT,
+    animal_type VARCHAR(20),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('골든 리트리버', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 눈꺼풀 이완증', '평균 신장 45cm', '적정 몸무게 15-25kg'),
-                                            ('골든 리트리버', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '소화 문제, 피부 염증', '평균 신장 60cm', '적정 몸무게 25-35kg'),
-                                            ('골든 리트리버', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '암, 고관절 질환', '평균 신장 61cm', '적정 몸무게 25-34kg');
-                                          
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('진돗개', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', '평균 신장 38-42cm', '적정 몸무게 8-12kg'),
-                                            ('진돗개', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', '평균 신장 50-55cm', '적정 몸무게 15-20kg'),
-                                            ('진돗개', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', '평균 신장 55-60cm', '적정 몸무게 18-25kg');
-                                        
-                                        -- Poodle (푸들)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('푸들', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', '평균 신장 22-33cm', '적정 몸무게 3-8kg'),
-                                            ('푸들', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 감염, 알레르기', '평균 신장 28-40cm', '적정 몸무게 7-15kg'),
-                                            ('푸들', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '눈 및 귀 질환, 신장 질환', '평균 신장 28-38cm', '적정 몸무게 17-25kg');
-                                        
-                                        -- Chihuahua (치와와)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('치와와', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '호흡곤란, 장염', '평균 신장 12-18cm', '적정 몸무게 0.5-2kg'),
-                                            ('치와와', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 위장관 질환', '평균 신장 15-20cm', '적정 몸무게 1-2.5kg'),
-                                            ('치와와', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '심장 질환, 관절 이상', '평균 신장 15-23cm', '적정 몸무게 13kg');
-                                        
-                                        -- Maltese (말티즈)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('말티즈', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', '평균 신장 18-22cm', '적정 몸무게 1.5-2.5kg'),
-                                            ('말티즈', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 문제, 턱 관절 이상', '평균 신장 22-25cm', '적정 몸무게 2-4kg'),
-                                            ('말티즈', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '치아 문제, 심장 질환', '평균 신장 22-25cm', '적정 몸무게 3-4kg');
-                                        
-                                        -- Bulldog (불독)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('불독', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '호흡곤란, 장염', '평균 신장 25-35cm', '적정 몸무게 7-15kg'),
-                                            ('불독', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 위장관 질환', '평균 신장 30-40cm', '적정 몸무게 13-22kg'),
-                                            ('불독', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '심장 질환, 관절 이상', '평균 신장 30-40cm', '적정 몸무게 18-25kg');
-                                        
-                                        -- German Shepherd (저먼 셰퍼드)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('저먼셰퍼드', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', '평균 신장 55-66cm', '적정 몸무게 22-40kg'),
-                                            ('저먼 셰퍼드', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '허리디스크, 고관절 이상', '평균 신장 61-66cm', '적정 몸무게 30-40kg'),
-                                            ('저먼 셰퍼드', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '염증성 장질환, 암', '평균 신장 60-65cm', '적정 몸무게 30-40kg');
-                                        
-                                        -- Labrador Retriever (라브라도 리트리버)
-                                        INSERT INTO health_information (breed_name, age_range, exercise_amount, diseases, height_range, weight_range)
-                                        VALUES
-                                            ('라브라도 리트리버', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '비만, 고관절 이상', '평균 신장 54-58cm', '적정 몸무게 25-36kg'),
-                                            ('라브라도 리트리버', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 고관절 이상', '평균 신장 56-61cm', '적정 몸무게 27-36kg'),
-                                            ('라브라도 리트리버', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '비만, 관절 이상', '평균 신장 56-61cm', '적정 몸무게 27-36kg');
-    
-    
-                    CREATE TABLE Hotels (
-                  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                  hotel_name VARCHAR(255), // 호텔 이름
-                  location VARCHAR(255), // 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동)  태인님이랑 같이 정한 범위  호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
-                )
-                INSERT INTO Hotels (hotel_name, location)
-                VALUES
-                    ('('이을애견호텔'), ('편안하개'), ('아이뽀애견유치원호텔'), ('까르텔'), ('프로독 애견호텔'), ('개러리아 강남점')', 
-                '('서울 서초구 사평대로20길 3 1층'), ('서울 강남구 언주로125길 11 3층'), ('서울 송파구 새말로8길 28 3층'), ('서울 강남구 강남대로162길 21'), ('서울 송파구 송파대로22길 10 태공빌딩 1층 101호'), ('서울 강남구 선릉로122길 4 개러리아')',
-                
-                )
-                
-                            CREATE TABLE 이을애견호텔 (
-                              member_id INT,  
-                              hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                              hotel_name VARCHAR(255), // 이을애견호텔
-                              grade VARCHAR(255) // 1, 2, 3
-                              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-                              date DATE, // 날짜(2023.07.10~2023.07.23)
-                              breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                              dog_size VARCHAR(255), // 소, 중, 대
-                              many INT // 1~5
-                              FOREIGN KEY (member_id) REFERENCES Members3(id)  
-                            );
-                
-                                          INSERT INTO 이을애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                          ('이을애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('이을애견호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('이을애견호텔', '3', '('주차가능','와이파이')', '', '', '', );
+-- 데이터 삽입
+INSERT INTO animals3 (member_id, animal_name, birth_year)
+VALUES (1, 'Max', 2020);
 
-                                          UPDATE 이을애견호텔
-                                          SET details = REPLACE(details, '주차가능', '주차불가능')
-                                          WHERE grade IN ('3');
-  
-                
-                
-                          CREATE TABLE 편안하개 (
-                            member_id INT,                  
-                            hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            hotel_name VARCHAR(255), // 편안하개
-                            grade VARCHAR(255) // 1, 2, 3
-                            details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-                          );
-                
-                                          INSERT INTO 편안하개 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('편안하개', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                          ('편안하개', '2', '('주차가능','와이파이')', '', '', '', ),
-                                          ('편안하개', '2', '('주차가능','와이파이')', '', '', '', ),
-                                          ('편안하개', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('편안하개', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('편안하개', '3', '('주차가능','와이파이')', '', '', '', );
-                
-                
-                         CREATE TABLE 아이뽀애견유치원호텔 (
-                            member_id INT,                 
-                            hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            hotel_name VARCHAR(255), // 아이뽀애견유치원호텔
-                            grade VARCHAR(255) // 1, 2, 3
-                            details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-                          );
-                
-                                          INSERT INTO 아이뽀애견유치원호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('아이뽀애견유치원호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                          ('아이뽀애견유치원호텔', '3', '('주차가능','와이파이')', '', '', '', );
+-- animal_type 업데이트
+UPDATE animals3
+SET animal_type = CASE
+    WHEN birth_year > EXTRACT(YEAR FROM SYSDATE) - 1 THEN '어린 강아지'
+    WHEN birth_year > EXTRACT(YEAR FROM SYSDATE) - 1.5 THEN '성장 중인 강아지'
+    ELSE '성체 강아지'
+END;
 
-                                          UPDATE 아이뽀애견유치원호텔
-                                          SET details = REPLACE(details, '주차가능', '주차불가능')
-                                          WHERE grade IN ('3');
-                
-                
-                          CREATE TABLE 까르텔 (
-                            member_id INT,
-                            hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            hotel_name VARCHAR(255), // 까르텔
-                            grade VARCHAR(255) // 1, 2, 3
-                            details VARCHAR(225), // 주차가능, 와이파이, 유기농 간식 제공
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-                          );
-                
-                                        INSERT INTO 까르텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                        VALUES
-                                        ('까르텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                        ('까르텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                        ('까르텔', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                        ('까르텔', '3', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                        ('까르텔', '3', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', );
+-- health_information3 테이블 생성
+CREATE TABLE health_information3 (
+    member_id INT,
+    animal_name VARCHAR(255),
+    breed_name VARCHAR(255),
+    age_range VARCHAR(50),
+    exercise_amount VARCHAR(255),
+    disease VARCHAR(255),
+    height_range INT,
+    weight_range VARCHAR(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
 
-                                        DELETE FROM 까르텔
-                                        WHERE grade = '3' AND details LIKE '%유기농 간식 제공%';
-                 
-                          
-                            CREATE TABLE 프로독 애견호텔 (
-                              member_id INT,              
-                              hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                              hotel_name VARCHAR(255), // 프로독 애견호텔
-                              grade VARCHAR(255) // 등급(1, 2, 3)
-                              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-                              date DATE, // 날짜(2023.07.10~2023.07.23)
-                              breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
-                              dog_size VARCHAR(255), // 강아지 사이즈(소, 중, 대)
-                              many INT, // 강아지 수(1~5)
-                              FOREIGN KEY (member_id) REFERENCES Members3(id)              
-                            );
-                
-                                        INSERT INTO 프로독 애견호텔 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                        VALUES
-                                        ('프로독 애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                        ('프로독 애견호텔', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                        ('프로독 애견호텔', '2', '('주차가능','와이파이')', '', '', '', ),
-                                        ('프로독 애견호텔', '3', '('주차가능','와이파이')', '', '', '', ),
-                                        ('프로독 애견호텔', '3', '('주차가능','와이파이')', '', '', '', );
+-- 데이터 삽입
+INSERT INTO health_information3 (member_id, animal_name, breed_name, age_range, exercise_amount, disease, height_range, weight_range)
+VALUES (1, 'Max', '골든 리트리버', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 눈꺼풀 이완증', 45, '적정 몸무게 15-25kg');
 
-                                        DELETE FROM 프로독 애견호텔
-                                        WHERE grade = '3' AND details LIKE '%주차가능%';
-                
-                
-                            CREATE TABLE 개러리아 강남점 (
-                              member_id INT,              
-                              hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                              hotel_name VARCHAR(255), // 개러리아 강남점
-                              grade VARCHAR(255) // 1, 2, 3
-                              details VARCHAR(225), // 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
-                              date DATE, // 날짜(2023.07.10~2023.07.23)
-                              breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                              dog_size VARCHAR(255), // 소, 중, 대
-                              many INT, // 1~5
-                              FOREIGN KEY (member_id) REFERENCES Members3(id)
-                            );
-                
-                                      INSERT INTO 개러리아 강남점 (hotel_name, grade, details, date, breed_name, dog_size, many)
-                                      VALUES
-                                      ('개러리아 강남점', '1', '('주차가능','와이파이','24시간 방문 가능', '유기농 간식 제공')', '', '', '', ),
-                                      ('개러리아 강남점', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                      ('개러리아 강남점', '2', '('주차가능','와이파이', '유기농 간식 제공')', '', '', '', ),
-                                      ('개러리아 강남점', '3', '('주차가능','와이파이')', '', '', '', ),
-                                      ('개러리아 강남점', '3', '('주차가능','와이파이')', '', '', '', ),
-                                      ('개러리아 강남점', '3', '('주차가능','와이파이')', '', '', '', );
-                
-                
-                
+-- 추가 데이터 삽입
+INSERT INTO health_information3 (member_id, animal_name, breed_name, age_range, exercise_amount, disease, height_range, weight_range)
+VALUES
+    (1, 'Max', '골든 리트리버', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '소화 문제, 피부 염증', 60, '적정 몸무게 25-35kg'),
+    (1, 'Max', '골든 리트리버', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '암, 고관절 질환', 61, '적정 몸무게 25-34kg'),
+    (1, 'Max', '진돗개', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', 40, '적정 몸무게 8-12kg'),
+    (1, 'Max', '진돗개', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', 55, '적정 몸무게 15-20kg'),
+    (1, 'Max', '진돗개', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '열사병, 관절 이상, 피부 문제', 60, '적정 몸무게 18-25kg'),
+    (1, 'Max', '푸들', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', 33, '적정 몸무게 3-8kg'),
+    (1, 'Max', '푸들', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 감염, 알레르기', 40, '적정 몸무게 7-15kg'),
+    (1, 'Max', '푸들', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '눈 및 귀 질환, 신장 질환', 38, '적정 몸무게 17-25kg'),
+    (1, 'Max', '치와와', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '호흡곤란, 장염', 18, '적정 몸무게 0.5-2kg'),
+    (1, 'Max', '치와와', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 위장관 질환', 20, '적정 몸무게 1-2.5kg'),
+    (1, 'Max', '치와와', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '심장 질환, 관절 이상', 23, '적정 몸무게 13kg'),
+    (1, 'Max', '말티즈', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', 22, '적정 몸무게 1.5-2.5kg'),
+    (1, 'Max', '말티즈', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 문제, 턱 관절 이상', 25, '적정 몸무게 2-4kg'),
+    (1, 'Max', '말티즈', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '치아 문제, 심장 질환', 25, '적정 몸무게 3-4kg'),
+    (1, 'Max', '불독', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '호흡곤란, 장염', 35, '적정 몸무게 7-15kg'),
+    (1, 'Max', '불독', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 위장관 질환', 40, '적정 몸무게 13-22kg'),
+    (1, 'Max', '불독', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '심장 질환, 관절 이상', 40, '적정 몸무게 18-25kg'),
+    (1, 'Max', '저먼셰퍼드', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '식욕 부진, 구토와 설사', 66, '적정 몸무게 22-40kg'),
+    (1, 'Max', '저먼셰퍼드', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '허리디스크, 고관절 이상', 66, '적정 몸무게 30-40kg'),
+    (1, 'Max', '저먼셰퍼드', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '염증성 장질환, 암', 65, '적정 몸무게 30-40kg'),
+    (1, 'Max', '라브라도 리트리버', '어린 강아지', '일일 약 30분에서 1시간 정도의 산책과 약간의 놀이 시간을 권장합니다.', '비만, 고관절 이상', 58, '적정 몸무게 25-36kg'),
+    (1, 'Max', '라브라도 리트리버', '성장 중 강아지', '일일 약 1시간에서 2시간 정도의 산책과 활동적인 놀이 시간을 권장합니다.', '피부 알레르기, 고관절 이상', 61, '적정 몸무게 27-36kg'),
+    (1, 'Max', '라브라도 리트리버', '성년 강아지', '일일 약 2시간 이상의 산책과 활동이 풍부한 놀이 시간을 권장합니다.', '비만, 관절 이상', 61, '적정 몸무게 27-36kg');
+
+-- Members3 테이블 조회
+SELECT * FROM Members3;
+
+-- animals3 테이블 조회
+SELECT * FROM animals3;
+
+-- health_information3 테이블 조회
+SELECT * FROM health_information3;
 
 
 
 
 
 
-                - 미용 테이블
-                CREATE TABLE Grooming (
-                    grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    grooming_name VARCHAR(255), // 샵 이름
-                    location VARCHAR(255), // 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) 태인님이랑 같이 정한 범위  호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
-                );
-                INSERT INTO Grooming (hotel_name, location,)
-                VALUES
-                    ('('서촌도그살롱'), ('애뚜애뚜펫살롱'), ('강아지마법사 골드맘'), ('릴리줄리살롱'), ('투퍼피'), ('나나리펫하우스'), ('루시몽')',  
-                '('서울특별시 종로구 필운동 290 101호'), ('서울특별시 중구 신당동 47-11 1.2층'), ('서울특별시 중구 신당동 282-33 동심빌딩 1층 102호'), ('서울 강남구 삼성로115길 42'), ('서울 관악구 신림로 387 3층'), ('서울 강남구 논현로 70 2층'), ('서울 송파구 성내천로8길 3 2층')', 
-                )
-                            
-                
-                           CREATE TABLE 서촌도그살롱 (
-                            member_id INT,
-                            grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            grooming_name VARCHAR(255), // 서촌도그살롱
-                            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
-                            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
-                            date DATE, -- 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-                          );
-                
-                                        INSERT INTO 서촌도그살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                        VALUES
-                                        ('서촌도그살롱', '1', '('와이파이')', '', '', '', ),
-                                        ('서촌도그살롱', '2', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('서촌도그살롱', '3', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                        ('서촌도그살롱', 'ALL', '('6시간 주차가능','와이파이')', '', '', '', );
-                
-                
-                           CREATE TABLE 애뚜애뚜펫살롱 (
-                            member_id INT,
-                            grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            grooming_name VARCHAR(255), // 애뚜애뚜펫살롱
-                            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)                
-                          );
-        
-                                        INSERT INTO 애뚜애뚜펫살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                        VALUES
-                                        ('애뚜애뚜펫살롱', '1', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('애뚜애뚜펫살롱', '2', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('애뚜애뚜펫살롱', '3', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                        ('애뚜애뚜펫살롱', 'ALL', '('6시간 주차가능','와이파이')', '', '', '', );
 
-                                        DELETE FROM 애뚜애뚜펫살롱
-                                        WHERE services = '1' AND details LIKE '%2시간 주차가능%';
 
-                
-                          CREATE TABLE 강아지마법사 골드맘 (
-                            grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            grooming_name VARCHAR(255), // 강아지마법사 골드맘
-                            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT // 1~5
-                          );
-                
-                                        INSERT INTO 강아지마법사 골드맘 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                        VALUES
-                                        ('강아지마법사 골드맘', '1', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('강아지마법사 골드맘', '2', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('강아지마법사 골드맘', '3', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                        ('강아지마법사 골드맘', 'ALL', '('4시간 주차가능','와이파이')', '', '', '', );
 
-                                        DELETE FROM 강아지마법사 골드맘
-                                        WHERE services = '1' AND details LIKE '%2시간 주차가능%';
-                
-                
-                          CREATE TABLE 리줄리살롱 (
-                            member_id INT,
-                            grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                            grooming_name VARCHAR(255), // 리줄리살롱
-                            services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                            details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
-                            date DATE, // 날짜(2023.07.10~2023.07.23)
-                            breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                            dog_size VARCHAR(255), // 소, 중, 대
-                            many INT, // 1~5
-                            FOREIGN KEY (member_id) REFERENCES Members3(id)
-                          );
 
-                                      INSERT INTO 리줄리살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                      VALUES
-                                      ('리줄리살롱', '1', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                      ('리줄리살롱', '2', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                      ('리줄리살롱', '3', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                      ('리줄리살롱', 'ALL', '('4시간 주차가능','와이파이')', '', '', '', );
+CREATE TABLE Hotels (
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 호텔 이름
+  location VARCHAR(255) -- 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) 태인님이랑 같이 정한 범위 호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
+);
 
-                    
-                              CREATE TABLE 투퍼피 (
-                                member_id INT,
-                                grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                                grooming_name VARCHAR(255), // 투퍼피
-                                services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                                details VARCHAR(225), // 2시간 주차가능, 4시간 주차가능, 와이파이
-                                date DATE, // 날짜(2023.07.10~2023.07.23)
-                                breed_name VARCHAR(255), // 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
-                                dog_size VARCHAR(255), // 소, 중, 대
-                                many INT, // 강아지 수(1~5)
-                                FOREIGN KEY (member_id) REFERENCES Members3(id)
-                              );
-                    
-                                          INSERT INTO 투퍼피 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('투퍼피', '1', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                          ('투퍼피', '2', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                          ('투퍼피', '3', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                          ('투퍼피', 'ALL', '('4시간 주차가능','와이파이')', '', '', '', );
+INSERT INTO Hotels (hotel_name, location)
+VALUES
+  ('이을애견호텔', '용산'),
+  ('편안하개', '동작'),
+  ('아이뽀애견유치원호텔', '강동'),
+  ('까르텔', NULL),
+  ('프로독 애견호텔', NULL),
+  ('개러리아 강남점', NULL);
 
-                                          UPDATE 투퍼피
-                                          SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
-                                          WHERE services IN ('3');
-                    
-                    
-                              CREATE TABLE 나나리펫하우스 (
-                              member_id INT,  
-                              grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                              grooming_name VARCHAR(255), // 나나리펫하우스
-                              services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                              details VARCHAR(225), // 2시간 주차가능, 와이파이
-                              date DATE, // 날짜(2023.07.10~2023.07.23)
-                              breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                              dog_size VARCHAR(255), // 소, 중, 대
-                              many INT, // 1~5
-                              FOREIGN KEY (member_id) REFERENCES Members3(id)
-                            );
-                    
-                                          INSERT INTO 나나리펫하우스 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('나나리펫하우스', '1', '('와이파이')', '', '', '', ),
-                                          ('나나리펫하우스', '2', '('와이파이')', '', '', '', ),
-                                          ('나나리펫하우스', '3', '('2시간 주차가능','와이파이')', '', '', '', ),
-                                          ('나나리펫하우스', 'ALL', '('2시간 주차가능','와이파이')', '', '', '', );
+CREATE TABLE 이을애견호텔 (
+  member_id INT,  
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 이을애견호텔
+  grade VARCHAR(255), -- 1, 2, 3
+  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)  
+);
 
-                                          UPDATE 나나리펫하우스
-                                          SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
-                                          WHERE services IN ('ALL');
-                    
-                    
-                              CREATE TABLE 루시몽 (
-                                member_id INT,
-                                grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                                grooming_name VARCHAR(255), // 루시몽
-                                services VARCHAR(255) // '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
-                                details VARCHAR(225), // 4시간 주차가능, 6시간 주차가능, 와이파이
-                                date DATE, // 날짜(2023.07.10~2023.07.23)
-                                breed_name VARCHAR(255), // 푸들, 말티즈, 치와와, 비숑, 리트리버
-                                dog_size VARCHAR(255), // 소, 중, 대
-                                many INT, // 1~5
-                                FOREIGN KEY (member_id) REFERENCES Members3(id)
-                              );
-                    
-                                          INSERT INTO 루시몽 (grooming_name, services, details, date, breed_name, dog_size, many)
-                                          VALUES
-                                          ('루시몽', '1', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                          ('루시몽', '2', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                          ('루시몽', '3', '('4시간 주차가능','와이파이')', '', '', '', ),
-                                          ('루시몽', 'ALL', '('6시간 주차가능','와이파이')', '', '', '', );
+INSERT INTO 이을애견호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES
+  (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '이을애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
-                                          UPDATE 루시몽
-                                          SET details = REPLACE(details, '4시간 주차가능', '2시간 주차가능')
-                                          WHERE services IN ('1');
+UPDATE 이을애견호텔
+SET details = REPLACE(details, '주차가능', '주차불가능')
+WHERE grade IN ('3');
+
+CREATE TABLE 편안하개 (
+  member_id INT,                  
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 편안하개
+  grade VARCHAR(255), -- 1, 2, 3
+  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 편안하개 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES
+  (1, '편안하개', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '편안하개', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '편안하개', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+CREATE TABLE 아이뽀애견유치원호텔 (
+  member_id INT,                 
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 아이뽀애견유치원호텔
+  grade VARCHAR(255), -- 1, 2, 3
+  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 아이뽀애견유치원호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES
+  (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '아이뽀애견유치원호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+UPDATE 아이뽀애견유치원호텔
+SET details = REPLACE(details, '주차가능', '주차불가능')
+WHERE grade IN ('3');
+
+CREATE TABLE 까르텔 (
+  member_id INT,
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 까르텔
+  grade VARCHAR(255), -- 1, 2, 3
+  details VARCHAR(225), -- 주차가능, 와이파이, 유기농 간식 제공
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 까르텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES
+  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '까르텔', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '까르텔', '3', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '까르텔', '3', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL);
+
+DELETE FROM 까르텔
+WHERE grade = '3' AND details LIKE '%유기농 간식 제공%';
+
+CREATE TABLE 프로독애견호텔 (
+  member_id INT,              
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 프로독 애견호텔
+  grade VARCHAR(255), -- 등급(1, 2, 3)
+  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 강아지 종류(푸들, 말티즈, 치와와, 비숑, 리트리버) 이름
+  dog_size VARCHAR(255), -- 강아지 사이즈(소, 중, 대)
+  many INT, -- 강아지 수(1~5)
+  FOREIGN KEY (member_id) REFERENCES Members3(id)              
+);
+
+INSERT INTO 프로독애견호텔 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES
+  (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '프로독 애견호텔', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '프로독 애견호텔', '2', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '프로독 애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '프로독 애견호텔', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+DELETE FROM 프로독애견호텔
+WHERE grade = '3' AND details LIKE '%주차가능%';
+
+CREATE TABLE 개러리아강남점 (
+  member_id INT,              
+  hotel_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hotel_name VARCHAR(255), -- 개러리아 강남점
+  grade VARCHAR(255), -- 1, 2, 3
+  details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+  date DATE, -- 날짜(2023-07-10 ~ 2023-07-23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 개러리아강남점 (member_id, hotel_name, grade, details, date, breed_name, dog_size, many)
+VALUES 
+  (1, '개러리아 강남점', '1', '주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '개러리아 강남점', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '개러리아 강남점', '2', '주차가능, 와이파이, 유기농 간식 제공', NULL, NULL, NULL, NULL),
+  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  (1, '개러리아 강남점', '3', '주차가능, 와이파이', NULL, NULL, NULL, NULL);
 
                 
-                 CREATE TABLE Hospitals 
-                (   
-                    member_id INT,
-                    hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    member_id INT,
-                    location1 VARCHAR(255),
-                    location2 VARCHAR(255),
-                    name VARCHAR(255),
-                    details_location VARCHAR(255),
-                    site VARCHA(255),
-                    tel VARCHA(255),
-                    time VARCHA(255),
-                    comment VARCHA(255),
-                    FOREIGN KEY (member_id) REFERENCES Members3(id)                          
-                );
-                                 INSERT INTO Hospitals (location1, location2, name, details_location, site, tel, time)
-                                 VALUES 
-                                ('서울', '강남', '츄츄동물병원', '서울 강남구 논현로67길 56', 'blog.naver.com/vetlucy', '02-512-0075', '매일 09:30~20:00'),
-                                ('서울', '강남', '예은동물병원', '서울 강남구 도곡로 189 (우)06257', 'blog.naver.com/sdvm', '02-529-5575', '수~토 10:00 ~ 21:00 월,화,일 10:00 ~ 18:00 월,화 휴게시간 13:00 ~ 14:00'),
-                                ('서울', '강남', '24시SNC동물메디컬센터', '서울 강남구 논현로 416 운기빌딩 1층 (우)06224', 'blog.naver.com/sncamc', '02-562-7582', '매일 00:00 ~ 24:00'),
-                                ('서울', '서초', '서초이음동물병원', '서울 서초구 효령러 347 서광빌딩1층', 'https://look360.kr/place/sciumah', '02-34747582', '매일10:00~20:00'),
-                                ('서울', '서초', 'VIP동물의료센터 서초점', '서울 서초구 동작대로36 대광빌딩1,2층', 'www.vipah.co.kr', '02-5253102', '매일 00:00 ~ 24:00'),
-                                ('서울', '서초', '반려동물의료센터 다울', '서울 서초구 효령로95 1층(우)06687', 'https://blog.naver.com/daul-ah', '02-3473-0911', '09:30~21:00'),
-                                ('서울', '송파', '24시샤인동물메디컬센터', '서울 송파구 오금로 147 JS빌딩 (우)05550', 'shineamc.com', '02-2088-7775', '매일 00:00 ~ 24:00'),
-                                ('서울', '송파', '도그마루동물병원', '서울 송파구 석촌호수로 104 1층 (우)05566', 'https://dmmdc.co.kr', '070-4349-3357', '매일 10:00 ~ 20:00'),
-                                ('서울', '송파', '에코동물병원', '서울 송파구 동남로 161 청공빌딩 101호 (우)05826', 'blog.naver.com/ecoanimal', '02-443-2222', '평일09:30~20:00 주말09:30~17:00'),
-                                ('서울', '관악', '와우종합동물병원', '서울 관악구 난곡로 247', 'null', '02-866-0880', '월~금 10:00 ~ 19:00 토10:00~17:00'),
-                                ('서울', '관악', '봉천현대동물병원', '서울 관악구 봉천로 520 3층', 'pf.kakao.com/_yquSxb', '02-878-9978', '평일10:00~19:00 토10:00~18:00'),
-                                ('서울', '관악', '러브펫종합동물병원', '서울 관악구 남부순환로 1429 (우)08766', 'https://blog.naver.com/pianogrl', '02-837-8875', '매일 10:00 ~ 20:00'),
-                                ('서울', '동작', '원동물병원', '서울 서초구 효령로', 'https://blog.naver.com/jjaem76', '02-587-5618', '평일10:00~18:00 토10:00~16:00'),
-                                ('서울', '동작', '보라매웰종합동물병원', '서울 동작구 상도로 16 MGI빌딩 1층 (우)07055', 'blog.naver.com/wellvc', '02-3280-7975', '평일09:00~20:30 토09:00~19:30 일13:00~18:30'),
-                                ('서울', '동작', '정겨운동물병원', '서울 동작구 상도로 315 (우)06970', 'blog.naver.com/friendlyac', '02-817-8172', '매일 10:00 ~ 20:00'),
-                                ('서울', '강동', '로얄동물메디컬센터 강동', '서울 강동구 천호대로 1171 1~3층', 'royalamcgd.com', '02-457-0075', '매일 00:00 ~ 24:00'),
-                                ('서울', '강동', '내품에동물병원', '서울 강동구 천호대로 1120 LIG건영 주상복합 102호 (우)05373', 'blog.naver.com/mylovehug', '02-477-1775', '월~토10:00~21:00'),
-                                ('서울', '강동', '길종합동물병원', '서울 강동구 천호대로 1199 (우)05350', 'https://www.bing.com', '02-484-0075', '평일10:00~19:00'),
-                                ('서울', '용산', '이태원동물병원', '서울 용산구 녹사평대로 210 1층', 'www.vetmedic.co.kr', '02-797-6677 ', '매일 09:00 ~ 18:00'),
-                                ('서울', '용산', '더힐동물의료센터', '서울 용산구 독서당로 81-1 3층 (우)04419', 'blog.naver.com/thehillvmc', '02-792-8275', '매일 00:00 ~ 24:00'),
-                                ('서울', '용산', '퍼스동물병원', '서울 용산구 신흥로 54 (우)04339', 'null', '02-790-7508', '뭘~토10:00~19:00'),
-                                ('서울', '중구', '애니컴메디컬센터', '서울 중구 다산로 83-1', 'https://www.anicomvet.com/', '02-2232-9702', '월~토 09:00 ~ 20:30'),
-                                ('서울', '중구', '웰튼동물의료센터', '서울 중구 난계로 197 1,2,4층 (우)04574', 'blog.naver.com/weltonamc2', '02-2253-2233', '매일 00:00 ~ 24:00'),
-                                ('서울', '중구', '메종동물병원', '서울 중구 다산로 230 하나빌딩 1층 (우)04585', 'blog.naver.com/maison_ah', '02-2038-7555', '월~토 09:00 ~ 20:00'),
-                                ('서울', '종로구', '우리동물병원', '서울 종로구 지봉로 96-3 (우)03108', 'http://woorieah.modoo.at/', '02-3676-1191 ', '월금 10:00~19:30 토12:00~17:00 일휴무'),
-                                ('서울', '종로구', '올리브동물병원', '서울 종로구 자하문로 305 (우)03021', 'olivehospital.modoo.at', '02-391-7502', '매일10:00~20:00'),
-                                ('서울', '종로구', '누리봄동물병원', '서울 종로구 사직로12길 2', 'https://blog.naver.com/nuribom_', '02-735-7530', '평일09:30~19:30 토10:00~16:00 일 휴무');
-                                DELETE FROM Hospitals
-                                        WHERE name = '길종합동물병원' AND site LIKE '%https://www.bing.com%';
-
-                                UPDATE Hospitals
-                                SET details_location = REPLACE(details_location, 'details_location', '서울 동작구 사당로 180 (우)07030')
-                                WHERE details_location LIKE '%details_location%';
-
-
-
-
-                CREATE TABLE Travel (
-                    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    member_id INT,
-                    date1 VARCHAR(255), -- 오픈일
-                    date2 VARCHAR(255),  -- 휴무일 
-                    location VARCHAR(255), -- 지역명 
-                    name VARCHAR(255),  -- 여행지명
-                    address  VARCHAR(255), -- 주소명
-                    review VARCHAR(255), -- 리뷰(out ->in)
-                    details VARCHAR(255) -- 세부정보
-                    FOREIGN KEY (member_id) REFERENCES Members3(id)                 
-                );
                 
-                                INSERT INTO Travel ( date1, date2, location, name, address, review) VALUES
-                                 ('상시개방', 'NULL', '서울' , '한강 공원', '서울특별시 여의도동','NULL'),
-                                 ('상시개방', 'NULL', '서울' , '남산 공원', '서울특별시 중구 남산동','NULL'),
-                                 ('상시개방', 'NULL', '서울' , '선유도 공원', '서울특별시 영등포구 선유로 343','NULL'),
-                                 ('상시개방', 'NULL', '서울' , '용산 가족공원', '서울특별시 용산구 우사단로 99','NULL'),
-                                 ('상시개방', 'NULL', '서울' , '서울숲', '서울특별시 성동구 성수동 1가','NULL'),
-                                 ('상시개방', 'NULL', '경기' , '대부도 해수욕장', '인천광역시 강화군 대부면 외도로 168-15','NULL'),
-                                 ('상시개방', 'NULL', '경기' , '강화도 해수욕장', '인천광역시 강화군 강화읍 강화대로 574-42','NULL'),
-                                 ('상시개방', 'NULL', '경기' , '팔당댐', '경기도 남양주시 조안면 팔당로 409-1','NULL'),
-                                 ('상시개방', 'NULL', '경기' , '경춘선숲길', '경기도 평택시 도곡면 사우중로 1359','NULL'),
-                                 ('상시개방', 'NULL', '경기' , '평택해양도립공원', '인천광역시 연수구 센트럴로 123','NULL'),
-                                 ('상시개방', 'NULL', '인천' , '송도 센트럴파크', '서울특별시 여의도동','NULL'),
-                                 ('상시개방', 'NULL', '인천' , '왕산해수욕장', '인천광역시 중구 우현로 15','NULL'),
-                                 ('상시개방', 'NULL', '인천' , '인천 대공원원', '인천광역시 남동구 석정로 134','NULL'),
-                                 ('상시개방', 'NULL', '인천' , '인천 차이나타운', '인천광역시 중구 차이나타운로 60','NULL'),
-                                 ('상시개방', 'NULL', '인천' , '인천 서해야생도립공원', '인천광역시 강화군 화도면 해안남로 297','NULL'),
-                                 ('상시개방', 'NULL', '강원' , '남이섬', '강원도 속초시 강원대로 434번길 39','NULL'),
-                                 ('상시개방', 'NULL', '강원' , '설악산 국립공원', '강원도 강릉시 설악로 170번길 328','NULL'),
-                                 ('상시개방', 'NULL', '강원' , '오션월드', '경기도 화성시 남양읍 오션월드로 270','NULL'),
-                                 ('상시개방', 'NULL', '강원' , '강릉 경포해수욕장', '강원도 강릉시 경포로 407','NULL'),
-                                 ('상시개방', 'NULL', '강원' , '속초 해변', '강원도 속초시 번영로 376','NULL'),
-                                 ('상시개방', 'NULL', '광주' , '광주호 호수공원', '광주광역시 광산구 첨단중앙로 167번길 76','NULL'),
-                                 ('상시개방', 'NULL', '광주' , '무등산 국립공원', '전라남도 광양시 도포면 무등산로 2188','NULL'),
-                                 ('상시개방', 'NULL', '광주' , '광주 문화전당', '광주광역시 동구 필문대로 11','NULL'),
-                                 ('상시개방', 'NULL', '광주' , '금남로 벚꽃길', '광주광역시 서구 금남로','NULL'),
-                                 ('상시개방', 'NULL', '광주' , '광주 동명동 예술촌', '광주광역시 동구 남동대로 54번길 8-9','NULL'),
-                                 ('상시개방', 'NULL', '제주' , '협재해변', '제주특별자치도 제주시 한림읍 협재로 202','NULL'),
-                                 ('상시개방', 'NULL', '제주' , '성산일출봉', '제주특별자치도 서귀포시 성산읍 일출로 284-12','NULL'),
-                                 ('상시개방', 'NULL', '제주' , '한라산 국립공원', '제주특별자치도 서귀포시 성산읍 일주동로 1139-8','NULL'),
-                                 ('상시개방', 'NULL', '제주' , '서귀포 올레시장', '제주특별자치도 서귀포시 남성로 52','NULL'),
-                                 ('상시개방', 'NULL', '제주' , '사려니숲길', '제주특별자치도 제주시 조천읍 선진길 144','NULL'),
-                                 ('상시개방', 'NULL', '부산' , '해운대 해수욕장', '부산광역시 해운대구 해운대해변로 264','NULL'),
-                                 ('상시개방', 'NULL', '부산' , '광안리 해수욕장', '부산광역시 수영구 광안해변로 219','NULL'),
-                                 ('상시개방', 'NULL', '부산' , '동백섬', '강원도 춘천시 소양로 26번길 42-12','NULL'),
-                                 ('상시개방', 'NULL', '부산' , '송정해수욕장', '부산광역시 기장군 기장읍 송정해변로 59','NULL'),
-                                 ('null', 'NULL', '부산' , '롯데월드', '부산광역시 기장군 기장읍 송정해변로 59','NULL'),
-                                 ('상시개방', 'NULL', '부산' , '태종대', '부산광역시 영도구 태종대로 24','NULL');
 
-                                 DELETE FROM Travel
-                                 WHERE ( date1 ='상시개방', date2= 'NULL', location = '부산' , name= '롯데월드', address ='부산광역시 기장군 기장읍 송정해변로 59',review='NULL');
 
-                                 UPDATE Travel
-                                 SET date1 = '상시개방'
-                                 WHERE date1 LIKE '%date1%';
+
+
+
+CREATE TABLE Grooming (
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 샵 이름
+  location VARCHAR(255) -- 지역(종로, 중구, 용산, 동작, 관악, 서초, 강남, 송파, 강동) 태인님이랑 같이 정한 범위  호텔, 미용 둘 다 없는 구(용산, 동작, 강동)
+);
+
+INSERT INTO Grooming (grooming_name, location)
+VALUES
+  ('서촌도그살롱', '서울특별시 종로구 필운동 290 101호'),
+  ('애뚜애뚜펫살롱', '서울특별시 중구 신당동 47-11 1.2층'),
+  ('강아지마법사 골드맘', '서울특별시 중구 신당동 282-33 동심빌딩 1층 102호'),
+  ('릴리줄리살롱', '서울 강남구 삼성로115길 42'),
+  ('투퍼피', '서울 관악구 신림로 387 3층'),
+  ('나나리펫하우스', '서울 강남구 논현로 70 2층'),
+  ('루시몽', '서울 송파구 성내천로8길 3 2층');
+
+CREATE TABLE 서촌도그살롱 (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 서촌도그살롱
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어' // 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 6시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 서촌도그살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('서촌도그살롱', '1', '와이파이', NULL, NULL, NULL, NULL),
+  ('서촌도그살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('서촌도그살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('서촌도그살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+CREATE TABLE 애뚜애뚜펫살롱 (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 애뚜애뚜펫살롱
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO 애뚜애뚜펫살롱 (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('애뚜애뚜펫살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('애뚜애뚜펫살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('애뚜애뚜펫살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('애뚜애뚜펫살롱', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+DELETE FROM 애뚜애뚜펫살롱
+WHERE services = '1' AND details LIKE '%2시간 주차가능%';
+
+CREATE TABLE "강아지마법사 골드맘" (
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 강아지마법사 골드맘
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT -- 1~5
+);
+
+INSERT INTO "강아지마법사 골드맘" (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('강아지마법사 골드맘', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('강아지마법사 골드맘', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('강아지마법사 골드맘', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('강아지마법사 골드맘', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+DELETE FROM "강아지마법사 골드맘"
+WHERE services = '1' AND details LIKE '%2시간 주차가능%';
+
+CREATE TABLE "릴리줄리살롱" (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 릴리줄리살롱
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO "릴리줄리살롱" (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('릴리줄리살롱', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('릴리줄리살롱', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('릴리줄리살롱', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('릴리줄리살롱', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+CREATE TABLE "투퍼피" (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 투퍼피
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 4시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO "투퍼피" (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('투퍼피', '1', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('투퍼피', '2', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('투퍼피', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('투퍼피', 'ALL', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+UPDATE "투퍼피"
+SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
+WHERE services IN ('3');
+
+CREATE TABLE "나나리펫하우스" (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 나나리펫하우스
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 2시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO "나나리펫하우스" (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('나나리펫하우스', '1', '와이파이', NULL, NULL, NULL, NULL),
+  ('나나리펫하우스', '2', '와이파이', NULL, NULL, NULL, NULL),
+  ('나나리펫하우스', '3', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('나나리펫하우스', 'ALL', '2시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+UPDATE "나나리펫하우스"
+SET details = REPLACE(details, '2시간 주차가능', '4시간 주차가능')
+WHERE services IN ('ALL');
+
+CREATE TABLE "루시몽" (
+  member_id INT,
+  grooming_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  grooming_name VARCHAR(255), -- 루시몽
+  services VARCHAR(255), -- '발톱 정리', '털 정리', '목욕', '전체 케어', 1~3:갯수 선택, ALL:전체 선택
+  details VARCHAR(225), -- 4시간 주차가능, 6시간 주차가능, 와이파이
+  date DATE, -- 날짜(2023.07.10~2023.07.23)
+  breed_name VARCHAR(255), -- 푸들, 말티즈, 치와와, 비숑, 리트리버
+  dog_size VARCHAR(255), -- 소, 중, 대
+  many INT, -- 1~5
+  FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO "루시몽" (grooming_name, services, details, date, breed_name, dog_size, many)
+VALUES
+  ('루시몽', '1', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('루시몽', '2', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('루시몽', '3', '4시간 주차가능, 와이파이', NULL, NULL, NULL, NULL),
+  ('루시몽', 'ALL', '6시간 주차가능, 와이파이', NULL, NULL, NULL, NULL);
+
+UPDATE "루시몽"
+SET details = REPLACE(details, '4시간 주차가능', '2시간 주차가능')
+WHERE services IN ('1');
+
+
+
+
+
+
+
+
+CREATE TABLE Hospitals 
+(   
+    member_id INT,
+    hospital_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    location1 VARCHAR(255),
+    location2 VARCHAR(255),
+    name VARCHAR(255),
+    details_location VARCHAR(255),
+    site VARCHAR(255),
+    tel VARCHAR(255),
+    time VARCHAR(255),
+    comment VARCHAR(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)                          
+);
+
+INSERT INTO Hospitals (location1, location2, name, details_location, site, tel, time)
+VALUES 
+    ('서울', '강남', '츄츄동물병원', '서울 강남구 논현로67길 56', 'blog.naver.com/vetlucy', '02-512-0075', '매일 09:30~20:00'),
+    ('서울', '강남', '예은동물병원', '서울 강남구 도곡로 189 (우)06257', 'blog.naver.com/sdvm', '02-529-5575', '수~토 10:00 ~ 21:00 월,화,일 10:00 ~ 18:00 월,화 휴게시간 13:00 ~ 14:00'),
+    ('서울', '강남', '24시SNC동물메디컬센터', '서울 강남구 논현로 416 운기빌딩 1층 (우)06224', 'blog.naver.com/sncamc', '02-562-7582', '매일 00:00 ~ 24:00'),
+    ('서울', '서초', '서초이음동물병원', '서울 서초구 효령러 347 서광빌딩1층', 'https://look360.kr/place/sciumah', '02-34747582', '매일10:00~20:00'),
+    ('서울', '서초', 'VIP동물의료센터 서초점', '서울 서초구 동작대로36 대광빌딩1,2층', 'www.vipah.co.kr', '02-5253102', '매일 00:00 ~ 24:00'),
+    ('서울', '서초', '반려동물의료센터 다울', '서울 서초구 효령로95 1층(우)06687', 'https://blog.naver.com/daul-ah', '02-3473-0911', '09:30~21:00'),
+    ('서울', '송파', '24시샤인동물메디컬센터', '서울 송파구 오금로 147 JS빌딩 (우)05550', 'shineamc.com', '02-2088-7775', '매일 00:00 ~ 24:00'),
+    ('서울', '송파', '도그마루동물병원', '서울 송파구 석촌호수로 104 1층 (우)05566', 'https://dmmdc.co.kr', '070-4349-3357', '매일 10:00 ~ 20:00'),
+    ('서울', '송파', '에코동물병원', '서울 송파구 동남로 161 청공빌딩 101호 (우)05826', 'blog.naver.com/ecoanimal', '02-443-2222', '평일09:30~20:00 주말09:30~17:00'),
+    ('서울', '관악', '와우종합동물병원', '서울 관악구 난곡로 247', 'null', '02-866-0880', '월~금 10:00 ~ 19:00 토10:00~17:00'),
+    ('서울', '관악', '봉천현대동물병원', '서울 관악구 봉천로 520 3층', 'pf.kakao.com/_yquSxb', '02-878-9978', '평일10:00~19:00 토10:00~18:00'),
+    ('서울', '관악', '러브펫종합동물병원', '서울 관악구 남부순환로 1429 (우)08766', 'https://blog.naver.com/pianogrl', '02-837-8875', '매일 10:00 ~ 20:00'),
+    ('서울', '동작', '원동물병원', '서울 동작구 사당로 180 (우)07030', 'https://blog.naver.com/jjaem76', '02-587-5618', '평일10:00~18:00 토10:00~16:00'),
+    ('서울', '동작', '보라매웰종합동물병원', '서울 동작구 상도로 16 MGI빌딩 1층 (우)07055', 'blog.naver.com/wellvc', '02-3280-7975', '평일09:00~20:30 토09:00~19:30 일13:00~18:30'),
+    ('서울', '동작', '정겨운동물병원', '서울 동작구 상도로 315 (우)06970', 'blog.naver.com/friendlyac', '02-817-8172', '매일 10:00 ~ 20:00'),
+    ('서울', '강동', '로얄동물메디컬센터 강동', '서울 강동구 천호대로 1171 1~3층', 'royalamcgd.com', '02-457-0075', '매일 00:00 ~ 24:00'),
+    ('서울', '강동', '내품에동물병원', '서울 강동구 천호대로 1120 LIG건영 주상복합 102호 (우)05373', 'blog.naver.com/mylovehug', '02-477-1775', '월~토10:00~21:00'),
+    ('서울', '강동', '길종합동물병원', '서울 동작구 사당로 180 (우)07030', 'https://www.bing.com', '02-484-0075', '평일10:00~19:00'),
+    ('서울', '용산', '이태원동물병원', '서울 용산구 녹사평대로 210 1층', 'www.vetmedic.co.kr', '02-797-6677 ', '매일 09:00 ~ 18:00'),
+    ('서울', '용산', '더힐동물의료센터', '서울 용산구 독서당로 81-1 3층 (우)04419', 'blog.naver.com/thehillvmc', '02-792-8275', '매일 00:00 ~ 24:00'),
+    ('서울', '용산', '퍼스동물병원', '서울 용산구 신흥로 54 (우)04339', 'null', '02-790-7508', '뭘~토10:00~19:00'),
+    ('서울', '중구', '애니컴메디컬센터', '서울 중구 다산로 83-1', 'https://www.anicomvet.com/', '02-2232-9702', '월~토 09:00 ~ 20:30'),
+    ('서울', '중구', '웰튼동물병원', '서울 중구 난계로 197 1,2,4층 (우)04574', 'blog.naver.com/weltonamc2', '02-2253-2233', '매일 00:00 ~ 24:00'),
+    ('서울', '중구', '메종동물병원', '서울 중구 다산로 230 하나빌딩 1층 (우)04585', 'blog.naver.com/maison_ah', '02-2038-7555', '월~토 09:00 ~ 20:00'),
+    ('서울', '종로구', '우리동물병원', '서울 종로구 지봉로 96-3 (우)03108', 'http://woorieah.modoo.at/', '02-3676-1191 ', '월금 10:00~19:30 토12:00~17:00 일휴무'),
+    ('서울', '종로구', '올리브동물병원', '서울 종로구 자하문로 305 (우)03021', 'olivehospital.modoo.at', '02-391-7502', '매일10:00~20:00'),
+    ('서울', '종로구', '누리봄동물병원', '서울 종로구 사직로12길 2', 'https://blog.naver.com/nuribom_', '02-735-7530', '평일09:30~19:30 토10:00~16:00 일 휴무');
+
+DELETE FROM Hospitals
+WHERE name = '길종합동물병원' AND site LIKE '%https://www.bing.com%';
+
+UPDATE Hospitals
+SET details_location = REPLACE(details_location, 'details_location', '서울 동작구 사당로 180 (우)07030')
+WHERE details_location LIKE '%details_location%';
+
+
+
+
+
+
+
+
+CREATE TABLE Travel (
+    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    member_id INT,
+    date1 VARCHAR(255),
+    date2 VARCHAR(255),
+    location VARCHAR(255),
+    name VARCHAR(255),
+    address VARCHAR(255),
+    review VARCHAR(255),
+    details VARCHAR(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
+
+INSERT INTO Travel (date1, date2, location, name, address, review)
+VALUES
+    ('상시개방', NULL, '서울', '한강 공원', '서울특별시 여의도동', NULL),
+    ('상시개방', NULL, '서울', '남산 공원', '서울특별시 중구 남산동', NULL),
+    ('상시개방', NULL, '서울', '선유도 공원', '서울특별시 영등포구 선유로 343', NULL),
+    ('상시개방', NULL, '서울', '용산 가족공원', '서울특별시 용산구 우사단로 99', NULL),
+    ('상시개방', NULL, '서울', '서울숲', '서울특별시 성동구 성수동 1가', NULL),
+    ('상시개방', NULL, '경기', '대부도 해수욕장', '인천광역시 강화군 대부면 외도로 168-15', NULL),
+    ('상시개방', NULL, '경기', '강화도 해수욕장', '인천광역시 강화군 강화읍 강화대로 574-42', NULL),
+    ('상시개방', NULL, '경기', '팔당댐', '경기도 남양주시 조안면 팔당로 409-1', NULL),
+    ('상시개방', NULL, '경기', '경춘선숲길', '경기도 평택시 도곡면 사우중로 1359', NULL),
+    ('상시개방', NULL, '경기', '평택해양도립공원', '인천광역시 연수구 센트럴로 123', NULL),
+    ('상시개방', NULL, '인천', '송도 센트럴파크', '서울특별시 여의도동', NULL),
+    ('상시개방', NULL, '인천', '왕산해수욕장', '인천광역시 중구 우현로 15', NULL),
+    ('상시개방', NULL, '인천', '인천 대공원원', '인천광역시 남동구 석정로 134', NULL),
+    ('상시개방', NULL, '인천', '인천 차이나타운', '인천광역시 중구 차이나타운로 60', NULL),
+    ('상시개방', NULL, '인천', '인천 서해야생도립공원', '인천광역시 강화군 화도면 해안남로 297', NULL),
+    ('상시개방', NULL, '강원', '남이섬', '강원도 속초시 강원대로 434번길 39', NULL),
+    ('상시개방', NULL, '강원', '설악산 국립공원', '강원도 강릉시 설악로 170번길 328', NULL),
+    ('상시개방', NULL, '강원', '오션월드', '경기도 화성시 남양읍 오션월드로 270', NULL),
+    ('상시개방', NULL, '강원', '강릉 경포해수욕장', '강원도 강릉시 경포로 407', NULL),
+    ('상시개방', NULL, '강원', '속초 해변', '강원도 속초시 번영로 376', NULL),
+    ('상시개방', NULL, '광주', '광주호 호수공원', '광주광역시 광산구 첨단중앙로 167번길 76', NULL),
+    ('상시개방', NULL, '광주', '무등산 국립공원', '전라남도 광양시 도포면 무등산로 2188', NULL),
+    ('상시개방', NULL, '광주', '광주 문화전당', '광주광역시 동구 필문대로 11', NULL),
+    ('상시개방', NULL, '광주', '금남로 벚꽃길', '광주광역시 서구 금남로', NULL),
+    ('상시개방', NULL, '광주', '광주 동명동 예술촌', '광주광역시 동구 남동대로 54번길 8-9', NULL),
+    ('상시개방', NULL, '제주', '협재해변', '제주특별자치도 제주시 한림읍 협재로 202', NULL),
+    ('상시개방', NULL, '제주', '성산일출봉', '제주특별자치도 서귀포시 성산읍 일출로 284-12', NULL),
+    ('상시개방', NULL, '제주', '한라산 국립공원', '제주특별자치도 서귀포시 성산읍 일주동로 1139-8', NULL),
+    ('상시개방', NULL, '제주', '서귀포 올레시장', '제주특별자치도 서귀포시 남성로 52', NULL),
+    ('상시개방', NULL, '제주', '사려니숲길', '제주특별자치도 제주시 조천읍 선진길 144', NULL),
+    ('상시개방', NULL, '부산', '해운대 해수욕장', '부산광역시 해운대구 해운대해변로 264', NULL),
+    ('상시개방', NULL, '부산', '광안리 해수욕장', '부산광역시 수영구 광안해변로 219', NULL),
+    ('상시개방', NULL, '부산', '동백섬', '강원도 춘천시 소양로 26번길 42-12', NULL),
+    ('상시개방', NULL, '부산', '송정해수욕장', '부산광역시 기장군 기장읍 송정해변로 59', NULL),
+    (NULL, NULL, '부산', '롯데월드', '부산광역시 기장군 기장읍 송정해변로 59', NULL),
+    ('상시개방', NULL, '부산', '태종대', '부산광역시 영도구 태종대로 24', NULL);
+
+DELETE FROM Travel
+WHERE date1 = '상시개방' AND date2 = 'NULL' AND location = '부산' AND name = '롯데월드' AND address = '부산광역시 기장군 기장읍 송정해변로 59' AND review = 'NULL';
+
+UPDATE Travel
+SET date1 = '상시개방'
+WHERE date1 LIKE '%date1%';
+
 
 
 
 
                 
-                CREATE TABLE Restaurant (
-                    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    member_id INT,
-                    date1 VARCHAR(255), -- 오픈일
-                    date2 VARCHAR(255),  -- 휴무일 
-                    location VARCHAR(255), -- 지역명 
-                    name VARCHAR(255),  -- 식당명
-                    address  VARCHAR(255), -- 주소명
-                    tel  VARCHAR(255), -- 전화번호
-                    review VARCHAR(255), -- 리뷰(out ->in)
-                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
-                );
-                
-                                INSERT INTO Hotels ( date1, date2, location, name, address,tel,revuew) VALUES
-                                 ('08:00', 'NULL', '서울', '필독', '서울 강서구 공항대로46길 81 5층','02-6081-7272','Null'),
-                                 ('09:00', 'NULL', '서울', '달마시안', '서울 강남구 압구정로42길 42','0507-1491-0926','Null'),
-                                 ('07:30', 'NULL', '서울', 'Summer Lane', '서울 용산구 이태원로55가길 49 1층 summerlane','02-792-8114','Null'),
-                                 ('09:00', 'NULL', '서울', '더 왓에버', '서울 강서구 마곡중앙2로 15 1층 115-119호','02-6952-8577','Null'),
-                                 ('10:00', 'NULL', '서울', '서울노마드', '서울 성북구 동소문로11길 5','0507-1334-8049','Null'),
-                                 ('10:00', 'NULL', '경기', '로이테', '경기 남양주시 조안면 북한강로 866 카페로이테','0507-1445-2000','Null'),
-                                 ('11:00', '수요일', '경기', '달빛새 베이커리앤카페', '경기 남양주시 진접읍 금강로782번길 292-21','0507-1386-0341','Null'),
-                                 ('11:00', 'NULL', '경기', '노만주의', '경기 고양시 덕양구 호국로1539번길 9-9 노만주의','070-8810-0670','Null'),
-                                 ('10:30', 'NULL', '경기', '그린그라스', '경기 성남시 분당구 석운로202번길 1 카페 그린그라스','0507-1313-7065','Null'),
-                                 ('11:00', 'NULL', '경기', 'PPK 키친', '경기 수원시 팔달구 인계로124번길 27-18 신일빌딩 1층','0507-1346-9839','Null'),
-                                 ('10:00', 'NULL', '강원', '감자밭', '강원 춘천시 신북읍 신샘밭로 674','1566-3756','Null'),
-                                 ('11:00', 'NULL', '강원', '엔드 투 앤드', '강원 강릉시 창해로 245','0507-1491-7724','Null'),
-                                 ('10:00', 'NULL', '강원', '홍시', '강원 홍천군 서면 팔봉산로 96 홍시','0507-1315-0339','Null'),
-                                 ('10:00', 'NULL', '강원', '카페도즈오프', '강원 원주시 신림면 신림황둔로 1060 1층','0507-1330-1913','Null'),
-                                 ('11:30', '월요일', '강원', '세레니타', '강원 강릉시 율곡로 3034 세레니타','0507-1369-3475','Null'),
-                                 ('10:50', 'NULL', '광주', '카페 체리쉬', '광주 서구 시청서편로4번길 5 1층 카페체리쉬','0507-1414-8471','Null'),
-                                 ('12:30', '월요일', '광주' , '와우와우', '광주 북구 하서로483번길 8 1층','0507-1302-4542','Null'),
-                                 ('08:00', '월요일', '광주' , '플랜티 광천점', '광주 서구 죽봉대로 68 1층 103호','070-4647-1885','Null'),
-                                 ('10:50', '월요일', '광주' , '딸고라떼 신창점', '광주 광산구 장신로 280-16 딸고라떼','0507-1391-9133','Null'),
-                                 ('09:00', 'NULL', '제주' , '제주카페 브라보비치 성산일출봉', '제주 서귀포시 성산읍 해맞이해안로 2614 1층','0507-1310-8448','Null'),
-                                ('10:00', 'NULL', '제주' , '너븐', '제주 서귀포시 칠십리로214번길 26 너븐','010-5714-8549','Null'),
-                                ('11:00', 'NULL', '제주' , '월정리 달이뜨는식탁', '제주 제주시 구좌읍 월정1길 14 1층','0507-1330-8538','Null'),
-                                ('10:00', '화요일', '제주' , '푸르곤', '제주 제주시 애월읍 납읍로 84 푸르곤','0507-1381-8358','Null'),
-                                ('10:00', 'NULL', '제주' , '휴일로', '제주 서귀포시 안덕면 난드르로 49-65','010-7577-4965','Null'),
-                                ('09:00', 'NULL', '부산' , '모치플레지르', '부산 수영구 수영로545번길 17-17','부산 수영구 수영로545번길 17-17','Null'),
-                                ('12:00', 'NULL', '부산' , '웨드', '부산 부산진구 서전로67번길 6 1층 A','0507-1368-6260','Null'),
-                                ('11:00', 'NULL', '부산' , '복합성', '부산 남구 진남로36번길 2 2층','0507-1384-1677','Null'),
-                                ('11:00', 'NULL', '부산' , 'BADA', '부산 기장군 일광읍 이천길 21','0507-1364-4515','Null'),
-                                ('12:00', 'NULL', '부산' , '프리윌 피자', '부산 부산진구 전포대로224번길 26 1층 프리윌','0507-1319-0985','Null');
+      CREATE TABLE Restaurant (
+    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    member_id INT,
+    date1 VARCHAR(255),
+    date2 VARCHAR(255),
+    location VARCHAR(255),
+    name VARCHAR(255),
+    address VARCHAR(255),
+    tel VARCHAR(255),
+    review VARCHAR(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)
+);
 
+INSERT INTO Restaurant (date1, date2, location, name, address, tel, review)
+VALUES
+    ('08:00', NULL, '서울', '필독', '서울 강서구 공항대로46길 81 5층', '02-6081-7272', NULL),
+    ('09:00', NULL, '서울', '달마시안', '서울 강남구 압구정로42길 42', '0507-1491-0926', NULL),
+    ('07:30', NULL, '서울', 'Summer Lane', '서울 용산구 이태원로55가길 49 1층 summerlane', '02-792-8114', NULL),
+    ('09:00', NULL, '서울', '더 왓에버', '서울 강서구 마곡중앙2로 15 1층 115-119호', '02-6952-8577', NULL),
+    ('10:00', NULL, '서울', '서울노마드', '서울 성북구 동소문로11길 5', '0507-1334-8049', NULL),
+    ('10:00', NULL, '경기', '로이테', '경기 남양주시 조안면 북한강로 866 카페로이테', '0507-1445-2000', NULL),
+    ('11:00', '수요일', '경기', '달빛새 베이커리앤카페', '경기 남양주시 진접읍 금강로782번길 292-21', '0507-1386-0341', NULL),
+    ('11:00', NULL, '경기', '노만주의', '경기 고양시 덕양구 호국로1539번길 9-9 노만주의', '070-8810-0670', NULL),
+    ('10:30', NULL, '경기', '그린그라스', '경기 성남시 분당구 석운로202번길 1 카페 그린그라스', '0507-1313-7065', NULL),
+    ('11:00', NULL, '경기', 'PPK 키친', '경기 수원시 팔달구 인계로124번길 27-18 신일빌딩 1층', '0507-1346-9839', NULL),
+    ('10:00', NULL, '강원', '감자밭', '강원 춘천시 신북읍 신샘밭로 674', '1566-3756', NULL),
+    ('11:00', NULL, '강원', '엔드 투 앤드', '강원 강릉시 창해로 245', '0507-1491-7724', NULL),
+    ('10:00', NULL, '강원', '홍시', '강원 홍천군 서면 팔봉산로 96 홍시', '0507-1315-0339', NULL),
+    ('10:00', NULL, '강원', '카페도즈오프', '강원 원주시 신림면 신림황둔로 1060 1층', '0507-1330-1913', NULL),
+    ('11:30', '월요일', '강원', '세레니타', '강원 강릉시 율곡로 3034 세레니타', '0507-1369-3475', NULL),
+    ('10:50', NULL, '광주', '카페 체리쉬', '광주 서구 시청서편로4번길 5 1층 카페체리쉬', '0507-1414-8471', NULL),
+    ('12:30', '월요일', '광주', '와우와우', '광주 북구 하서로483번길 8 1층', '0507-1302-4542', NULL),
+    ('08:00', '월요일', '광주', '플랜티 광천점', '광주 서구 죽봉대로 68 1층 103호', '070-4647-1885', NULL),
+    ('10:50', '월요일', '광주', '딸고라떼 신창점', '광주 광산구 장신로 280-16 딸고라떼', '0507-1391-9133', NULL),
+    ('09:00', NULL, '제주', '제주카페 브라보비치 성산일출봉', '제주 서귀포시 성산읍 해맞이해안로 2614 1층', '0507-1310-8448', NULL),
+    ('10:00', NULL, '제주', '너븐', '제주 서귀포시 칠십리로214번길 26 너븐', '010-5714-8549', NULL),
+    ('11:00', NULL, '제주', '월정리 달이뜨는식탁', '제주 제주시 구좌읍 월정1길 14 1층', '0507-1330-8538', NULL),
+    ('10:00', '화요일', '제주', '푸르곤', '제주 제주시 애월읍 납읍로 84 푸르곤', '0507-1381-8358', NULL),
+    ('10:00', NULL, '제주', '휴일로', '제주 서귀포시 안덕면 난드르로 49-65', '010-7577-4965', NULL),
+    ('09:00', NULL, '부산', '모치플레지르', '부산 수영구 수영로545번길 17-17', '부산 수영구 수영로545번길 17-17', NULL),
+    ('12:00', NULL, '부산', '웨드', '부산 부산진구 서전로67번길 6 1층 A', '0507-1368-6260', NULL),
+    ('11:00', NULL, '부산', '복합성', '부산 남구 진남로36번길 2 2층', '0507-1384-1677', NULL),
+    ('11:00', NULL, '부산', 'BADA', '부산 기장군 일광읍 이천길 21', '0507-1364-4515', NULL),
+    ('12:00', NULL, '부산', '프리윌 피자', '부산 부산진구 전포대로224번길 26 1층 프리윌', '0507-1319-0985', NULL);
 
 
                                     
 
                 -- 쇼핑물품 테이블
-                CREATE TABLE ShoppingItems (
-                    item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    member_id INT,
-                    name VARCHAR(300),
-                    price VARCHAR(300),
-                    img VARCHAR(300),
-                    category VARCHAR(50),  -- 사료, 간식, 장난감, 샴푸비누 등의 카테고리
-                    many VARCHAR(255),
-                    details VARCHAR(255)
-                    FOREIGN KEY (member_id) REFERENCES Members3(id)                
-                  );
-                
-                                INSERT INTO ShoppingItems (name , price ,img ,category, many, details)
-                                VALUES
+CREATE TABLE ShoppingItems (
+    item_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    member_id INT,
+    name VARCHAR(300),
+    price VARCHAR(300),
+    img VARCHAR(300),
+    category VARCHAR(50),
+    many VARCHAR(255),
+    details VARCHAR(255),
+    FOREIGN KEY (member_id) REFERENCES Members3(id)                
+);
+INSERT INTO ShoppingItems (member_id, name, price, img, category, many, details)
+VALUES 
                                 ('로반 잘먹잘싸 전연령 강아지 사료', '44,500원', 'https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/725767035310288-fed7017e-3d9a-4074-9e38-6aa487d35ac1.jpg', '1', '99', '건사료'),
                                 ('탐사 6free 강아지 사료 연어 레시피', '29,990원', 'https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg', '1', '99', '건사료'),
                                 ('뉴트리나울트라 전연령 울트라 액티브 건식사료', '26,060원', 'https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/1656145509574667-71319138-0a3d-4e74-8db6-930253fd6a6f.jpg', '1', '99', '건사료'),
@@ -702,40 +702,41 @@ CREATE TABLE Members3 (
                                 ('반려견 천연목욕비누 각질 모근강화 펫케어 샴푸바 대용량 130g 2개', '9,900원', 'https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/dee1/4e3db2e28cc71dbe7939fe8bfe817726195ef4e1c0b5d2522fb71d1f35b4.jpg', '4', '99', '비누,약산성'),
                                 ('강아지 개껌딱지', '9,900원', '', '4', '99', '비누,약산성성');
                                 
-                                UPDATE ShoppingItems
-                                SET details = REPLACE(details, '비누,약산성성', '개껌')
-                                WHERE name IN ('강아지 개껌딱지');
+UPDATE ShoppingItems
+SET details = REPLACE(details, '비누,약산성성', '개껌')
+WHERE name IN ('강아지 개껌딱지');
 
-                                DELETE FROM ShoppingItems
-                                    WHERE name = '강아지 개껌딱지' AND many '%99%';
+DELETE FROM ShoppingItems
+WHERE name = '강아지 개껌딱지' AND many LIKE '%99%'
   
 
                                 
                                     
 
 
-    CREATE TABLE Board (
+CREATE TABLE Board (
     id NUMBER GENERATED ALWAYS AS IDENTITY,
     member_id INT,
     category VARCHAR2(50),
     title VARCHAR2(255),
     content VARCHAR2(255),
-    png INT,
+    png VARCHAR2(255),  -- Modify data type to VARCHAR2
     details VARCHAR2(255),
     views INT DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (member_id) REFERENCES Members3(id)
 );
 
-INSERT INTO Board (writer, category, title, content, png, details, views) 
+INSERT INTO Board (member_id, category, title, content, png, details, views) 
 VALUES 
     ('aaa', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 75);
     ('bbb', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 42);
     ('ccc', '자유게시판', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 245);
     
-    DELETE FROM Board
-    WHERE (writer = 'aaa', category = '자유게시판', title= '시험용 작성글입니다', content = '기능 추가 예정입니다', png= '(img,jpg)', details ='N, 장소 미정, 날짜 시간', views='75');
-    
+DELETE FROM Board
+WHERE member_id = 1 AND category = '자유게시판' AND title= '시험용 작성글입니다' AND content = '기능 추가 예정입니다' AND png= '(img,jpg)' AND details ='N, 장소 미정, 날짜 시간' AND views=75;
+
+
 INSERT INTO Board (writer, category, title, content, png, details, views) 
 VALUES 
     ('qqqq', '제품추천', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45); 
@@ -748,11 +749,12 @@ VALUES
     ('zzz', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 45);
     ('yyy', '친구맺기', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 32);
     
-INSERT INTO Board (writer, category, title, content, png, details, views
+INSERT INTO Board (member_id, category, title, content, png, details, views) 
+VALUES
     ('aa1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 76);
     ('bb1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 12);
     ('cc1', '이벤트', '시험용 작성글입니다', '기능 추가 예정입니다', '(img,jpg)', 'N, 장소 미정, 날짜 시간', 144);
 
-    UPDATE Board
-    SET title = REPLACE(title, '시험용 작성글입니다', '테스트가 완료되었습니다')
-    WHERE writer IN ('cc1');
+UPDATE Board
+SET title = REPLACE(title, '시험용 작성글입니다', '테스트가 완료되었습니다')
+WHERE member_id = 10;
