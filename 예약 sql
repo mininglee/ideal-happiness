@@ -1,0 +1,27 @@
+CREATE TABLE Orders (
+    order_ID INT PRIMARY KEY,
+    product_number INT,
+    many INT,
+    member_id INT,
+    price NUMBER(10, 2),
+    img VARCHAR(2)
+    -- Other columns can be added as well.
+    -- For example, order date, delivery status, etc.
+    
+    CONSTRAINT fk_member FOREIGN KEY (member_id) REFERENCES Member(member_ID),
+    CONSTRAINT fk_product FOREIGN KEY (product_number) REFERENCES Product(product_ID)
+);
+
+
+CREATE TABLE Reservation (
+    reservation_ID INT PRIMARY KEY,
+    checkin_date DATE,
+    checkout_date DATE,
+    facility VARCHAR(255),
+    member_id INT,
+    price NUMBER(10, 2),
+    -- Other columns can be added as well.
+    -- For example, reservation status, additional requests, etc.
+    
+    CONSTRAINT fk_member FOREIGN KEY (member_id) REFERENCES Member(member_ID)
+);
