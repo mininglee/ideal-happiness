@@ -8,11 +8,8 @@ CREATE TABLE Orders (
     -- Other columns can be added as well.
     -- For example, order date, delivery status, etc.
     
-    CONSTRAINT fk_member FOREIGN KEY (member_id) REFERENCES Member(member_ID),
-    CONSTRAINT fk_product FOREIGN KEY (product_number) REFERENCES Product(product_ID)
+    
 );
-
-
 CREATE TABLE Reservation (
     reservation_ID INT PRIMARY KEY,
     checkin_date DATE,
@@ -20,8 +17,8 @@ CREATE TABLE Reservation (
     facility VARCHAR(255),
     member_id INT,
     price NUMBER(10, 2),
-    -- Other columns can be added as well.
-    -- For example, reservation status, additional requests, etc.
+    -- 다른 열들을 추가할 수도 있습니다.
+    -- 예를 들면 예약 상태, 추가 요청 사항 등입니다.
     
     CONSTRAINT fk_member FOREIGN KEY (member_id) REFERENCES Member(member_ID)
 );
