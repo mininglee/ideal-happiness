@@ -12,13 +12,14 @@ CREATE TABLE Orders (
 );
 CREATE TABLE Reservation (
     reservation_ID INT PRIMARY KEY,
-    checkin_date DATE,
-    checkout_date DATE,
-    facility VARCHAR(255),
+    name VARCHAR(13), -- 호텔 이름, 미용 이름
+    checkin_date DATE, -- 체크인 날짜
+    checkout_date DATE, -- 체크아웃 날짜
+    grade VARCHAR(255), -- 호텔 : 시설 등급, 미용 : 이용 서비스 차별화 내역
     member_id INT,
-    price NUMBER(10, 2),
+    price NUMBER(10, 2), -- 가격
     -- 다른 열들을 추가할 수도 있습니다.
     -- 예를 들면 예약 상태, 추가 요청 사항 등입니다.
-    
-
-);
+)
+INSERT INTO Reservation (reservation_ID, name, checkin_date, checkout_date, grade, price)
+VALUES (1, '편한하개', '2023-07-18', '2023-07-22', 't', 200.00);
