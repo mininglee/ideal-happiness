@@ -1,107 +1,222 @@
-CREATE TABLE Travel (
-    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id INT,
-    date1 VARCHAR(255), -- 오픈일
-    date2 VARCHAR(255),  -- 휴무일 
-    location VARCHAR(255), -- 지역명 
-    name VARCHAR(255),  -- 여행지명
-    address  VARCHAR(255), -- 주소명
-    review VARCHAR(255), -- 리뷰(out ->in)
-    details VARCHAR(255) -- 세부정보
+CREATE TABLE active (
+  active_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, -- 일련번호
+  con INT, -- 종류: 1 - 호텔, 2 - 미용, 3 - 병원, 4 - 여행, 5 - 레스토랑
+  name VARCHAR(255), -- 업체명
+  details VARCHAR(225), -- 주차 가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
+  location1 VARCHAR(255), -- 지역1
+  location2 VARCHAR(255), -- 지역2
+  location3 VARCHAR(255), -- 상세 주소
+  open_time VARCHAR(255), -- 오픈 시간
+  close_time VARCHAR(255), -- 마감 시간
+  TEL_NO VARCHAR(255) -- 전화번호
 );
 
-INSERT INTO Hotels ( date1, date2, location, name, address, review) VALUES
- ('상시개방', 'NULL', '서울' , '한강 공원', '서울특별시 여의도동','NULL')
- ('상시개방', 'NULL', '서울' , '남산 공원', '서울특별시 중구 남산동','NULL')
- ('상시개방', 'NULL', '서울' , '선유도 공원', '서울특별시 영등포구 선유로 343','NULL')
- ('상시개방', 'NULL', '서울' , '용산 가족공원', '서울특별시 용산구 우사단로 99','NULL')
- ('상시개방', 'NULL', '서울' , '서울숲', '서울특별시 성동구 성수동 1가','NULL')
- ('상시개방', 'NULL', '경기' , '대부도 해수욕장', '인천광역시 강화군 대부면 외도로 168-15','NULL')
- ('상시개방', 'NULL', '경기' , '강화도 해수욕장', '인천광역시 강화군 강화읍 강화대로 574-42','NULL')
- ('상시개방', 'NULL', '경기' , '팔당댐', '경기도 남양주시 조안면 팔당로 409-1','NULL')
- ('상시개방', 'NULL', '경기' , '경춘선숲길', '경기도 평택시 도곡면 사우중로 1359','NULL')
- ('상시개방', 'NULL', '경기' , '평택해양도립공원', '인천광역시 연수구 센트럴로 123','NULL')
- ('상시개방', 'NULL', '인천' , '송도 센트럴파크', '서울특별시 여의도동','NULL')
- ('상시개방', 'NULL', '인천' , '왕산해수욕장', '인천광역시 중구 우현로 15','NULL')
- ('상시개방', 'NULL', '인천' , '인천 대공원원', '인천광역시 남동구 석정로 134','NULL')
- ('상시개방', 'NULL', '인천' , '인천 차이나타운', '인천광역시 중구 차이나타운로 60','NULL')
- ('상시개방', 'NULL', '인천' , '인천 서해야생도립공원', '인천광역시 강화군 화도면 해안남로 297','NULL')
- ('상시개방', 'NULL', '강원' , '남이섬', '강원도 속초시 강원대로 434번길 39','NULL')
- ('상시개방', 'NULL', '강원' , '설악산 국립공원', '강원도 강릉시 설악로 170번길 328','NULL')
- ('상시개방', 'NULL', '강원' , '오션월드', '경기도 화성시 남양읍 오션월드로 270','NULL')
- ('상시개방', 'NULL', '강원' , '강릉 경포해수욕장', '강원도 강릉시 경포로 407','NULL')
- ('상시개방', 'NULL', '강원' , '속초 해변', '강원도 속초시 번영로 376','NULL')
- ('상시개방', 'NULL', '광주' , '광주호 호수공원', '광주광역시 광산구 첨단중앙로 167번길 76','NULL')
- ('상시개방', 'NULL', '광주' , '무등산 국립공원', '전라남도 광양시 도포면 무등산로 2188','NULL')
- ('상시개방', 'NULL', '광주' , '광주 문화전당', '광주광역시 동구 필문대로 11','NULL')
- ('상시개방', 'NULL', '광주' , '금남로 벚꽃길', '광주광역시 서구 금남로','NULL')
- ('상시개방', 'NULL', '광주' , '광주 동명동 예술촌', '광주광역시 동구 남동대로 54번길 8-9','NULL')
- ('상시개방', 'NULL', '제주' , '협재해변', '제주특별자치도 제주시 한림읍 협재로 202','NULL')
- ('상시개방', 'NULL', '제주' , '성산일출봉', '제주특별자치도 서귀포시 성산읍 일출로 284-12','NULL')
- ('상시개방', 'NULL', '제주' , '한라산 국립공원', '제주특별자치도 서귀포시 성산읍 일주동로 1139-8','NULL')
- ('상시개방', 'NULL', '제주' , '서귀포 올레시장', '제주특별자치도 서귀포시 남성로 52','NULL')
- ('상시개방', 'NULL', '제주' , '사려니숲길', '제주특별자치도 제주시 조천읍 선진길 144','NULL')
- ('상시개방', 'NULL', '부산' , '해운대 해수욕장', '부산광역시 해운대구 해운대해변로 264','NULL')
- ('상시개방', 'NULL', '부산' , '광안리 해수욕장', '부산광역시 수영구 광안해변로 219','NULL')
- ('상시개방', 'NULL', '부산' , '동백섬', '강원도 춘천시 소양로 26번길 42-12','NULL')
- ('상시개방', 'NULL', '부산' , '송정해수욕장', '부산광역시 기장군 기장읍 송정해변로 59','NULL')
- ('상시개방', 'NULL', '부산' , '태종대', '부산광역시 영도구 태종대로 24','NULL')
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '한강공원', NULL, '서울', '여의도동', NULL, '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '남산공원', NULL, '서울', '중구', '남산동', '상시개방', NULL, NULL);
 
-CREATE TABLE Restaurant (
-    destination_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    member_id INT,
-    date1 VARCHAR(255), -- 오픈일
-    date2 VARCHAR(255),  -- 휴무일 
-    location VARCHAR(255), -- 지역명 
-    name VARCHAR(255),  -- 식당명
-    address  VARCHAR(255), -- 주소명
-    tel  VARCHAR(255), -- 전화번호
-    review VARCHAR(255), -- 리뷰(out ->in)   
-);
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '선유도 공원', NULL, '서울', '영등포구', '선유로 343', '상시개방', NULL, NULL);
 
-INSERT INTO Hotels ( date1, date2, location, name, address,tel,revuew) VALUES
- ('08:00', 'NULL', '서울', '필독', '서울 강서구 공항대로46길 81 5층','02-6081-7272','Null')
- ('09:00', 'NULL', '서울', '달마시안', '서울 강남구 압구정로42길 42','0507-1491-0926','Null')
- ('07:30', 'NULL', '서울', 'Summer Lane', '서울 용산구 이태원로55가길 49 1층 summerlane','02-792-8114','Null')
- ('09:00', 'NULL', '서울', '더 왓에버', '서울 강서구 마곡중앙2로 15 1층 115-119호','02-6952-8577','Null')
- ('10:00', 'NULL', '서울', '서울노마드', '서울 성북구 동소문로11길 5','0507-1334-8049','Null')
- ('10:00', 'NULL', '경기', '로이테', '경기 남양주시 조안면 북한강로 866 카페로이테','0507-1445-2000','Null')
- ('11:00', '수요일', '경기', '달빛새 베이커리앤카페', '경기 남양주시 진접읍 금강로782번길 292-21','0507-1386-0341','Null')
- ('11:00', 'NULL', '경기', '노만주의', '경기 고양시 덕양구 호국로1539번길 9-9 노만주의','070-8810-0670','Null')
- ('10:30', 'NULL', '경기', '그린그라스', '경기 성남시 분당구 석운로202번길 1 카페 그린그라스','0507-1313-7065','Null')
- ('11:00', 'NULL', '경기', 'PPK 키친', '경기 수원시 팔달구 인계로124번길 27-18 신일빌딩 1층','0507-1346-9839','Null')
- ('10:00', 'NULL', '강원', '감자밭', '강원 춘천시 신북읍 신샘밭로 674','1566-3756','Null')
- ('11:00', 'NULL', '강원', '엔드 투 앤드', '강원 강릉시 창해로 245','0507-1491-7724','Null')
- ('10:00', 'NULL', '강원', '홍시', '강원 홍천군 서면 팔봉산로 96 홍시','0507-1315-0339','Null')
- ('10:00', 'NULL', '강원', '카페도즈오프', '강원 원주시 신림면 신림황둔로 1060 1층','0507-1330-1913','Null')
- ('11:30', '월요일', '강원', '세레니타', '강원 강릉시 율곡로 3034 세레니타','0507-1369-3475','Null')
- ('10:50', 'NULL', '광주', '카페 체리쉬', '광주 서구 시청서편로4번길 5 1층 카페체리쉬','0507-1414-8471','Null')
- ('12:30', '월요일', '광주' , '와우와우', '광주 북구 하서로483번길 8 1층','0507-1302-4542','Null')
- ('08:00', '월요일', '광주' , '플랜티 광천점', '광주 서구 죽봉대로 68 1층 103호','070-4647-1885','Null')
- ('10:50', '월요일', '광주' , '딸고라떼 신창점', '광주 광산구 장신로 280-16 딸고라떼','0507-1391-9133','Null')
- ('09:00', 'NULL', '제주' , '제주카페 브라보비치 성산일출봉', '제주 서귀포시 성산읍 해맞이해안로 2614 1층','0507-1310-8448','Null')
-('10:00', 'NULL', '제주' , '너븐', '제주 서귀포시 칠십리로214번길 26 너븐','010-5714-8549','Null')
-('11:00', 'NULL', '제주' , '월정리 달이뜨는식탁', '제주 제주시 구좌읍 월정1길 14 1층','0507-1330-8538','Null')
-('10:00', '화요일', '제주' , '푸르곤', '제주 제주시 애월읍 납읍로 84 푸르곤','0507-1381-8358','Null')
-('10:00', 'NULL', '제주' , '휴일로', '제주 서귀포시 안덕면 난드르로 49-65','010-7577-4965','Null')
-('09:00', 'NULL', '부산' , '모치플레지르', '부산 수영구 수영로545번길 17-17','부산 수영구 수영로545번길 17-17','Null')
-('12:00', 'NULL', '부산' , '웨드', '부산 부산진구 서전로67번길 6 1층 A','0507-1368-6260','Null')
-('11:00', 'NULL', '부산' , '복합성', '부산 남구 진남로36번길 2 2층','0507-1384-1677','Null')
-('11:00', 'NULL', '부산' , 'BADA', '부산 기장군 일광읍 이천길 21','0507-1364-4515','Null')
-('12:00', 'NULL', '부산' , '프리윌 피자', '부산 부산진구 전포대로224번길 26 1층 프리윌','0507-1319-0985','Null')
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '용산 가족공원', NULL, '서울', '용산구', '우사단로 99', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '서울숲', NULL, '서울', '성동구', '성수동 1가', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '대부도 해수욕장', NULL, '경기', '인천광역시', '강화군 대부면 외도로 168-15', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '강화도 해수욕장', NULL, '경기', '인천광역시', '강화군 강화읍 강화대로 574-42', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '팔당댐', NULL, '경기', '경기도 남양주시', '조안면 팔당로 409-1', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '경춘선 숲길', NULL, '경기', '경기도 남양주시', '와부읍 월문로 253', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '평택해양도립공원', NULL, '경기', '경기도 평택시', '도곡면 사우중로 1359', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '송도 센트럴파크', NULL, '인천', '인천광역시', '연수구 센트럴로 123', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '왕산해수욕장', NULL, '인천', '인천광역시', '중구 우현로 15', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '인천 대공원', NULL, '인천', '인천광역시', '남동구 석정로 134', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '인천 차이나타운', NULL, '인천', '인천광역시', '중구 차이나타운로 60', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '인천 서해야생도립공원', NULL, '인천', '인천광역시', '강화군 화도면 해안남로 297', '상시개방', NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '남이섬', NULL, '강원', '강원도 속초시', '강원대로 434번길 39', '상시개방', NULL,NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '설악산 국립공원', NULL, '강원', '강원도 강릉시', '설악로 170번길 328', '상시개방',NULL, NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '오션월드', NULL, '강원', '경기도 화성시', '남양읍 오션월드로 270', '09:00', '20:00', NULL);
 
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '강릉 경포해수욕장', NULL,'강원', '강원도 강릉시', '경포로 407', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '속초 해변', NULL, '강원', '강원도 속초시', '번영로 376', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '광주호 호수공원', NULL, '광주', '광주광역시 광산구', '첨단중앙로 167번길 76', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '무등산 국립공원', NULL, '광주', '전라남도 광양시', '도포면 무등산로 2188', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '광주 문화전당', NULL, '광주', '광주광역시 동구', '필문대로 11', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '금남로 벚꽃길', NULL, '광주', '광주광역시 서구', '금남로', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '광주 동명동 예술촌', NULL, '광주', '광주광역시 동구', '남동대로 54번길 8-9', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '해운대 해수욕장', NULL, '부산', '부산광역시 해운대구', '해운대해변로 264', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '광안리 해수욕장', NULL, '부산', '부산광역시 수영구', '광안해변로 219', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '동백섬', NULL, '부산', '부산광역시 해운대구', '우동 710-1', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '송정해수욕장', NULL, '부산', '부산광역시 기장군', '기장읍 송정해변로 59', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '태종대', NULL, '부산', '부산광역시 영도구', '태종대로 24', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '협재해변', NULL, '제주', '제주특별자치도 제주시', '한림읍 협재로 202', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '성산일출봉', NULL, '제주', '제주특별자치도 서귀포시', '성산읍 일출로 284-12', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '한라산 국립공원', NULL, '제주', '제주특별자치도 서귀포시', '성산읍 일주동로 1139-8', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '서귀포 올레시장', NULL, '제주', '제주특별자치도 서귀포시', '남성로 52', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(4, '사려니숲길', NULL, '제주', '제주특별자치도 제주시', '조천읍 선진길 144', '상시개방', NULL, NULL);
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '필독', NULL, '서울', '서울 강서구', '공항대로46길 81 5층', '08:00', NULL, '02-6081-7272');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '달마시안', NULL, '서울', '서울 강남구', '압구정로42길 42', '09:00', NULL, '0507-1491-0926');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, 'Summer Lane', NULL, '서울', '서울 용산구', '이태원로55가길 49 1층 summerlane', '07:30', NULL, '02-792-8114');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '더 왓에버', NULL, '서울', '서울 강서구', '서울 강서구', '09:00', NULL, '02-6952-8577');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '서울노마드', NULL, '서울', '서울 성북구', '동소문로11길 5', '10:00', NULL, '0507-1334-8049');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '로이테', NULL, '경기', '경기 남양주시', '조안면 북한강로 866 카페로이테', '10:00', NULL, '0507-1445-2000');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '달빛새 베이커리앤카페', NULL, '경기', '경기 남양주시', '진접읍 금강로782번길 292-21', '11:00', '수요일', '0507-1386-0341');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '노만주의', NULL, '경기', '경기 고양시', '덕양구 호국로1539번길 9-9 노만주의', '11:00', NULL, '070-8810-0670');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '그린그라스', NULL, '경기', '경기 성남시', '분당구 석운로202번길 1 카페 그린그라스', '10:30', NULL, '0507-1313-7065');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, 'PPK 키친', NULL, '경기', '경기 수원시', '팔달구 인계로124번길 27-18 신일빌딩 1층', '11:00', NULL, '0507-1346-9839');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '다이너 송도점', NULL, '인천', '인천 연수구', '센트럴로 232 더샵센트럴파크1차 E동 153호, 154호', '10:30', NULL, '0507-1369-5008');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '플로레도커피 선재점', NULL, '인천', '인천 옹진군', '영흥면 선재로 354', '09:00', NULL, '032-880-0433');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '서원안길', NULL, '인천', '인천 서구', '원당대로608번안길 14', '11:00', NULL, '0507-1302-5056');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '케이131', NULL, '인천', '인천 강화군', '화도면 해안남로1691번길 43-8 케이131', '09:00', NULL, '0507-1349-5143');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '플로레도 커피', NULL, '인천', '인천 옹진군', '영흥면 영흥로 301 플로레도 커피', '09:00', NULL, '0507-1325-4100');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '감자밭', NULL, '강원', '강원 춘천시', '신북읍 신샘밭로 674', '10:00', NULL, '1566-3756');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '엔드 투 앤드', NULL, '강원', '강원 강릉시', '창해로 245', '11:00', NULL, '0507-1491-7724');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '홍시', NULL, '강원', '강원 홍천군', '서면 팔봉산로 96 홍시', '10:00', NULL, '0507-1315-0339');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '카페도즈오프', NULL, '강원', '강원 원주시', '신림면 신림황둔로 1060 1층', '10:00', NULL, '0507-1330-1913');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '세레니타', NULL, '강원', '강원 강릉시', '율곡로 3034 세레니타', '11:30', '월요일', '0507-1369-3475');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '카페 체리쉬', NULL, '광주', '광주 서구', '시청서편로4번길 5 1층 카페체리쉬', '11:00', NULL, '0507-1414-8471');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '와우와우', NULL, '광주', '광주 북구', '광주 북구', '12:30', '월요일', '0507-1302-4542');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '플랜티 광천점', NULL, '광주', '광주 서구', '죽봉대로 68 1층 103호', '08:00', NULL, '070-4647-1885');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5,'일품파스타', NULL,'광주','광주 서구','상무대로 1197 1층','11:00', NULL,'0507-1334-4502');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '헤이블루 매월점', NULL, '광주', '광주 서구', '서광주로 31', '10:00', NULL, '0507-1363-2622');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '모치플레지르', NULL, '부산', '부산 수영구', '수영로545번길 17-17', '09:00', NULL, '0507-1307-5978');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '웨드', NULL, '부산', '부산 부산진구', '서전로67번길 6 1층 A', '12:00', NULL, '0507-1368-6260');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '복합성', NULL, '부산', '부산 남구', '진남로36번길 2 2층', '11:00', NULL, '0507-1384-1677');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, 'BADA', NULL, '부산', '부산 기장군', '일광읍 이천길 21', '11:00', NULL, '0507-1364-4515');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '프리윌 피자', NULL, '부산', '부산 부산진구', '전포대로224번길 26 1층 프리윌', '12:00', NULL, '0507-1319-0985');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '제주카페 브라보비치 성산일출봉', NULL, '제주', '제주 서귀포시', '성산읍 해맞이해안로 2614 1층', '09:00', NULL, '0507-1310-8448');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '너븐', NULL, '제주', '제주 서귀포시', '칠십리로214번길 26 너븐', '10:00', NULL, '010-5714-8549');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '월정리 달이뜨는식탁', NULL, '제주', '제주 제주시', '구좌읍 월정1길 14 1층', '11:00', NULL, '0507-1330-8538');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '푸르곤', NULL, '제주', '제주 제주시', '애월읍 납읍로 84 푸르곤', '10:00', '화요일', '0507-1381-8358');
+
+INSERT INTO active (con, name, details, location1, location2, location3, open_time, close_time, TEL_NO)
+VALUES(5, '휴일로', NULL, '제주', '제주 서귀포시', '안덕면 난드르로 49-65', '10:00', NULL, '010-7577-4965');
