@@ -1,0 +1,14 @@
+CREATE TABLE Board (
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    con INT,
+    title VARCHAR2(255),
+    writer VARCHAR2(255),
+    post_date VARCHAR2(255), -- "date" 열 이름 대체
+    views INT DEFAULT 0,
+    likes INT DEFAULT 0,
+    dislikes INT DEFAULT 0,
+    photo_url VARCHAR2(255),
+    video_url VARCHAR2(255),
+    content CLOB,
+    PRIMARY KEY (id)
+);
