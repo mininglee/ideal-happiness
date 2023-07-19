@@ -3,6 +3,43 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>회원 목록</title>
+</head>
+<body>
+    <h1>회원 목록</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>전화번호</th>
+                <th>이메일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+            List<Member> memberList = new MemberDao().memberList();
+            for (Member member : memberList) {
+            %>
+            <tr>
+                <td><%= member.getId() %></td>
+                <td><%= member.getName() %></td>
+                <td><%= member.getGender() %></td>
+                <td><%= member.getTel() %></td>
+                <td><%= member.getEmail() %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애완동물 건강 분석</title>
