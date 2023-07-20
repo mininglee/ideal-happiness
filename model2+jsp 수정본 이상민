@@ -110,7 +110,69 @@ VALUES
 
 
 
+<%@ page import="member.MemberDao" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%
+    // 세션에서 강아지 종류와 나이 가져오기
+    String breed = (String) session.getAttribute("breed");
+    String age = (String) session.getAttribute("age");
+
+    // 데이터베이스 연결
+    MemberDao memberDao = new MemberDao();
+    memberDao.connect();
+
+    // 강아지 정보 조회
+    String exerciseAmount = "";
+    String diseases = "";
+    String heightRange = "";
+    String weightRange = "";
+
+    // 강아지 종류와 나이에 따라 적합한 정보를 조회합니다.
+    if (breed != null && age != null) {
+        int dogAge;
+        if (age.equals("어린 강아지")) {
+            dogAge = 1;
+        } else if (age.equals("성장 중인 강아지")) {
+            dogAge = 2;
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date birthDate = format.parse(age);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            int currentYear = calendar.get(Calendar.YEAR);
+            calendar.setTime(birthDate);
+            int birthYear = calendar.get(Calendar.YEAR);
+            dogAge = currentYear - birthYear;
+        }
+
+        // 강아지 정보 조회
+        if (dogAge <= 1) {
+            exerciseAmount = memberDao.getExerciseAmountForPuppy(breed);
+            diseases = memberDao.getDiseasesForPuppy(breed);
+            heightRange = memberDao.getHeightRangeForPuppy(breed);
+            weightRange = memberDao.getWeightRangeForPuppy(breed);
+        } else if (dogAge <= 2) {
+            exerciseAmount = memberDao.getExerciseAmountForYoungDog(breed);
+            diseases = memberDao.getDiseasesForYoungDog(breed);
+            heightRange = memberDao.getHeightRangeForYoungDog(breed);
+            weightRange = memberDao.getWeightRangeForYoungDog(breed);
+        } else {
+            exerciseAmount = memberDao.getExerciseAmountForAdultDog(breed);
+            diseases = memberDao.getDiseasesForAdultDog(breed);
+            heightRange = memberDao.getHeightRangeForAdultDog(breed);
+            weightRange = memberDao.getWeightRangeForAdultDog(breed);
+        }
+    }
+
+    // 데이터베이스 연결 해제
+    memberDao.disconnect();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,20 +180,71 @@ VALUES
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>애완동물 건강 분석</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
-    
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .analysis-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .analysis-card {
+            width: 500px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+
     <script>
         function changeWord(element, words) {
             element.innerHTML = element.innerHTML === words[0] ? words[1] : words[0];
         }
 
         function analyzeHealth() {
-            const breed = document.getElementById('breed').value;
-            const age = document.getElementById('age').value;
+            const breed = "<%= breed %>";
+            const age = "<%= age %>";
             const height = document.getElementById('height').value;
             const weight = document.getElementById('weight').value;
-            const diet = document.getElementById('diet').value;
             const exercise = document.getElementById('exercise').value;
 
             // 건강 분석 로직을 수행하고 결과를 표시합니다.
@@ -140,36 +253,29 @@ VALUES
                             나이: ${age}<br>
                             키: ${height}<br>
                             체중: ${weight}<br>
-                            식습관: ${diet}<br>
-                            운동량: ${exercise}`;
+                            운동량: ${exercise}<br>
+                            운동량 대비 적정 체중: ${weightRange}<br>
+                            평균 신장: ${heightRange}<br>
+                            위험 질병: ${diseases}`;
 
             document.getElementById('result').innerHTML = result;
         }
     </script>
 </head>
 <body>
-   
-    <%
-        // 세션에서 강아지 종류와 나이 가져오기
-        String breed = (String)session.getAttribute("breed");
-        String age = (String)session.getAttribute("age");
-    %>
-
     <div class="analysis-container">
         <div class="analysis-card">
             <label for="breed" class="input-label">종</label>
             <input type="text" id="breed" class="input-field" value="<%= breed %>" readonly>
 
             <label for="age" class="input-label">나이</label>
-            <input type="number" id="age" class="input-field" value="<%= age %>" readonly>
+            <input type="text" id="age" class="input-field" value="<%= age %>" readonly>
 
             <label for="height" class="input-label">키</label>
             <input type="number" id="height" class="input-field">
 
             <label for="weight" class="input-label">체중</label>
             <input type="number" id="weight" class="input-field">
-
-           
 
             <label for="exercise" class="input-label">운동량</label>
             <input type="number" id="exercise" class="input-field">
@@ -179,6 +285,9 @@ VALUES
             <div id="result" class="result-container"></div>
         </div>
     </div>
+</body>
+</html>
+
 
 </body>
 </html>
