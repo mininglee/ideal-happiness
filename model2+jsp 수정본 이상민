@@ -6,7 +6,7 @@ SET animal_type = CASE
 END;
 
 
-CREATE TABLE health_information12 (
+CREATE TABLE health_information (
     member_id INT,
     exercise_amount INT,
     disease VARCHAR(255),
