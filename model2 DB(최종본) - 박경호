@@ -22,3 +22,10 @@ name     varchar(10),
 age    int,
 gender varchar(1),
 picture varchar(30));
+
+create table animember (
+email varchar2(30) primary key,
+pass   varchar(10),
+nicname  varchar(20),
+birthday  date,
+regdate   date);
