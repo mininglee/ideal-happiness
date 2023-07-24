@@ -1,0 +1,135 @@
+<%@page import="member.Member"%>
+<%@page import="member.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html><html>
+<head><meta charset="UTF-8">
+
+<title>Insert title here</title>
+<script>
+function selectBox() {
+		
+	      const xhttp = new XMLHttpRequest();
+	      const parms = "?group1=" + document.querySelector("#sel01").value;
+	      alert(parms)
+	      xhttp.open("GET", "${pageContext.request.contextPath}/animal/myAnimal" + parms, true)
+	      xhttp.send();
+	      xhttp.onreadystatechange = callBack;
+	      }
+	   function callBack() {
+	      if(this.readyState == 4 && this.status == 200) {
+	         let str = this.responseText.split(':')
+	         alert(str)
+	         document.querySelector("#sel02").innerHTML = str
+	      }
+	   }
+</script>
+</head>
+<body>
+
+<br>
+<div class="row" >
+<div class="container col">
+  <h2>나의 정보</h2>
+
+		<table class="table table-bordered">
+			<tr><td>이메일</td><td>${m.email}</td></tr>
+			<tr><td>닉네임</td><td>${m.nicname}</td></tr>
+			<tr><td>생년월일</td><td>${m.birthday}</td></tr>
+		</table>
+		<table align="center">
+			<tr>
+				<td colspan="2" class="col">
+					<a class="btn btn-success" style="background-color: #19110B; border: #19110B; color:white;"
+						href="${pageContext.request.contextPath}/member/memberUpdateForm">회원정보 수정</a>
+					<a class="btn btn-success" style="background-color: #19110B; border: #19110B; color:white;" 
+						href="${pageContext.request.contextPath}/member/memberDeleteForm">회원 탈퇴</a>
+					<a class="btn btn-success" style="background-color: #19110B; border: #19110B; color:white;"
+						href="${pageContext.request.contextPath}/member/memberPassForm">비밀번호 수정</a>
+				</td>
+			</tr>
+		</table>
+	
+</div>
+
+
+<div class="container col">
+  <h2>나의 반려동물</h2>
+  <form    name="f"  
+         action="${pageContext.request.contextPath}/member/myinfoPro" method="post">
+ 
+   
+   <div class="row">
+   <div class="col">
+    <label for="sel01" class="form-label">동물</label>
+    <select class="form-select" id="sel01" name="group1"  onchange="selectBox()">
+      <option  value="0" >선택하세요</option>
+      <option  value="1" >강아지</option>
+    
+    </select></div></div>
+    <div class="row">
+  
+    <div class="col">
+     <label for="sel02" class="form-label">종</label>
+    <select class="form-select" id="sel02" name="group2">
+    	<option>선택하세요</option>
+    	<option  value="01">푸들</option>
+    	<option  value="02">허스키</option>
+    	<option  value="03">말티즈</option>
+    	<option  value="04">치와와</option>
+    	<option  value="05">리트리버</option>
+    	<option  value="06">진돗개</option>
+    	<option  value="07">불독</option>
+    	<option  value="08">저먼셰퍼드</option>
+    </select>
+    </div>
+     <div class="col">
+     <label for="sel03" class="form-label">교배여부</label>
+    <select class="form-select" id="sel03" name="neuter">
+      <option  value="O">O</option>
+      <option  value="X">X</option>
+    </select>
+    </div>
+   </div>
+    <div class="row">
+    <div class="col">
+     <label for="sel04" class="form-label">이름</label>
+    <input type="text" class="form-control"  id="sel04"   name="name">
+    </div></div>
+    
+     <div class="row">
+  
+    <div class="col">
+     <label for="sel05" class="form-label">나이(개월)</label>
+    <select class="form-select" id="sel05" name="age">
+      <option>선택하세요</option>
+      <option  value="2">2살 이하</option>
+      <option  value="5">5살 이하</option>
+      <option  value="8" >8살 이하</option>
+      <option  value="11">11살 이하</option>
+      <option  value="14">14살 이하</option>
+      <option  value="15">15살 이상</option>
+    </select>
+    </div>
+     <div class="col">
+     <label for="sel06" class="form-label">성별</label>
+    <select class="form-select" id="sel06" name="gender">
+    	<option>선택하세요</option>
+		<option  value="수컷">수컷</option>
+      	<option  value="암컷">암컷</option>
+    </select>
+    </div>
+   </div>
+  <!--  
+   <div class="row">
+   <div class="col">
+    <label for="sel07" class="form-label">사진</label>
+   <input type="file"  class="form-control" name="picture"  id="sel07">
+   
+   </div></div> -->
+   <div align="center">
+    <button type="submit" class="btn btn-primary mt-0" style="background-color: #19110B; border: #19110B; color: white;">저장하기</button>
+    </div>
+  </form>
+</div></div>
+</body></html>
