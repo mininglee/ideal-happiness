@@ -2,7 +2,7 @@
 CREATE TABLE active (
   
   active_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  --serial Num
-    con INT --   종류 ,1:hotel, 2:beauty, 3:hospital, 4:travel , 5:restaurant 
+    con INT, --   종류 ,1:hotel, 2:beauty, 3:hospital, 4:travel , 5:restaurant 
     name VARCHAR(255),  -- 업체명
     details VARCHAR(225), -- 주차가능, 와이파이, 24시간 방문 가능, 유기농 간식 제공
     location1 VARCHAR(255), -- 서울
