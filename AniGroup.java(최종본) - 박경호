@@ -1,0 +1,15 @@
+package animal;
+
+public class AniGroup {
+
+	public String getGroupid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
