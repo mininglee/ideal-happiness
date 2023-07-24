@@ -1,0 +1,24 @@
+로그인/회원가입 부분
+create table anigroup (
+groupid varchar(3) primary key,
+name varchar(20));
+
+insert into anigroup values ('101' , '푸들');
+insert into anigroup values ('102' , '허스키');
+insert into anigroup values ('103' , '말티즈');
+insert into anigroup values ('104' , '치와와');
+insert into anigroup values ('105' , '리트리버');
+insert into anigroup values ('106' , '진돗개');
+insert into anigroup values ('107' , '불독');
+insert into anigroup values ('108' , '저먼셰퍼드');
+commit;
+
+create table myanimal (
+ser  int primary key,
+email varchar(10),
+groupid  varchar(3),
+neuter   varchar(1),
+name     varchar(10),
+age    int,
+gender varchar(1),
+picture varchar(30));
