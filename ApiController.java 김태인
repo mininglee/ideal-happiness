@@ -1,0 +1,78 @@
+package controller;
+
+import java.util.List;
+
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import Map.Active;
+import Map.mapDao;
+import kic.mskim.MskimRequestMapping;
+import kic.mskim.RequestMapping;
+
+@WebServlet(urlPatterns = {"/api/*"},
+initParams= {@WebInitParam(name="view",value="/view/api/"),//jsp위치
+		@WebInitParam(name="login",value="login")})  //패키지명
+public class ApiController extends MskimRequestMapping{
+	
+	
+
+	
+	@RequestMapping("maps")
+	public String maps(HttpServletRequest request,
+			HttpServletResponse response) {
+	       String temp = request.getParameter("con");
+	       
+	       if (temp !=null) {
+		   int con = Integer.parseInt(temp); // shopCategory 값을 가져옵니다.
+		   
+	       String location1 = request.getParameter("si"); // "si" 값을 가져옵니다.
+	       String location2 = request.getParameter("gu"); // "gu" 값을 가져옵니다.
+	       
+	       // 값들을 서비스 로직에 사용하거나, 데이터베이스에서 정보를 가져오는 등의 작업을 할 수 있습니다.
+
+	       List<Active> li = new mapDao().mapsList(con, location1, location2);
+	       request.setAttribute("li", li);	       
+	       
+	       }
+	      
+		
+		return  "maps";
+		
+	}
+
+	
+	
+//	@RequestMapping("maps")
+//	public String maps(HttpServletRequest request, HttpServletResponse response) {
+//	    String con = "";
+//	    // get the radio value selected in the radio box
+//	    String[] shopCategories = request.getParameterValues("shopCategory");
+//	    if (shopCategories != null && shopCategories.length > 0) {
+//	        con = shopCategories[0];
+//	    }
+//
+//	   
+//	    String si = request.getParameter("si");
+//	    String gu = request.getParameter("gu");
+//	    String queryString = String.format("con=%s&si=%s&gu=%s", con, si, gu);
+//
+//	    request.setAttribute("queryString", queryString);
+//	    return "maps";
+//	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
