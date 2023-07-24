@@ -1,0 +1,32 @@
+package login;
+
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kic.mskim.MsInterceptor;
+
+public class LoginUser implements MsInterceptor{
+
+	@Override
+	public String loginCheck(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = (String)request.getSession().getAttribute("email");
+		if (id!=null& !id.equals("")) {
+			
+		return null;
+		
+	}else {
+		request.setAttribute("url", "/member/login");
+		return "alert";
+	}
+
+	}
+}
