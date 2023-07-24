@@ -1,0 +1,15 @@
+package mybatis;
+
+import org.apache.ibatis.annotations.Insert;
+
+import animal.Ani;
+
+public interface AniAnno {
+
+	
+	@Insert("insert into myanimal values (myaniseq.nextval, #{email}, #{groupid}, #{neuter}, "
+			+ "#{name}, #{age}, #{gender}, #{picture})")
+	int insertAni(Ani m);
+
+
+}
