@@ -1,0 +1,41 @@
+<%@page import="animal.AnimalDao"%>
+<%@page import="animal.Ani"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+
+request.setCharacterEncoding("utf-8");
+Ani mem = new Ani();
+mem.setSer(request.getParameter("ser"));
+mem.setGroupid(request.getParameter("groupid"));
+mem.setNeuter(request.getParameter("neuter"));
+mem.setName(request.getParameter("name"));
+mem.setAge(request.getParameter("age"));
+mem.setGender(request.getParameter("gender"));
+
+AnimalDao ad = new AnimalDao();
+int num = ad.insertAni(mem);
+String msg = "";
+String url = "";
+if (num > 0) {
+   msg = "저장되었습니다";
+   url = "mainpg/main";
+} else {
+   msg = "항목을 선택해주세요";
+   url = "member/myinfo";
+}
+
+%><%=mem %>
+<script>
+  alert ('<%=msg%>');
+  location.href="<%=url%>";
+</script>
+</body>
+</html>
