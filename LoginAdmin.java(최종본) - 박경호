@@ -1,0 +1,30 @@
+package login;
+
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kic.mskim.MsInterceptor;
+
+public class LoginAdmin implements MsInterceptor{
+
+	@Override
+	public String loginCheck(HttpServletRequest request, HttpServletResponse arg1) {
+			System.out.println("admin");
+			try {
+				request.setCharacterEncoding("utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			String login = (String)request.getSession().getAttribute("email");
+			request.setAttribute("msg", "접근이 불가능 합니다.");
+			request.setAttribute("url", "/member/login");
+			
+			if (login == null || !login.equals("admin")) {	
+			return "alert";
+			} else {
+				return null;
+		}
+	}
+}
