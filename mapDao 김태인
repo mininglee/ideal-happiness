@@ -1,0 +1,78 @@
+package Map;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+
+public class mapDao {
+	public Connection getConnection() {
+	      try {
+	         Class.forName("oracle.jdbc.OracleDriver");  
+	         Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:kkkk", "c##KKKK", "1111");
+	         System.out.println("db ok");
+	         return conn;
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      System.out.println("db error");
+	      return null;
+	}
+	
+
+	public List<Active> mapsList(int con, String location1, String location2) {
+	    Connection connection = getConnection();
+	    PreparedStatement pstmt=null;
+	    ResultSet rs = null;
+	    List<Active> li = new ArrayList<>();
+	    System.out.println(con);
+
+	    try {
+	        String sql = "SELECT * FROM active WHERE con = ? and location1 = ? and location2 = ?  ORDER BY active_id DESC";
+	        pstmt = connection.prepareStatement(sql);
+	        pstmt.setInt(1, con);
+	        pstmt.setString(2,location1);
+	        pstmt.setString(3,location2);
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            Active c = new Active();
+	         
+	            c.setCon(rs.getInt("con"));
+	            c.setName(rs.getString("name"));
+	            c.setDetails(rs.getString("details"));
+	            c.setLocation1(rs.getString("location1"));
+	            c.setLocation2(rs.getString("location2"));
+	            c.setLocation3(rs.getString("location3"));
+	            c.setOpen_time(rs.getString("open_time"));
+	            c.setClose_time(rs.getString("close_time"));
+	            c.setTEL_NO(rs.getString("TEL_NO"));
+
+	            li.add(c);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (pstmt != null) pstmt.close();
+	            if (connection != null) connection.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return li;
+	}
+}
+
