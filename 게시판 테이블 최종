@@ -1,0 +1,28 @@
+create table board1(
+num int primary key,
+boardid varchar(3),
+name varchar(30),
+pass varchar(20),
+subject varchar(100),
+content varchar(4000),
+file1 varchar(100),
+regdate date,
+readcnt number(10),
+ref int,
+reflevel number(3),
+refstep number(5));
+
+
+create sequence boardseq;
+
+
+create table comment1 (
+ser int primary key,
+num int,
+content varchar(2000),
+regdate date,
+nicname varchar(20 )
+);
+
+
+create sequence boardcomseq;
