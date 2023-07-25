@@ -1,13 +1,8 @@
-UPDATE myanimal
-SET animal_type = CASE
-    WHEN birth_year > :current_year - 1 THEN '어린 강아지'
-    WHEN birth_year > :current_year - 1.5 THEN '성장 중인 강아지'
-    ELSE '성체 강아지'
-END;
-
 
 CREATE TABLE health_information (
     member_id INT,
+    breed_name INT,
+    age_range INT,
     exercise_amount INT,
     disease VARCHAR(255),
     height_range INT,
